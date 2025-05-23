@@ -45,7 +45,9 @@ const Toolbar: React.FC = () => {
             <NavigationMenu>
               <NavigationMenuList>
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger>works</NavigationMenuTrigger>
+                  <a href="/">
+                    <NavigationMenuTrigger>works</NavigationMenuTrigger>
+                  </a>
                   <NavigationMenuContent>
                     <ul className="w-[300px]">
                       {Object.values(Category).map((category) => (

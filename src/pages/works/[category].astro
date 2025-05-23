@@ -8,6 +8,8 @@ export function getStaticPaths() {
   return [
     { params: { category: SiteCategory.MUSIC } },
     { params: { category: SiteCategory.SOFTWARE } },
+    { params: { category: SiteCategory.RELEASES } },
+    { params: { category: SiteCategory.VIDEO } },
   ];
 }
 const { category } = Astro.params;
@@ -19,14 +21,14 @@ const filteredProjects = projects.filter((project) =>
 ---
 
 <Layout title={category ? `${category} - Works` : "Works"}>
-  <main class="container mx-auto px-4 py-8">
+  <main class="container mx-auto py-8">
     {
       category && (
-        <div class="mb-8">
-          <h1 class="text-4xl font-bold">{category}</h1>
+        <div class="mb-8 flex flex-col gap-8">
           <a href="/" class="text-muted-foreground hover:underline">
             ← Back to all works
           </a>
+          <h1 class="text-4xl font-bold">{category}</h1>
         </div>
       )
     }

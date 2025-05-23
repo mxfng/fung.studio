@@ -5,11 +5,11 @@ const projectsCollection = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    description: z.string(),
     hero: z.string().optional(),
     images: z.array(z.string()).optional(),
-    categories: z.array(z.enum([Category.MUSIC, Category.SOFTWARE])),
+    categories: z.array(z.nativeEnum(Category)),
     date: z.string().transform((str) => new Date(str)),
+    details: z.string().optional(),
   }),
 });
 

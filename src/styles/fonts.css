@@ -5,3 +5,19 @@
   font-style: normal;
   font-display: swap;
 } 
+
+@font-face {
+  font-family: "doto";
+  src: url('/fonts/Doto.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "archiv-grotesk";
+  src: url('/fonts/ArchivGrotesk.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
