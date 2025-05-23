@@ -62,8 +62,8 @@ const Toolbar: React.FC = () => {
                     </NavigationMenuContent>
                   </NavigationMenuItem>
                   <NavigationMenuItem>
-                    <NavigationMenuLink href="/writings">
-                      writings
+                    <NavigationMenuLink href="/writing">
+                      writing
                     </NavigationMenuLink>
                   </NavigationMenuItem>
                   <NavigationMenuItem>

@@ -12,4 +12,4 @@ The project blends a lifelong love of beat-making with a curiosity for digital a
 
 This was a personal attempt to fuse code and creativity, and to build something I wish had existed when I first started making music.
 
-[See it live on GitHub](https://github.com/mxfng/drumhaus)
+[See it live at drumha.us](https://drumha.us)

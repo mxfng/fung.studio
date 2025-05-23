@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from "astro:content";
+import WorkCard from "./work-card.astro";
+
+interface Props {
+  works: CollectionEntry<"works">[];
+}
+
+const { works } = Astro.props;
+
+const sortedWorks = works?.length
+  ? [...works].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+  : [];
+---
+
+{
+  !works?.length ? (
+    <div>No works found</div>
+  ) : (
+    <div class="grid md:grid-cols-2 3xl:grid-cols-3 gap-12">
+      {sortedWorks.map((work) => (
+        <WorkCard work={work} client:visible />
+      ))}
+    </div>
+  )
+}

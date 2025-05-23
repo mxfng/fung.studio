@@ -2,13 +2,13 @@ import fs from "fs/promises";
 import path from "path";
 import sharp from "sharp";
 
-const SOURCE_DIRS = ["src/assets/projects", "src/assets/hero"];
+const SOURCE_DIRS = ["src/assets/works", "src/assets/hero"];
 const SUPPORTED_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
 const MAX_WIDTH = 2400;
 const OUTPUT_QUALITY = 80;
 
 // Only these dirs will have their output renamed numerically (1.webp, 2.webp, etc.)
-const RENAME_FILES_IN_DIRS = ["src/assets/projects"];
+const RENAME_FILES_IN_DIRS = ["src/assets/works"];
 
 function isSupportedImage(filePath) {
   return SUPPORTED_EXTENSIONS.includes(path.extname(filePath).toLowerCase());

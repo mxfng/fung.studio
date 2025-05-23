@@ -1,6 +1,6 @@
 ---
-import ProjectGrid from "@/components/project-grid.astro";
-import Layout from "../../layouts/Layout.astro";
+import WorksGrid from "@/components/works-grid.astro";
+import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
 import { Category as SiteCategory } from "../../config/categories";
 
@@ -13,10 +13,10 @@ export function getStaticPaths() {
   ];
 }
 const { category } = Astro.params;
-const projects = await getCollection("projects");
+const works = await getCollection("works");
 
-const filteredProjects = projects.filter((project) =>
-  project.data.categories.includes(category)
+const filteredWorks = works.filter((work) =>
+  work.data.categories.includes(category)
 );
 ---
 
@@ -32,6 +32,6 @@ const filteredProjects = projects.filter((project) =>
         </div>
       )
     }
-    <ProjectGrid projects={filteredProjects} />
+    <WorksGrid works={filteredWorks} />
   </main>
 </Layout>

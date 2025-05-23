@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import ProjectCard from "./project-card.astro";
+import WorkCard from "./work-card.astro";
 import type { Category } from "@/config/categories";
 
 interface Props {
@@ -9,48 +9,39 @@ interface Props {
 
 const { currentSlug } = Astro.props;
 
-// Fetch all projects
-const allProjects = await getCollection("projects");
+const allWorks = await getCollection("works");
 
-// Get the current project
-const currentProject = allProjects.find(
-  (project) => project.slug === currentSlug
-);
-if (!currentProject)
-  throw new Error(`Project with slug "${currentSlug}" not found.`);
+const currentWork = allWorks.find((work) => work.slug === currentSlug);
+if (!currentWork) throw new Error(`Work with slug "${currentSlug}" not found.`);
 
-// Filter out the current project
-const otherProjects = allProjects.filter(
-  (project) => project.slug !== currentSlug
-);
+const otherWorks = allWorks.filter((work) => work.slug !== currentSlug);
 
-// Score other projects by number of matching tags
-const scoredProjects = otherProjects
-  .map((project) => {
+const scoredWorks = otherWorks
+  .map((work) => {
     const sharedTags =
-      project.data.categories?.filter((category: Category) =>
-        currentProject.data.categories?.includes(category)
+      work.data.categories?.filter((category: Category) =>
+        currentWork.data.categories?.includes(category)
       ) ?? [];
-    return { project, score: sharedTags.length };
+    return { work, score: sharedTags.length };
   })
   .filter(({ score }) => score > 0)
   .sort((a, b) => b.score - a.score);
 
-let similarProjects = scoredProjects.map(({ project }) => project).slice(0, 3);
+let similarWorks = scoredWorks.map(({ work }) => work).slice(0, 3);
 
-// Fallback: pad with unscored projects if needed
-if (similarProjects.length < 3) {
-  const alreadyIncluded = new Set(similarProjects.map((p) => p.slug));
-  const fallbackProjects = otherProjects
+// Fallback: pad with unscored works if needed
+if (similarWorks.length < 3) {
+  const alreadyIncluded = new Set(similarWorks.map((p) => p.slug));
+  const fallbackWorks = otherWorks
     .filter((p) => !alreadyIncluded.has(p.slug))
-    .slice(0, 3 - similarProjects.length);
-  similarProjects = [...similarProjects, ...fallbackProjects];
+    .slice(0, 3 - similarWorks.length);
+  similarWorks = [...similarWorks, ...fallbackWorks];
 }
 ---
 
 <section class="mt-16">
   <h2 class="text-2xl mb-8">More Works</h2>
   <div class="grid md:grid-cols-3 gap-12 md:p-12">
-    {similarProjects.map((project) => <ProjectCard project={project} />)}
+    {similarWorks.map((work) => <WorkCard work={work} />)}
   </div>
 </section>

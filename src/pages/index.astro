@@ -1,6 +1,6 @@
 ---
-import ProjectGrid from "@/components/project-grid.astro";
-import Layout from "../layouts/Layout.astro";
+import WorksGrid from "@/components/works-grid.astro";
+import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
 import { Category as SiteCategory } from "../config/categories";
 
@@ -10,9 +10,9 @@ export function getStaticPaths() {
     { params: { category: SiteCategory.SOFTWARE } },
   ];
 }
-const projects = await getCollection("projects");
+const works = await getCollection("works");
 ---
 
 <Layout title="Max Fung">
-  <ProjectGrid projects={projects} />
+  <WorksGrid works={works} />
 </Layout>

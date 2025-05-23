@@ -1,29 +1,26 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import {
-  loadFirstProjectImage,
-  loadProjectHero,
-} from "@/lib/load-project-images";
+import { loadFirstWorkImage, loadWorkHeroImage } from "@/lib/load-work-images";
 import { Image } from "astro:assets";
 
 interface Props {
-  project: CollectionEntry<"projects">;
+  work: CollectionEntry<"works">;
 }
 
-const { project } = Astro.props;
-const firstImage = loadFirstProjectImage(project.slug);
-const heroImage = loadProjectHero(project.slug);
+const { work } = Astro.props;
+const firstImage = loadFirstWorkImage(work.slug);
+const heroImage = loadWorkHeroImage(work.slug);
 const image = heroImage || firstImage;
 ---
 
 <div class="flex flex-col gap-4 group">
-  <a href={`/works/${project.slug}`}>
+  <a href={`/works/${work.slug}`}>
     {
       image && (
         <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-secondary transition-transform duration-300 group-hover:-translate-y-1.5">
           <Image
             src={image}
-            alt={project.data.title}
+            alt={work.data.title}
             class="h-full w-full object-cover"
             loading="lazy"
           />
@@ -33,14 +30,14 @@ const image = heroImage || firstImage;
 
     <div class="flex flex-col gap-1.5">
       <h2 class="text-xl tracking-tight">
-        {project.data.title}
+        {work.data.title}
       </h2>
 
       <div
         class="flex flex-wrap gap-x-1 text-sm text-muted-foreground font-medium"
       >
         {
-          project.data.categories.map((category, index) => (
+          work.data.categories.map((category, index) => (
             <span class="font-['doto']">
               <a
                 href={`/works/${category.toLowerCase()}`}
@@ -48,7 +45,7 @@ const image = heroImage || firstImage;
               >
                 {category}
               </a>
-              {index < project.data.categories.length - 1 && (
+              {index < work.data.categories.length - 1 && (
                 <span class="text-muted-foreground">,</span>
               )}
             </span>
