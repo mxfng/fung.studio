@@ -5,19 +5,20 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true }
 );
 
-export function loadProjectImages(
-  slug: string,
-  filenames: string[]
-): ImageMetadata[] {
-  return filenames
-    .map((filename) => {
-      const path = `/src/assets/projects/${slug}/${filename}`;
-      const mod = allImages[path];
-      if (!mod) {
-        console.warn(`Missing image asset: ${path}`);
-        return null;
-      }
-      return mod.default;
-    })
-    .filter((img): img is ImageMetadata => img !== null);
+export function loadProjectImages(slug: string): ImageMetadata[] {
+  const projectPath = `/src/assets/projects/${slug}/`;
+  return Object.entries(allImages)
+    .filter(([path]) => path.startsWith(projectPath))
+    .map(([_, mod]) => mod.default)
+    .sort((a, b) => a.src.localeCompare(b.src));
+}
+
+export function loadFirstProjectImage(slug: string): ImageMetadata | undefined {
+  const projectPath = `/src/assets/projects/${slug}/`;
+  const firstImage = Object.entries(allImages)
+    .filter(([path]) => path.startsWith(projectPath))
+    .map(([_, mod]) => mod.default)
+    .sort((a, b) => a.src.localeCompare(b.src))[0];
+
+  return firstImage;
 }

@@ -4,22 +4,6 @@ description: "An example music project"
 categories: ["music", "releases"]
 date: "2020-12-1"
 hero: "bm.jpg"
-images:
-  [
-    "bm.jpg",
-    "bm-3.JPG",
-    "bm-4.JPG",
-    "bm-5.JPG",
-    "bm-6.JPG",
-    "bm-7.JPG",
-    "bm-8.JPG",
-    "bm2-5.JPG",
-    "bm2-1.JPG",
-    "bm2-2.jpg",
-    "bm2-4.jpg",
-    "bm-1.PNG",
-    "bm-2.jpg",
-  ]
 ---
 
 Blue Moon represented the many late nights I spent up writing melancholy, nostalgic, and downright haunting songs in my bedroom studio in Playa del Rey. I had gone through a long period of being out on my own for the very first time, and this mixture of newfound independence and a deep sense of longing for intimacy culminated in a creative flurry of musical experimentation and boundary pushing. It was also a playful nod at the partying I was doing during my last year of college.

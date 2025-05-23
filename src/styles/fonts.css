@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'boxy-regular';
-  src: url('/fonts/Boxy-Regular.otf') format('opentype');
+  font-family: 'boxy';
+  src: url('/fonts/boxy.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -8,7 +8,7 @@
 
 @font-face {
   font-family: "doto";
-  src: url('/fonts/Doto.ttf') format('truetype');
+  src: url('/fonts/doto.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -16,7 +16,7 @@
 
 @font-face {
   font-family: "archiv-grotesk";
-  src: url('/fonts/ArchivGrotesk.otf') format('opentype');
+  src: url('/fonts/archiv-grotesk.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;

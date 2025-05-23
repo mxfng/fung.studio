@@ -40,7 +40,7 @@ const Toolbar: React.FC = () => {
       <PaddingX>
         <div className="flex items-center justify-between sm:h-16">
           <div className="flex flex-col items-start w-full sm:flex-row sm:items-center sm:gap-8 sm:justify-between">
-            <a href="/" className="text-5xl font-['boxy-regular']">
+            <a href="/" className="text-5xl font-['boxy']">
               MF
             </a>
             <div className="flex gap-4">

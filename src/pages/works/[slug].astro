@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await project.render();
 
-const images = loadProjectImages(project.slug, project.data.images || []);
+const images = loadProjectImages(project.slug);
 ---
 
 <Layout title={project.data.title}>
