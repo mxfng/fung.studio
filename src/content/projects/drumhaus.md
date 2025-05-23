@@ -2,8 +2,8 @@
 title: "Drumhaus"
 categories: ["software", "music"]
 date: "2024-03-20"
-hero: "/images/projects/drumhaus/hero.png"
-images: ["/images/projects/drumhaus/ui.png"]
+hero: "hero.png"
+images: ["ui.png"]
 ---
 
 Drumhaus is a browser-native drum machine that re-imagines the classic hardware sequencer through the lens of modern web technologies. Designed and built using Tone.js and the Web Audio API, Drumhaus enables users to create their own beats with its sequencing and sampling capabilities. The user interface takes playful inspiration from the skeumorphic designs of traditional VST instruments.

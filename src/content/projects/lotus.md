@@ -3,7 +3,7 @@ title: "Lotus"
 description: "An example music project"
 categories: ["music", "releases"]
 date: "2019-07-05"
-hero: "/images/projects/lotus/cover.jpg"
+hero: "cover.jpg"
 ---
 
 In the summer of 2019, I released my first solo EP which I had painstakingly written, produced, curated, and performed over the past two years. The songs explored the themes of loss, death, rebirth, and growth as I grappled with the pressures of young adulthood and a very painful breakup.

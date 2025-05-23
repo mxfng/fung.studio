@@ -2,23 +2,23 @@
 title: "Blue Moon"
 description: "An example music project"
 categories: ["music", "releases"]
-date: "2020-12-12"
-hero: "/images/projects/blue-moon/bm.jpg"
+date: "2020-12-1"
+hero: "bm.jpg"
 images:
   [
-    "/images/projects/blue-moon/bm.jpg",
-    "/images/projects/blue-moon/bm-3.JPG",
-    "/images/projects/blue-moon/bm-4.JPG",
-    "/images/projects/blue-moon/bm-5.JPG",
-    "/images/projects/blue-moon/bm-6.JPG",
-    "/images/projects/blue-moon/bm-7.JPG",
-    "/images/projects/blue-moon/bm-8.JPG",
-    "/images/projects/blue-moon/bm2-5.JPG",
-    "/images/projects/blue-moon/bm2-1.JPG",
-    "/images/projects/blue-moon/bm2-2.jpg",
-    "/images/projects/blue-moon/bm2-4.jpg",
-    "/images/projects/blue-moon/bm-1.PNG",
-    "/images/projects/blue-moon/bm-2.jpg",
+    "bm.jpg",
+    "bm-3.JPG",
+    "bm-4.JPG",
+    "bm-5.JPG",
+    "bm-6.JPG",
+    "bm-7.JPG",
+    "bm-8.JPG",
+    "bm2-5.JPG",
+    "bm2-1.JPG",
+    "bm2-2.jpg",
+    "bm2-4.jpg",
+    "bm-1.PNG",
+    "bm-2.jpg",
   ]
 ---
 

@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+
+const { project } = Astro.props;
+---
+
+<a
+  href={`/works/${project.slug}`}
+  class="group block rounded-xl transition-transform hover:-translate-y-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+>
+  <div class="flex flex-col gap-4">
+    {
+      project.data.hero && (
+        <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-secondary">
+          <img
+            src={project.data.hero}
+            alt={project.data.title}
+            class="absolute inset-0 h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
+      )
+    }
+
+    <div class="flex flex-col gap-1.5">
+      <h2
+        class="text-xl font-semibold tracking-tight group-hover:text-primary transition-colors"
+      >
+        {project.data.title}
+      </h2>
+
+      <div
+        class="flex flex-wrap gap-x-1 text-sm text-muted-foreground font-medium"
+      >
+        {
+          project.data.categories.map((category, index) => (
+            <>
+              <a
+                href={`/works/${category.toLowerCase()}`}
+                class="hover:text-foreground underline underline-offset-2"
+              >
+                {category}
+              </a>
+              {index < project.data.categories.length - 1 && (
+                <span class="text-muted-foreground">,</span>
+              )}
+            </>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</a>

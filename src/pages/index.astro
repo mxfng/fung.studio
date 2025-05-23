@@ -1,5 +1,5 @@
 ---
-import ProjectGrid from "@/components/project-grid";
+import ProjectGrid from "@/components/project-grid.astro";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Category as SiteCategory } from "../config/categories";
@@ -14,7 +14,7 @@ const projects = await getCollection("projects");
 ---
 
 <Layout title="Max Fung">
-  <main class="container mx-auto px-4 py-8">
-    <ProjectGrid client:visible projects={projects} />
+  <main>
+    <ProjectGrid projects={projects} />
   </main>
 </Layout>

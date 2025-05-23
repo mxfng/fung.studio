@@ -9,6 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import "@/styles/fonts.css";
+import PaddingX from "./padding-x";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,
@@ -36,71 +37,76 @@ ListItem.displayName = "ListItem";
 const Toolbar: React.FC = () => {
   return (
     <nav className="border-b">
-      <div className="container mx-auto p-4 flex items-center justify-between sm:h-16">
-        <div className="flex flex-col items-start w-full sm:flex-row sm:items-center sm:gap-8 sm:justify-between">
-          <a href="/" className="text-5xl font-['boxy-regular']">
-            MF
-          </a>
-          <div className="flex gap-4">
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <a href="/">
-                    <NavigationMenuTrigger>works</NavigationMenuTrigger>
-                  </a>
-                  <NavigationMenuContent>
-                    <ul className="w-[300px]">
-                      {Object.values(Category).map((category) => (
+      <PaddingX>
+        <div className="flex items-center justify-between sm:h-16">
+          <div className="flex flex-col items-start w-full sm:flex-row sm:items-center sm:gap-8 sm:justify-between">
+            <a href="/" className="text-5xl font-['boxy-regular']">
+              MF
+            </a>
+            <div className="flex gap-4">
+              <NavigationMenu>
+                <NavigationMenuList>
+                  <NavigationMenuItem>
+                    <a href="/">
+                      <NavigationMenuTrigger>works</NavigationMenuTrigger>
+                    </a>
+                    <NavigationMenuContent>
+                      <ul className="w-[300px]">
+                        {Object.values(Category).map((category) => (
+                          <ListItem
+                            key={category}
+                            href={`/works/${category.toLowerCase()}`}
+                            title={category}
+                          />
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuLink href="/writings">
+                      writings
+                    </NavigationMenuLink>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuLink href="/about">about</NavigationMenuLink>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger>contact</NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="w-[300px]">
                         <ListItem
-                          key={category}
-                          href={`/works/${category.toLowerCase()}`}
-                          title={category}
-                        />
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink href="/writings">
-                    writings
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuLink href="/about">about</NavigationMenuLink>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger>contact</NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="w-[300px]">
-                      <ListItem href="mailto:max@studiomakai.net" title="Email">
-                        max@studiomakai.net
-                      </ListItem>
-                      <ListItem
-                        href="https://www.linkedin.com/in/maxfung/"
-                        title="LinkedIn"
-                      >
-                        in/maxfung
-                      </ListItem>
-                      <ListItem
-                        href="https://www.instagram.com/fungkadelic/"
-                        title="Instagram"
-                      >
-                        @fungkadelic
-                      </ListItem>
-                      <ListItem
-                        href="https://www.github.com/mxfng"
-                        title="GitHub"
-                      >
-                        mxfng
-                      </ListItem>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+                          href="mailto:max@studiomakai.net"
+                          title="Email"
+                        >
+                          max@studiomakai.net
+                        </ListItem>
+                        <ListItem
+                          href="https://www.linkedin.com/in/maxfung/"
+                          title="LinkedIn"
+                        >
+                          in/maxfung
+                        </ListItem>
+                        <ListItem
+                          href="https://www.instagram.com/fungkadelic/"
+                          title="Instagram"
+                        >
+                          @fungkadelic
+                        </ListItem>
+                        <ListItem
+                          href="https://www.github.com/mxfng"
+                          title="GitHub"
+                        >
+                          mxfng
+                        </ListItem>
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
+            </div>
           </div>
         </div>
-      </div>
+      </PaddingX>
     </nav>
   );
 };

@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "optimize:images": "bun scripts/optimize-images.mjs",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
@@ -24,6 +26,8 @@
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
-    "tw-animate-css": "^1.3.0"
+    "sharp": "^0.34.2",
+    "tw-animate-css": "^1.3.0",
+    "husky": "^8.0.0"
   }
 }

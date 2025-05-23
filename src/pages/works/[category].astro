@@ -1,5 +1,5 @@
 ---
-import ProjectGrid from "@/components/project-grid";
+import ProjectGrid from "@/components/project-grid.astro";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Category as SiteCategory } from "../../config/categories";
@@ -21,7 +21,7 @@ const filteredProjects = projects.filter((project) =>
 ---
 
 <Layout title={category ? `${category} - Works` : "Works"}>
-  <main class="container mx-auto py-8">
+  <main>
     {
       category && (
         <div class="mb-8 flex flex-col gap-8">
@@ -32,6 +32,6 @@ const filteredProjects = projects.filter((project) =>
         </div>
       )
     }
-    <ProjectGrid client:visible projects={filteredProjects} />
+    <ProjectGrid projects={filteredProjects} />
   </main>
 </Layout>

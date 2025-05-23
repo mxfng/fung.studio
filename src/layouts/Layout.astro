@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css";
 import Toolbar from "@/components/toolbar";
+import PaddingX from "@/components/padding-x";
 
 interface Props {
   title: string;
@@ -24,7 +25,9 @@ const {
 
   <body>
     <Toolbar client:load />
-    <slot />
+    <PaddingX className="py-4 lg:py-[2vw]">
+      <slot />
+    </PaddingX>
   </body>
   <script is:inline>
     const getThemePreference = () => {

@@ -12,7 +12,7 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
   return (
     <div className="flex flex-col gap-2">
       <p className="font-['doto'] text-xs">{label}</p>
-      {children}
+      <div className="max-w-[85ch]">{children}</div>
     </div>
   );
 };

@@ -110,6 +110,8 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+@theme {  --breakpoint-xs: 30rem;  --breakpoint-3xl: 120rem;}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
