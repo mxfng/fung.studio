@@ -8,8 +8,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import "@/styles/fonts.css";
-import PaddingX from "./padding-x";
+import PaddingX from "@/components/padding-x";
 
 const ListItem = React.forwardRef<
   React.ElementRef<"a">,

@@ -1,7 +1,7 @@
 ---
 title: "Lotus"
 description: "An example music project"
-categories: ["music", "releases"]
+categories: ["music", "releases", "video"]
 date: "2019-07-05"
 hero: "cover.jpg"
 ---

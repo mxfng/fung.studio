@@ -1,0 +1,56 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "./project-card.astro";
+import type { Category } from "@/config/categories";
+
+interface Props {
+  currentSlug: string;
+}
+
+const { currentSlug } = Astro.props;
+
+// Fetch all projects
+const allProjects = await getCollection("projects");
+
+// Get the current project
+const currentProject = allProjects.find(
+  (project) => project.slug === currentSlug
+);
+if (!currentProject)
+  throw new Error(`Project with slug "${currentSlug}" not found.`);
+
+// Filter out the current project
+const otherProjects = allProjects.filter(
+  (project) => project.slug !== currentSlug
+);
+
+// Score other projects by number of matching tags
+const scoredProjects = otherProjects
+  .map((project) => {
+    const sharedTags =
+      project.data.categories?.filter((category: Category) =>
+        currentProject.data.categories?.includes(category)
+      ) ?? [];
+    return { project, score: sharedTags.length };
+  })
+  .filter(({ score }) => score > 0)
+  .sort((a, b) => b.score - a.score);
+
+let similarProjects = scoredProjects.map(({ project }) => project).slice(0, 3);
+
+// Fallback: pad with unscored projects if needed
+if (similarProjects.length < 3) {
+  const alreadyIncluded = new Set(similarProjects.map((p) => p.slug));
+  const fallbackProjects = otherProjects
+    .filter((p) => !alreadyIncluded.has(p.slug))
+    .slice(0, 3 - similarProjects.length);
+  similarProjects = [...similarProjects, ...fallbackProjects];
+}
+---
+
+<section class="mt-16">
+  <h2 class="text-2xl mb-8">More Works</h2>
+  <div class="grid md:grid-cols-3 gap-12 md:p-12">
+    {similarProjects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>

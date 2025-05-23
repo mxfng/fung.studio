@@ -5,6 +5,11 @@ const allImages = import.meta.glob<{ default: ImageMetadata }>(
   { eager: true }
 );
 
+const heroImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/hero/*.webp",
+  { eager: true }
+);
+
 export function loadProjectImages(slug: string): ImageMetadata[] {
   const projectPath = `/src/assets/projects/${slug}/`;
   return Object.entries(allImages)
@@ -21,4 +26,9 @@ export function loadFirstProjectImage(slug: string): ImageMetadata | undefined {
     .sort((a, b) => a.src.localeCompare(b.src))[0];
 
   return firstImage;
+}
+
+export function loadProjectHero(slug: string): ImageMetadata | undefined {
+  const heroPath = `/src/assets/hero/${slug}.webp`;
+  return heroImages[heroPath]?.default;
 }

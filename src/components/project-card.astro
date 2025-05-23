@@ -1,6 +1,10 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { loadFirstProjectImage } from "@/lib/load-project-images";
+import {
+  loadFirstProjectImage,
+  loadProjectHero,
+} from "@/lib/load-project-images";
+import { Image } from "astro:assets";
 
 interface Props {
   project: CollectionEntry<"projects">;
@@ -8,21 +12,21 @@ interface Props {
 
 const { project } = Astro.props;
 const firstImage = loadFirstProjectImage(project.slug);
+const heroImage = loadProjectHero(project.slug);
+const image = heroImage || firstImage;
 ---
 
-<a href={`/works/${project.slug}`} class="group block rounded-xl">
-  <div class="flex flex-col gap-4">
+<div class="flex flex-col gap-4 group">
+  <a href={`/works/${project.slug}`}>
     {
-      firstImage && (
-        <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-secondary">
-          <div class="absolute inset-0 transition-transform duration-300 group-hover:-translate-y-1.5">
-            <img
-              src={firstImage.src}
-              alt={project.data.title}
-              class="h-full w-full object-cover"
-              loading="lazy"
-            />
-          </div>
+      image && (
+        <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-secondary transition-transform duration-300 group-hover:-translate-y-1.5">
+          <Image
+            src={image}
+            alt={project.data.title}
+            class="h-full w-full object-cover"
+            loading="lazy"
+          />
         </div>
       )
     }
@@ -51,6 +55,6 @@ const firstImage = loadFirstProjectImage(project.slug);
           ))
         }
       </div>
-    </div>
-  </div>
-</a>
+    </div></a
+  >
+</div>

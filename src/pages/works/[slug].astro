@@ -1,9 +1,10 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
-import { SectionTitle } from "@/components/ui/section-title";
+import SectionTitle from "@/components/ui/section-title.astro";
 import FancyImage from "@/components/fancy-image.astro";
 import { loadProjectImages } from "@/lib/load-project-images";
+import MoreWorks from "@/components/more-works.astro";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects");
@@ -53,7 +54,9 @@ const images = loadProjectImages(project.slug);
         </header>
         <div class="md:w-1/2">
           <SectionTitle label="Details">
-            <p><Content /></p>
+            <article class="prose">
+              <Content />
+            </article>
           </SectionTitle>
         </div>
       </div>
@@ -76,5 +79,6 @@ const images = loadProjectImages(project.slug);
         )
       }
     </article>
+    <MoreWorks currentSlug={project.slug} />
   </main>
 </Layout>

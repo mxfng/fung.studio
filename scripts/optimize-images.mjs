@@ -2,10 +2,13 @@ import fs from "fs/promises";
 import path from "path";
 import sharp from "sharp";
 
-const SOURCE_DIRS = ["src/assets"];
+const SOURCE_DIRS = ["src/assets/projects", "src/assets/hero"];
 const SUPPORTED_EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp"];
 const MAX_WIDTH = 2400;
 const OUTPUT_QUALITY = 80;
+
+// Only these dirs will have their output renamed numerically (1.webp, 2.webp, etc.)
+const RENAME_FILES_IN_DIRS = ["src/assets/projects"];
 
 function isSupportedImage(filePath) {
   return SUPPORTED_EXTENSIONS.includes(path.extname(filePath).toLowerCase());
@@ -41,7 +44,6 @@ async function getAllImageFiles() {
 async function optimizeAllImages() {
   const allFiles = await getAllImageFiles();
 
-  // Group files by directory
   const filesByDir = new Map();
 
   for (const file of allFiles) {
@@ -50,13 +52,13 @@ async function optimizeAllImages() {
     filesByDir.get(dir).push(file);
   }
 
-  // Process each directory
   for (const [dir, files] of filesByDir.entries()) {
+    const allowRename = RENAME_FILES_IN_DIRS.some((renamable) =>
+      dir.startsWith(path.resolve(renamable))
+    );
+
     const sorted = files
-      .filter((file) => {
-        const ext = path.extname(file).toLowerCase();
-        return isSupportedImage(file) || ext === ".webp";
-      })
+      .filter((file) => isSupportedImage(file))
       .sort(
         (a, b) =>
           parseInt(path.basename(a).match(/\d+/)?.[0] || "99999") -
@@ -67,15 +69,21 @@ async function optimizeAllImages() {
 
     for (const file of sorted) {
       const ext = path.extname(file).toLowerCase();
-      const outputPath = path.join(dir, `${count}.webp`);
+      const base = path.basename(file, ext);
+
+      const outputPath = allowRename
+        ? path.join(dir, `${count}.webp`)
+        : path.join(dir, `${base}.webp`);
 
       try {
         if (ext === ".webp") {
-          if (!isOptimizedWebp(file)) {
+          if (!isOptimizedWebp(file) && allowRename) {
             await fs.rename(file, outputPath);
             console.log(`✓ Renamed ${file} → ${outputPath}`);
           } else {
-            console.log(`✓ Skipped ${file} (already optimized name)`);
+            console.log(
+              `✓ Skipped ${file} (already webp or renaming not allowed)`
+            );
           }
         } else {
           await sharp(file)

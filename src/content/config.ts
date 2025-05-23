@@ -6,10 +6,8 @@ const projectsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     hero: z.string().optional(),
-    images: z.array(z.string()).optional(),
     categories: z.array(z.nativeEnum(Category)),
     date: z.string().transform((str) => new Date(str)),
-    details: z.string().optional(),
   }),
 });
 

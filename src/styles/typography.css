@@ -1,0 +1,66 @@
+@layer base {
+  .prose {
+    @apply max-w-none text-base leading-relaxed text-foreground;
+  }
+
+  .prose h1 {
+    @apply text-4xl leading-tight mb-4 text-primary;
+  }
+
+  .prose h2 {
+    @apply text-3xl leading-snug mt-8 mb-4 text-primary;
+  }
+
+  .prose h3 {
+    @apply text-2xl mt-6 mb-2;
+  }
+
+  .prose h4 {
+    @apply text-xl mt-4 mb-2;
+  }
+
+  .prose p {
+    @apply my-4;
+  }
+
+  .prose a {
+    @apply text-primary underline underline-offset-2 hover:text-primary-foreground transition-colors;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply pl-6 my-4 list-disc;
+  }
+
+  .prose ol {
+    @apply list-decimal;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 border-muted pl-4 italic text-muted-foreground my-4;
+  }
+
+  .prose code {
+    @apply bg-muted text-sm px-1 py-0.5 rounded;
+  }
+
+  .prose pre {
+    @apply bg-muted p-4 rounded overflow-x-auto my-4;
+  }
+
+  .prose img {
+    @apply rounded-lg my-4;
+  }
+
+  .prose strong {
+    @apply font-semibold;
+  }
+
+  .prose hr {
+    @apply my-8 border-t border-muted;
+  }
+
+  .prose a {
+    @apply text-muted-foreground underline underline-offset-2 hover:text-foreground transition-colors;
+  }
+}

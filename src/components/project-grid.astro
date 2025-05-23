@@ -15,9 +15,9 @@ const sortedProjects = projects?.length
 
 {
   !projects?.length ? (
-    <div>No projects found</div>
+    <div>No works found</div>
   ) : (
-    <div class="grid md:grid-cols-2 gap-6 auto-rows-fr">
+    <div class="grid md:grid-cols-2 3xl:grid-cols-3 gap-12">
       {sortedProjects.map((project) => (
         <ProjectCard project={project} client:visible />
       ))}
