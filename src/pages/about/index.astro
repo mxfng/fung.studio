@@ -1,0 +1,41 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="About">
+  <main class="container mx-auto px-4 py-8">
+    <div class="flex flex-row items-center gap-12">
+      <div
+        class="flex items-center gap-4 w-md p-[20%] relative overflow-hidden rounded-4xl"
+      >
+        <Image
+          src="/images/avatar/max.jpg"
+          alt="Background"
+          width={24}
+          height={24}
+          class="absolute top-0 left-0 w-full h-full object-cover"
+        />
+      </div>
+      <div class="flex flex-col gap-2">
+        <p>
+          I'm a creative person with a background in music, design, and
+          engineering. I like to work across many mediums, including audio
+          production, digital art, software for web and mobile, and branding.
+        </p>
+        <p>
+          These days, I'm building an assortment of things with my friends
+          through <a href="https://www.studiomakai.net">Studio Makai</a>, a
+          small creative studio I started in Los Angeles. I eagerly take on
+          projects that excite me, often somewhere between sound, software, and
+          story.
+        </p>
+        <p>
+          Over the years, I've been lucky to work with thoughtful people on
+          meaningful projects to bring creative and technical ideas to life.
+        </p>
+        <p>Thanks for stopping by. CV available upon request.</p>
+      </div>
+    </div>
+  </main>
+</Layout>

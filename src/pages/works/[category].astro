@@ -1,0 +1,35 @@
+---
+import ProjectGrid from "@/components/project-grid";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Category as SiteCategory } from "../../config/categories";
+
+export function getStaticPaths() {
+  return [
+    { params: { category: SiteCategory.MUSIC } },
+    { params: { category: SiteCategory.SOFTWARE } },
+  ];
+}
+const { category } = Astro.params;
+const projects = await getCollection("projects");
+
+const filteredProjects = projects.filter((project) =>
+  project.data.categories.includes(category)
+);
+---
+
+<Layout title={category ? `${category} - Works` : "Works"}>
+  <main class="container mx-auto px-4 py-8">
+    {
+      category && (
+        <div class="mb-8">
+          <h1 class="text-4xl font-bold">{category}</h1>
+          <a href="/" class="text-muted-foreground hover:underline">
+            ← Back to all works
+          </a>
+        </div>
+      )
+    }
+    <ProjectGrid client:visible projects={filteredProjects} />
+  </main>
+</Layout>
