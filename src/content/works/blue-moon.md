@@ -2,7 +2,7 @@
 title: "Blue Moon"
 description: "An example music project"
 categories: ["music", "releases", "video"]
-date: "2020-12-1"
+date: "2020-12-11"
 hero: "bm.jpg"
 ---
 
