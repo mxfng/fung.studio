@@ -24,7 +24,7 @@ const { hue1, hue2 } = generateGradient(writing.slug);
       <rect width="100" height="100" fill={`url(#gradient-${writing.slug})`}
       ></rect>
     </svg>
-    <div class="relative flex flex-col justify-between h-full">
+    <div class="relative flex flex-col justify-between gap-2 h-full">
       <div class="text-sm text-muted-foreground font-['doto']">
         {
           writing.data.date.toLocaleDateString("en-US", {
@@ -41,7 +41,7 @@ const { hue1, hue2 } = generateGradient(writing.slug);
       </h2>
       <CategoryList
         categories={writing.data.categories}
-        class="text-sm text-muted-foreground font-['doto'] mt-2"
+        class="text-sm text-muted-foreground font-['doto']"
         basePath="/writing"
         asLinks={false}
       />

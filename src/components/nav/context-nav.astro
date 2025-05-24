@@ -17,7 +17,7 @@ const { left, right } = Astro.props;
 ---
 
 <nav
-  class="w-full flex justify-between items-center pb-8 text-sm text-muted-foreground"
+  class="w-full flex justify-between items-center text-xl text-muted-foreground"
 >
   {
     left ? (
@@ -25,7 +25,7 @@ const { left, right } = Astro.props;
         href={left.href}
         class="inline-flex items-center gap-2 font-medium hover:underline"
       >
-        <ArrowLeft class="w-4 h-4" />
+        <ArrowLeft class="w-6 h-6" />
         <span>{left.label}</span>
       </a>
     ) : (
@@ -40,7 +40,7 @@ const { left, right } = Astro.props;
         class="inline-flex items-center gap-2 font-medium hover:underline"
       >
         <span>{right.label}</span>
-        <ArrowRight class="w-4 h-4" />
+        <ArrowRight class="w-6 h-6" />
       </a>
     )
   }
