@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import WorkCard from "./work-card.astro";
-import type { Category } from "@/config/categories";
+import type { WorksCategory } from "@/config/categories";
 
 interface Props {
   currentSlug: string;
@@ -19,7 +19,7 @@ const otherWorks = allWorks.filter((work) => work.slug !== currentSlug);
 const scoredWorks = otherWorks
   .map((work) => {
     const sharedTags =
-      work.data.categories?.filter((category: Category) =>
+      work.data.categories?.filter((category: WorksCategory) =>
         currentWork.data.categories?.includes(category)
       ) ?? [];
     return { work, score: sharedTags.length };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Category } from "../config/categories";
+import { WorksCategory, WritingCategory } from "@/config/categories";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,6 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { ArrowUpRight } from "lucide-react";
+import CategoryMenu from "./category-menu";
 
 const CONTACT_LINKS = [
   {
@@ -67,44 +68,21 @@ const NavMenu: React.FC<NavMenuProps> = ({ currentPath }) => {
   return (
     <NavigationMenu>
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className={isWorksRouteActive()}>
-            works
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="w-[300px]">
-              <li>
-                <NavigationMenuLink
-                  href="/"
-                  className={isExactRouteActive("/")}
-                >
-                  all
-                </NavigationMenuLink>
-              </li>
-              {Object.values(Category).map((category) => {
-                const categoryPath = `/works/category/${category.toLowerCase()}`;
-                return (
-                  <li key={category}>
-                    <NavigationMenuLink
-                      href={categoryPath}
-                      className={isExactRouteActive(categoryPath)}
-                    >
-                      <div className="font-medium">{category}</div>
-                    </NavigationMenuLink>
-                  </li>
-                );
-              })}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink
-            href="/writing"
-            className={isRouteActive("writing")}
-          >
-            writing
-          </NavigationMenuLink>
-        </NavigationMenuItem>
+        <CategoryMenu
+          triggerLabel="works"
+          basePath="/works"
+          allItemsPath="/"
+          categories={WorksCategory}
+          isActive={isWorksRouteActive}
+          isExactRouteActive={isExactRouteActive}
+        />
+        <CategoryMenu
+          triggerLabel="writing"
+          basePath="/writing"
+          categories={WritingCategory}
+          isActive={() => isRouteActive("writing")}
+          isExactRouteActive={isExactRouteActive}
+        />
         <NavigationMenuItem>
           <NavigationMenuLink href="/about" className={isRouteActive("about")}>
             about

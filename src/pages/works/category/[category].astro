@@ -2,17 +2,15 @@
 import WorksGrid from "@/components/works/works-grid.astro";
 import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
-import { Category as SiteCategory } from "@/config/categories";
-import ContextNav from "@/components/ui/context-nav.astro";
+import { WorksCategory } from "@/config/categories";
+import ContextNav from "@/components/nav/context-nav.astro";
 
 export function getStaticPaths() {
-  return [
-    { params: { category: SiteCategory.MUSIC } },
-    { params: { category: SiteCategory.SOFTWARE } },
-    { params: { category: SiteCategory.RELEASES } },
-    { params: { category: SiteCategory.VIDEO } },
-  ];
+  return Object.values(WorksCategory).map((category) => ({
+    params: { category },
+  }));
 }
+
 const { category } = Astro.params;
 const works = await getCollection("works");
 

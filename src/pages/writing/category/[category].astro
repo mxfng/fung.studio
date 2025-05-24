@@ -1,0 +1,36 @@
+---
+import Layout from "@/layouts/layout.astro";
+import { getCollection } from "astro:content";
+import { WritingCategory } from "@/config/categories";
+import ContextNav from "@/components/nav/context-nav.astro";
+import WritingList from "@/components/writing/writing-list.astro";
+
+export function getStaticPaths() {
+  return Object.values(WritingCategory).map((category) => ({
+    params: { category },
+  }));
+}
+
+const { category } = Astro.params;
+const writings = await getCollection("writing");
+
+const filteredWritings = writings.filter((writing) =>
+  writing.data.categories.includes(category)
+);
+---
+
+<Layout title={category ? `${category} - Writing` : "Writing"}>
+  <main>
+    {
+      category && (
+        <div class="mb-8 flex flex-col">
+          <ContextNav
+            left={{ label: "Back to all writing", href: "/writing" }}
+          />
+          <h1 class="text-4xl font-bold">{category}</h1>
+        </div>
+      )
+    }
+    <WritingList writings={filteredWritings} />
+  </main>
+</Layout>

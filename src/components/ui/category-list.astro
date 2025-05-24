@@ -3,9 +3,15 @@ interface Props {
   categories: string[];
   class?: string;
   asLinks?: boolean;
+  basePath?: string;
 }
 
-const { categories, class: className = "", asLinks = true } = Astro.props;
+const {
+  categories,
+  class: className = "",
+  asLinks = true,
+  basePath = "/works",
+} = Astro.props;
 ---
 
 <div class={`flex flex-wrap ${className}`}>
@@ -14,7 +20,7 @@ const { categories, class: className = "", asLinks = true } = Astro.props;
       <span class="flex items-center">
         {asLinks ? (
           <a
-            href={`/works/category/${category.toLowerCase()}`}
+            href={`${basePath}/category/${category.toLowerCase()}`}
             class="hover:text-foreground"
           >
             {category.trim()}
