@@ -1,0 +1,19 @@
+---
+import PaddingX from "@/components/padding-x";
+import NavMenu from "./nav-menu";
+---
+
+<nav class="border-b">
+  <PaddingX>
+    <div class="flex items-center justify-between sm:h-16">
+      <div
+        class="flex flex-col items-start w-full sm:flex-row sm:items-center sm:gap-8 sm:justify-between"
+      >
+        <a href="/" class="text-5xl font-['boxy']"> MF </a>
+        <div class="flex gap-4">
+          <NavMenu client:load />
+        </div>
+      </div>
+    </div>
+  </PaddingX>
+</nav>
