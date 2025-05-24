@@ -4,8 +4,8 @@ import Layout from "@/layouts/layout.astro";
 import SectionTitle from "@/components/ui/section-title.astro";
 import FancyImage from "@/components/fancy-image.astro";
 import { loadWorkImages } from "@/lib/load-work-images";
-import MoreWorks from "@/components/more-works.astro";
-import CategoryList from "@/components/category-list.astro";
+import MoreWorks from "@/components/works/more-works.astro";
+import CategoryList from "@/components/works/category-list.astro";
 
 export async function getStaticPaths() {
   const works = await getCollection("works");
