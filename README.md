@@ -1,4 +1,4 @@
-# Max Fung
+# maxfung.net (v2, 2025)
 
 Personal website showcasing works across music, design, and engineering. Built with Astro and Tailwind CSS.
 
