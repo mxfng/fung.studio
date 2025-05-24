@@ -1,14 +1,10 @@
 ---
-import type { CollectionEntry } from "astro:content";
 import { loadFirstWorkImage, loadWorkHeroImage } from "@/lib/load-work-images";
 import { Image } from "astro:assets";
 import CategoryList from "@/components/ui/category-list.astro";
 
-interface Props {
-  work: CollectionEntry<"works">;
-}
-
 const { work } = Astro.props;
+
 const firstImage = loadFirstWorkImage(work.slug);
 const heroImage = loadWorkHeroImage(work.slug);
 const image = heroImage || firstImage;

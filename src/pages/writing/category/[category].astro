@@ -3,7 +3,7 @@ import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
 import { WritingCategory } from "@/config/categories";
 import ContextNav from "@/components/nav/context-nav.astro";
-import WritingList from "@/components/writing/writing-list.astro";
+import WritingGrid from "@/components/writing/writing-grid.astro";
 
 export function getStaticPaths() {
   return Object.values(WritingCategory).map((category) => ({
@@ -28,5 +28,5 @@ const filteredWritings = writings
       </div>
     )
   }
-  <WritingList writings={filteredWritings} />
+  <WritingGrid writings={filteredWritings} />
 </Layout>

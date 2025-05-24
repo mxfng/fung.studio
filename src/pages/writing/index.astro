@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
-import WritingList from "@/components/writing/writing-list.astro";
+import WritingGrid from "@/components/writing/writing-grid.astro";
 
 const writings = await getCollection("writing");
 const sortedWritings = writings.sort(
@@ -10,5 +10,5 @@ const sortedWritings = writings.sort(
 ---
 
 <Layout title="Writing">
-  <WritingList writings={sortedWritings} />
+  <WritingGrid writings={sortedWritings} />
 </Layout>
