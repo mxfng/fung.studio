@@ -5,6 +5,7 @@ import SectionTitle from "@/components/ui/section-title.astro";
 import FancyImage from "@/components/fancy-image.astro";
 import { loadWorkImages } from "@/lib/load-work-images";
 import MoreWorks from "@/components/more-works.astro";
+import CategoryList from "@/components/category-list.astro";
 
 export async function getStaticPaths() {
   const works = await getCollection("works");
@@ -40,16 +41,7 @@ const images = loadWorkImages(work.slug);
             </p>
           </SectionTitle>
           <SectionTitle label="Categories">
-            {
-              work.data.categories.map((category: string, index: number) => (
-                <span class="text-3xl">
-                  {category}
-                  {index < work.data.categories.length - 1 && (
-                    <span class="text-muted-foreground -ms-3">,</span>
-                  )}
-                </span>
-              ))
-            }
+            <CategoryList categories={work.data.categories} class="text-3xl" />
           </SectionTitle>
         </header>
         <div class="md:w-1/2">

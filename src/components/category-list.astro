@@ -1,0 +1,29 @@
+---
+interface Props {
+  categories: string[];
+  class?: string;
+  asLinks?: boolean;
+}
+
+const { categories, class: className = "", asLinks = true } = Astro.props;
+---
+
+<div class={`flex flex-wrap ${className}`}>
+  {
+    categories.map((category, index) => (
+      <span class="flex items-center">
+        {asLinks ? (
+          <a
+            href={`/works/${category.toLowerCase()}`}
+            class="hover:text-foreground"
+          >
+            {category.trim()}
+          </a>
+        ) : (
+          <span>{category.trim()}</span>
+        )}
+        {index < categories.length - 1 && <span class="ml-[1px] mr-2">,</span>}
+      </span>
+    ))
+  }
+</div>

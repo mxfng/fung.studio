@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import { loadFirstWorkImage, loadWorkHeroImage } from "@/lib/load-work-images";
 import { Image } from "astro:assets";
+import CategoryList from "./category-list.astro";
 
 interface Props {
   work: CollectionEntry<"works">;
@@ -27,31 +28,15 @@ const image = heroImage || firstImage;
         </div>
       )
     }
-
-    <div class="flex flex-col gap-1.5">
-      <h2 class="text-xl tracking-tight">
+    <div class="flex flex-col">
+      <h1 class="text-2xl tracking-tight -mb-1">
         {work.data.title}
-      </h2>
-
-      <div
-        class="flex flex-wrap gap-x-1 text-sm text-muted-foreground font-medium"
-      >
-        {
-          work.data.categories.map((category, index) => (
-            <span class="font-['doto']">
-              <a
-                href={`/works/${category.toLowerCase()}`}
-                class="hover:text-foreground underline underline-offset-2 font-['doto']"
-              >
-                {category}
-              </a>
-              {index < work.data.categories.length - 1 && (
-                <span class="text-muted-foreground">,</span>
-              )}
-            </span>
-          ))
-        }
-      </div>
-    </div></a
-  >
+      </h1>
+      <CategoryList
+        categories={work.data.categories}
+        class="text-sm text-muted-foreground font-['doto']"
+        asLinks={true}
+      />
+    </div>
+  </a>
 </div>
