@@ -4,17 +4,17 @@ import Logo from "@/components/ui/logo.astro";
 import NavMenu from "./nav-menu";
 ---
 
-<nav class="border-b">
+<nav class="border-b border-dashed">
   <PaddingX>
-    <div class="flex items-center justify-between sm:h-16">
+    <div class="flex items-center justify-between">
       <div
         class="flex flex-col items-start w-full sm:flex-row sm:items-center sm:gap-8 sm:justify-between"
       >
         <a href="/" class="text-5xl font-['boxy']">
-          <Logo class="w-20 h-auto fill-foreground stroke-foreground" />
+          <Logo class="w-20 h-auto fill-primary stroke-primary py-4" />
         </a>
         <div class="flex gap-4">
-          <NavMenu client:load />
+          <NavMenu client:load currentPath={Astro.url.pathname} />
         </div>
       </div>
     </div>

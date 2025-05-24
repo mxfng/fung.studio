@@ -14,7 +14,7 @@ const { categories, class: className = "", asLinks = true } = Astro.props;
       <span class="flex items-center">
         {asLinks ? (
           <a
-            href={`/works/${category.toLowerCase()}`}
+            href={`/works/category/${category.toLowerCase()}`}
             class="hover:text-foreground"
           >
             {category.trim()}

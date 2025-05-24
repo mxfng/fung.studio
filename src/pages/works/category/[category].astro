@@ -2,7 +2,8 @@
 import WorksGrid from "@/components/works/works-grid.astro";
 import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
-import { Category as SiteCategory } from "../../config/categories";
+import { Category as SiteCategory } from "@/config/categories";
+import ContextNav from "@/components/ui/context-nav.astro";
 
 export function getStaticPaths() {
   return [
@@ -24,10 +25,8 @@ const filteredWorks = works.filter((work) =>
   <main>
     {
       category && (
-        <div class="mb-8 flex flex-col gap-8">
-          <a href="/" class="text-muted-foreground hover:underline">
-            ← Back to all works
-          </a>
+        <div class="mb-8 flex flex-col">
+          <ContextNav left={{ label: "Back to all works", href: "/" }} />
           <h1 class="text-4xl font-bold">{category}</h1>
         </div>
       )
