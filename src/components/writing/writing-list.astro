@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import CategoryList from "@/components/ui/category-list.astro";
+import WritingCard from "./writing-card.astro";
 
 interface Props {
   writings: CollectionEntry<"writing">[];
@@ -17,28 +17,9 @@ const sortedWritings = writings?.length
   !writings?.length ? (
     <div>No writings found</div>
   ) : (
-    <div class="grid gap-8">
+    <div class="grid md:grid-cols-2 3xl:grid-cols-3 gap-12">
       {sortedWritings.map((writing) => (
-        <article class="prose">
-          <h2>
-            <a href={`/writing/${writing.slug}`}>{writing.data.title}</a>
-          </h2>
-          <div class="flex flex-col gap-2">
-            <time datetime={writing.data.date.toISOString()}>
-              {writing.data.date.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}
-            </time>
-            <CategoryList
-              categories={writing.data.categories}
-              class="text-sm text-muted-foreground font-['doto']"
-              asLinks={true}
-              basePath="/writing"
-            />
-          </div>
-        </article>
+        <WritingCard writing={writing} />
       ))}
     </div>
   )

@@ -3,7 +3,7 @@ import ArrowLeft from "lucide-static/icons/arrow-left.svg";
 import ArrowRight from "lucide-static/icons/arrow-right.svg";
 
 interface Props {
-  left: {
+  left?: {
     label: string;
     href: string;
   };
@@ -19,13 +19,17 @@ const { left, right } = Astro.props;
 <nav
   class="w-full flex justify-between items-center pb-8 text-sm text-muted-foreground"
 >
-  <a
-    href={left.href}
-    class="inline-flex items-center gap-2 font-medium hover:underline"
-  >
-    <ArrowLeft class="w-4 h-4" />
-    <span>{left.label}</span>
-  </a>
+  {
+    left && (
+      <a
+        href={left.href}
+        class="inline-flex items-center gap-2 font-medium hover:underline"
+      >
+        <ArrowLeft class="w-4 h-4" />
+        <span>{left.label}</span>
+      </a>
+    )
+  }
 
   {
     right && (

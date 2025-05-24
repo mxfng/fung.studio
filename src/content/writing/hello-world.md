@@ -1,6 +1,6 @@
 ---
 title: "Hello World: A Journey Through Technology and Philosophy"
-categories: [technology, philosophy, coding]
+categories: ["technology", "philosophy", "coding"]
 date: "2024-03-20"
 ---
 

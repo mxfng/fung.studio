@@ -4,10 +4,13 @@ import { getCollection } from "astro:content";
 import WritingList from "@/components/writing/writing-list.astro";
 
 const writings = await getCollection("writing");
+const sortedWritings = writings.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
 ---
 
 <Layout title="Writing">
   <main>
-    <WritingList writings={writings} />
+    <WritingList writings={sortedWritings} />
   </main>
 </Layout>

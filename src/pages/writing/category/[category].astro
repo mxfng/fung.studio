@@ -14,9 +14,9 @@ export function getStaticPaths() {
 const { category } = Astro.params;
 const writings = await getCollection("writing");
 
-const filteredWritings = writings.filter((writing) =>
-  writing.data.categories.includes(category)
-);
+const filteredWritings = writings
+  .filter((writing) => writing.data.categories.includes(category))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <Layout title={category ? `${category} - Writing` : "Writing"}>

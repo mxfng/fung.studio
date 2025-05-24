@@ -4,19 +4,19 @@
   }
 
   .prose h1 {
-    @apply text-4xl leading-tight mb-4 text-primary;
+    @apply text-4xl leading-tight mb-4;
   }
 
   .prose h2 {
-    @apply text-3xl leading-snug mt-8 mb-4 text-primary;
+    @apply text-2xl leading-snug mt-8 mb-4;
   }
 
   .prose h3 {
-    @apply text-2xl mt-6 mb-2;
+    @apply text-xl mt-6 mb-2;
   }
 
   .prose h4 {
-    @apply text-xl mt-4 mb-2;
+    @apply text-lg mt-4 mb-2;
   }
 
   .prose p {

@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/layout.astro";
+import ContextNav from "@/components/nav/context-nav.astro";
+import WritingSummary from "@/components/writing/writing-summary.astro";
+
+export async function getStaticPaths() {
+  const writings = await getCollection("writing");
+  const sortedWritings = writings.sort(
+    (a, b) => b.data.date.getTime() - a.data.date.getTime()
+  );
+
+  return sortedWritings.map((writing, index) => {
+    const newerWriting = sortedWritings[index - 1];
+    const olderWriting = sortedWritings[index + 1];
+
+    return {
+      params: { slug: writing.slug },
+      props: {
+        writing,
+        newerWriting: newerWriting
+          ? {
+              slug: newerWriting.slug,
+              title: newerWriting.data.title,
+            }
+          : null,
+        olderWriting: olderWriting
+          ? {
+              slug: olderWriting.slug,
+              title: olderWriting.data.title,
+            }
+          : null,
+      },
+    };
+  });
+}
+
+const { writing, newerWriting, olderWriting } = Astro.props;
+const { Content } = await writing.render();
+---
+
+<Layout title={writing.data.title}>
+  <main>
+    <ContextNav left={{ label: "Back to all writing", href: "/writing" }} />
+    <article class="max-w-screen-sm mx-auto">
+      <header class="flex flex-col gap-4 mb-12">
+        <h1 class="text-3xl">{writing.data.title}</h1>
+        <WritingSummary writing={writing} />
+      </header>
+      <div class="prose">
+        <Content />
+      </div>
+    </article>
+    {
+      (newerWriting || olderWriting) && (
+        <ContextNav
+          left={
+            newerWriting
+              ? {
+                  label: newerWriting.title,
+                  href: `/writing/${newerWriting.slug}`,
+                }
+              : undefined
+          }
+          right={
+            olderWriting
+              ? {
+                  label: olderWriting.title,
+                  href: `/writing/${olderWriting.slug}`,
+                }
+              : undefined
+          }
+        />
+      )
+    }
+  </main>
+</Layout>
