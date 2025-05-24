@@ -29,8 +29,11 @@ const images = loadWorkImages(work.slug);
           <SectionTitle label="Title">
             <h1 class="text-3xl">{work.data.title}</h1>
           </SectionTitle>
+          <SectionTitle label="Categories">
+            <CategoryList categories={work.data.categories} class="text-3xl" />
+          </SectionTitle>
           <SectionTitle label="Date">
-            <p class="text-sm text-muted-foreground">
+            <span>
               {
                 work.data.date.toLocaleDateString("en-US", {
                   year: "numeric",
@@ -38,10 +41,7 @@ const images = loadWorkImages(work.slug);
                   day: "numeric",
                 })
               }
-            </p>
-          </SectionTitle>
-          <SectionTitle label="Categories">
-            <CategoryList categories={work.data.categories} class="text-3xl" />
+            </span>
           </SectionTitle>
         </header>
         <div class="md:w-1/2">
