@@ -9,7 +9,8 @@
     "astro": "astro",
     "optimize:images": "bun scripts/optimize-images.mjs",
     "optimize:videos": "bun scripts/optimize-videos.mjs",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "deploy:worker": "astro build && bunx wrangler deploy"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
