@@ -20,7 +20,7 @@ const { left, right } = Astro.props;
   class="w-full flex justify-between items-center pb-8 text-sm text-muted-foreground"
 >
   {
-    left && (
+    left ? (
       <a
         href={left.href}
         class="inline-flex items-center gap-2 font-medium hover:underline"
@@ -28,6 +28,8 @@ const { left, right } = Astro.props;
         <ArrowLeft class="w-4 h-4" />
         <span>{left.label}</span>
       </a>
+    ) : (
+      <div />
     )
   }
 

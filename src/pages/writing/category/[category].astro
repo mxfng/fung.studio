@@ -20,17 +20,13 @@ const filteredWritings = writings
 ---
 
 <Layout title={category ? `${category} - Writing` : "Writing"}>
-  <main>
-    {
-      category && (
-        <div class="mb-8 flex flex-col">
-          <ContextNav
-            left={{ label: "Back to all writing", href: "/writing" }}
-          />
-          <h1 class="text-4xl font-bold">{category}</h1>
-        </div>
-      )
-    }
-    <WritingList writings={filteredWritings} />
-  </main>
+  {
+    category && (
+      <div class="mb-8 flex flex-col">
+        <ContextNav left={{ label: "Back to all writing", href: "/writing" }} />
+        <h1 class="text-4xl font-bold">{category}</h1>
+      </div>
+    )
+  }
+  <WritingList writings={filteredWritings} />
 </Layout>

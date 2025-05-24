@@ -6,7 +6,9 @@ interface PaddingXProps {
 }
 
 const PaddingX = ({ children, className }: PaddingXProps) => {
-  return <div className={cn("mx-auto px-[4vw]", className)}>{children}</div>;
+  return (
+    <div className={cn("w-full mx-auto px-[4vw]", className)}>{children}</div>
+  );
 };
 
 export default PaddingX;
