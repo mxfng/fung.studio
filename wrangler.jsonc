@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "max-fung-net",
+  "compatibility_date": "2025-05-24", // Update to today's date
+  "assets": {
+    "directory": "./dist"
+  }
+}
