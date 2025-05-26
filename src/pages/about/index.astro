@@ -4,9 +4,9 @@ import { Image } from "astro:assets";
 ---
 
 <Layout title="About">
-  <main class="container mx-auto px-4 py-8">
-    <div class="mx-auto w-fit flex flex-col md:flex-row items-center gap-12">
-      <div class="aspect-square w-full max-w-md overflow-hidden rounded-4xl">
+  <main>
+    <div class="mx-auto flex flex-col md:flex-row gap-6 md:gap-12">
+      <div class="aspect-square w-xs overflow-hidden rounded-4xl">
         <Image
           src="/images/avatar.webp"
           alt="Background"
@@ -15,7 +15,7 @@ import { Image } from "astro:assets";
           class="h-full w-full object-cover"
         />
       </div>
-      <div class="prose max-w-[85ch]">
+      <div class="prose max-w-[55ch]">
         <p>
           I'm a creative person with a background in music, design, and
           engineering. I like to work across many mediums, including audio

@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import WorkCard from "@/components/works/work-card.astro";
+import ContentGrid from "@/components/ui/content-grid.astro";
 
 interface Props {
   works: CollectionEntry<"works">[];
@@ -13,14 +14,6 @@ const sortedWorks = works?.length
   : [];
 ---
 
-{
-  !works?.length ? (
-    <div class="text-center text-muted-foreground">No works found</div>
-  ) : (
-    <div class="grid md:grid-cols-2 3xl:grid-cols-3 gap-6 md:gap-12">
-      {sortedWorks.map((work) => (
-        <WorkCard work={work} />
-      ))}
-    </div>
-  )
-}
+<ContentGrid items={works} emptyMessage="No works found">
+  {sortedWorks.map((work) => <WorkCard work={work} />)}
+</ContentGrid>
