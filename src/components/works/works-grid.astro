@@ -14,6 +14,6 @@ const sortedWorks = works?.length
   : [];
 ---
 
-<ContentGrid items={works} emptyMessage="No works found">
+<ContentGrid hasItems={works.length > 0} emptyMessage="No works found">
   {sortedWorks.map((work) => <WorkCard work={work} />)}
 </ContentGrid>

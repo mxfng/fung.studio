@@ -2,15 +2,15 @@
 import type { CollectionEntry } from "astro:content";
 
 interface Props {
-  items: any[];
+  hasItems: boolean;
   emptyMessage?: string;
 }
 
-const { items, emptyMessage = "No items found" } = Astro.props;
+const { hasItems, emptyMessage = "No items found" } = Astro.props;
 ---
 
 {
-  !items?.length ? (
+  !hasItems ? (
     <div class="text-center text-muted-foreground">{emptyMessage}</div>
   ) : (
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-12">

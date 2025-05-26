@@ -1,7 +1,7 @@
 ---
 title: "The Gallery of Selves"
 categories: ["philosophy"]
-date: "2024-05-26T16:30:00-07:00"
+date: "2025-05-26T16:30:00-07:00"
 ---
 
 I believe that there are many selves which we present to the world. Each specific to the unique situations we're presented with. Each has its own context, its own justification for existing, and a specific audience to which it is presented to. In a single day I might cycle through a variety of them, whether that be Max the friend, Max the artist, or Max the coworker. Each Max speaks a slightly different dialect. Each one feels uniquely tailored to their audience. Underneath all of this, there is a tension: if I could somehow get each of these personalities in a room together, would they recognize each other?
