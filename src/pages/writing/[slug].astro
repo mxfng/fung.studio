@@ -40,8 +40,8 @@ const { Content } = await writing.render();
 ---
 
 <Layout title={writing.data.title}>
-  <div class="flex-1 flex flex-col h-full">
-    <article class="flex-1 flex flex-col w-full max-w-screen-sm mx-auto mb-16">
+  <div class="flex-1 flex flex-col h-full gap-32">
+    <article class="flex-1 flex flex-col w-full max-w-screen-sm mx-auto">
       <header class="flex flex-col my-12 gap-2">
         <h1 class="text-3xl">{writing.data.title}</h1>
         <WritingSummary writing={writing} />
