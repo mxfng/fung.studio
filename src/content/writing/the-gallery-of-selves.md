@@ -22,8 +22,10 @@ What informs this sort of stylistic maturity? Is it just the natural result of l
 
 Some people seem to be born with a kind of raw coherence. Their voice shows through from the start, no matter what medium or context they're in. For others, it takes more excavation. More false starts, more discarded pieces, more silence and study. Through practice, experimentation, and self-reflection, we can identify what in life resonates with us and make our sculptures better represent our unique voice and perspective.
 
-I've discarded many versions of myself I eventually found unfit to represent me, many times over. I've carved out pieces that felt more like masks than accurate representations. In many ways, I've inevitably distanced myself from what that essence is and have had to reconnect with it over and over.
+I've discarded many versions of myself I eventually found unfit to represent me, many times over. I've carved out pieces that felt more like masks than accurate representations. In many ways, I've inevitably distanced myself from what my essence is and have had to reconnect with it over and over.
 
-Knowing what that essence is has been the journey of a lifetime. It is within that process of self discovery that I think the true value lies. It isn't about making sure all the pieces match, or perfecting any individual piece, but making sure they all belong in the same room. I want to be proud of the many different versions of myself I present to the world. I want them to feel like extensions of the same essence. I want to strengthen my connection with that essence, and improve my proficiency in sculpting each self.
+Knowing oneself is the journey of a lifetime. It is within that process of self discovery that I think there is true value. It isn't about making sure all the pieces match exactly, or perfecting any individual piece, but making sure they all belong in the same room.
 
-So that when someone walks through that gallery, or more explicitly, when I do, I see continuity. A body of work that, through all its shifts and experiments, through all its missteps and chaos, was always trying to tell the truth.
+I want to be proud of what I sculpt. I want each self to feel like a proper representation of my essence. In doing so, I want to strengthen my connection with that essence, and improve my proficiency in sculpting. Each self should have the integrity and composition to age gracefully, like great art.
+
+So that when someone walks through that gallery, or more explicitly, when I do, I see continuity and taste. A body of work that, through all its shifts and experiments, was always trying to tell the truth.
