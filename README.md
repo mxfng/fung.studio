@@ -11,7 +11,6 @@ I ended up programming a sort of messy content pipeline with image and video opt
 
 - [Astro](https://astro.build) - Static Site Generator
 - [Tailwind CSS](https://tailwindcss.com) - Utility-first CSS framework
-- [React](https://react.dev) - for some client-side UI components
 
 ## Development
 
