@@ -1,17 +1,16 @@
 ---
+import FancyImage from "@/components/util/fancy-image.astro";
 import Layout from "@/layouts/layout.astro";
-import { Image } from "astro:assets";
+import avatarImage from "@/assets/images/avatar.webp";
 ---
 
 <Layout title="About">
   <main>
     <div class="mx-auto flex flex-col md:flex-row gap-6 md:gap-12">
       <div class="aspect-square w-xs overflow-hidden rounded-4xl">
-        <Image
-          src="/images/avatar.webp"
+        <FancyImage
+          src={avatarImage}
           alt="Background"
-          width={800}
-          height={800}
           class="h-full w-full object-cover"
         />
       </div>
