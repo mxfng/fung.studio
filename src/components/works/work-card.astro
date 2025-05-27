@@ -1,6 +1,6 @@
 ---
 import { loadFirstWorkImage, loadWorkHeroImage } from "@/lib/load-work-images";
-import { Image } from "astro:assets";
+import FancyImage from "@/components/util/fancy-image.astro";
 import CategoryList from "@/components/ui/category-list.astro";
 
 const { work } = Astro.props;
@@ -15,11 +15,11 @@ const image = heroImage || firstImage;
     {
       image && (
         <div class="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-secondary transition-transform duration-300 group-hover:-translate-y-1.5">
-          <Image
+          <FancyImage
             src={image}
             alt={work.data.title}
-            class="h-full w-full object-cover"
             loading="lazy"
+            class="h-full w-full object-contain"
           />
         </div>
       )
