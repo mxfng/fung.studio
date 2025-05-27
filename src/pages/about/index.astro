@@ -2,35 +2,61 @@
 import FancyImage from "@/components/util/fancy-image.astro";
 import Layout from "@/layouts/layout.astro";
 import avatarImage from "@/assets/images/avatar.webp";
+import SectionTitle from "@/components/ui/section-title.astro";
 ---
 
 <Layout title="About">
-  <main>
-    <div class="mx-auto flex flex-col md:flex-row gap-6 md:gap-12">
-      <div class="aspect-square w-xs overflow-hidden rounded-4xl">
-        <FancyImage
-          src={avatarImage}
-          alt="Background"
-          class="h-full w-full object-cover"
-        />
+  <main class="mx-auto max-w-screen-3xl">
+    <div class="flex flex-col md:flex-row gap-6 md:gap-12">
+      <div>
+        <div
+          class="flex-shrink-0 h-xs w-xs aspect-square overflow-hidden rounded-4xl"
+        >
+          <FancyImage
+            src={avatarImage}
+            alt="Background"
+            class="h-full w-full object-cover"
+          />
+        </div>
       </div>
-      <div class="prose max-w-[55ch]">
-        <p>
-          I'm a creative person with a background in music, design, and
-          engineering. I like to work across many mediums, including audio
-          production, digital art, software for web and mobile, and branding.
-        </p>
-        <p>
-          These days, I'm building an assortment of things with my friends
-          through <a href="https://www.studiomakai.net">Studio Makai</a>, a
-          small creative studio I started in Los Angeles. I eagerly take on work
-          that excites me, often somewhere between sound, software, and story.
-        </p>
-        <p>
-          Over the years, I've been lucky to work with thoughtful people on
-          meaningful projects to bring creative and technical ideas to life.
-        </p>
-        <p>Thanks for stopping by. CV available upon request.</p>
+      <div class="max-w-[55ch] flex-grow flex flex-col gap-4">
+        <SectionTitle label="Name">
+          <div class="prose -mt-9">
+            <h2>Max Fung</h2>
+          </div>
+        </SectionTitle>
+        <SectionTitle label="Occupation">
+          <div class="prose -mt-6">
+            <h3>Software Engineer, Musician, Designer</h3>
+          </div>
+        </SectionTitle>
+        <SectionTitle label="Education">
+          <div class="prose -mt-6">
+            <h3>Loyola Marymount University</h3>
+          </div>
+        </SectionTitle>
+        <SectionTitle label="Bio">
+          <div class="prose -mt-4">
+            <p>
+              I'm a creative person with a background in music, design, and
+              engineering. I like to work across many mediums, including audio
+              production, digital art, software for web and mobile, and
+              branding.
+            </p>
+            <p>
+              These days, I'm building an assortment of things with my friends
+              through <a href="https://www.studiomakai.net">Studio Makai</a>, a
+              small creative studio I started in Los Angeles. I eagerly take on
+              work that excites me, often somewhere between sound, software, and
+              story.
+            </p>
+            <p>
+              Over the years, I've been lucky to work with thoughtful people on
+              meaningful projects to bring creative and technical ideas to life.
+            </p>
+            <p>Thanks for stopping by. CV available upon request.</p>
+          </div>
+        </SectionTitle>
       </div>
     </div>
   </main>
