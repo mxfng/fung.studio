@@ -40,12 +40,17 @@ const routeBuckets = {
   about: ["/about"],
 };
 
+const normalizePath = (url: string): string => url.replace(/\/+$/, "");
+
 const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
   return routeBuckets[bucket].some((prefix) => currentPath.startsWith(prefix));
 };
 
 const isExactRouteActive = (url: string): boolean => {
-  return currentPath === url;
+  return (
+    normalizePath(currentPath).toLowerCase() ===
+    normalizePath(url).toLowerCase()
+  );
 };
 
 const isWorksRouteActive = (): boolean => {
@@ -76,7 +81,9 @@ const writingCategories = Object.values(WritingCategory);
           <NavigationMenuItem
             href={`/works/category/${category}`}
             label={capitalize(category)}
-            isActive={isExactRouteActive(`/works/category/${category}`)}
+            isActive={isExactRouteActive(
+              `/works/category/${category.toLowerCase()}`
+            )}
           />
         ))
       }
@@ -97,7 +104,9 @@ const writingCategories = Object.values(WritingCategory);
           <NavigationMenuItem
             href={`/writing/category/${category}`}
             label={capitalize(category)}
-            isActive={isExactRouteActive(`/writing/category/${category}`)}
+            isActive={isExactRouteActive(
+              `/writing/category/${category.toLowerCase()}`
+            )}
           />
         ))
       }
