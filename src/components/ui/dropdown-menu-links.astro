@@ -22,7 +22,7 @@ const { links } = Astro.props;
           href={link.href}
           target={link.href.startsWith("http") ? "_blank" : undefined}
           rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          class="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground"
+          class="block rounded-md px-3 py-2 hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
         >
           <div class="flex items-center gap-1 font-medium">
             {link.label}
