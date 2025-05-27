@@ -21,7 +21,7 @@ const alignClasses = {
   <button
     type="button"
     class={cn(
-      "flex items-center justify-between gap-1 rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
+      "dropdown-trigger flex items-center justify-between gap-1 rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
       isActive && "text-primary hover:text-primary hover:bg-accent bg-accent"
     )}
     aria-expanded="false"
@@ -36,7 +36,7 @@ const alignClasses = {
   <div
     id={menuId}
     class={cn(
-      "absolute top-full z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
+      "dropdown-menu absolute top-full z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
       alignClasses[align],
       "group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:backdrop-blur-md group-hover:shadow-lg"
     )}
