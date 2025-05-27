@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
 import PrevNext from "@/components/prev-next.astro";
 import WritingSummary from "@/components/writing/writing-summary.astro";
+import WritingFooter from "@/components/writing/writing-footer.astro";
 
 export async function getStaticPaths() {
   const writings = await getCollection("writing");
@@ -49,6 +50,8 @@ const { Content } = await writing.render();
       <div class="prose flex-1">
         <Content />
       </div>
+      <div class="border-t border-dashed my-12"></div>
+      <WritingFooter />
     </article>
     {
       (newerWriting || olderWriting) && (
