@@ -30,7 +30,7 @@ const { left, right } = Astro.props;
         <span>{left.label}</span>
       </a>
     ) : (
-      <div class="flex-1 h-full" />
+      <div class="hidden md:block flex-1 h-full" />
     )
   }
 
@@ -46,7 +46,7 @@ const { left, right } = Astro.props;
         <ArrowRight class="w-6 h-6" />
       </a>
     ) : (
-      <div class="flex-1 h-full" />
+      <div class="hidden md:block flex-1 h-full" />
     )
   }
 </nav>
