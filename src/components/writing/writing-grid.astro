@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import WritingCard from "./writing-card.astro";
-import ContentGrid from "@/components/ui/content-grid.astro";
+import Grid from "@/components/ui/grid.astro";
 
 interface Props {
   writings: CollectionEntry<"writing">[];
@@ -14,6 +14,6 @@ const sortedWritings = writings?.length
   : [];
 ---
 
-<ContentGrid hasItems={writings.length > 0} emptyMessage="No writings found">
+<Grid hasItems={writings.length > 0} emptyMessage="No writings found">
   {sortedWritings.map((writing) => <WritingCard writing={writing} />)}
-</ContentGrid>
+</Grid>

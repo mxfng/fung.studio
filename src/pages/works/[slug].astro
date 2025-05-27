@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
-import SectionTitle from "@/components/ui/section-title.astro";
+import Section from "@/components/ui/section.astro";
 import FancyImage from "@/components/util/fancy-image.astro";
 import { loadWorkImages } from "@/lib/load-work-images";
 import MoreWorks from "@/components/works/more-works.astro";
@@ -26,13 +26,13 @@ const images = loadWorkImages(work.slug);
     <article>
       <div class="flex flex-col md:flex-row gap-12 w-full mb-6 md:mb-12">
         <header class="flex flex-col gap-8 md:w-1/2">
-          <SectionTitle label="Title">
+          <Section label="Title">
             <h1 class="text-3xl">{work.data.title}</h1>
-          </SectionTitle>
-          <SectionTitle label="Categories">
+          </Section>
+          <Section label="Categories">
             <CategoryList categories={work.data.categories} class="text-3xl" />
-          </SectionTitle>
-          <SectionTitle label="Date">
+          </Section>
+          <Section label="Date">
             <span>
               {
                 work.data.date.toLocaleDateString("en-US", {
@@ -42,14 +42,14 @@ const images = loadWorkImages(work.slug);
                 })
               }
             </span>
-          </SectionTitle>
+          </Section>
         </header>
         <div class="md:w-1/2">
-          <SectionTitle label="Details">
+          <Section label="Details">
             <article class="prose -mt-2">
               <Content />
             </article>
-          </SectionTitle>
+          </Section>
         </div>
       </div>
       {

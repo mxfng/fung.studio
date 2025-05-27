@@ -3,7 +3,8 @@ import WorksGrid from "@/components/works/works-grid.astro";
 import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
 import { WorksCategory } from "@/config/categories";
-import ContextNav from "@/components/nav/context-nav.astro";
+import PrevNext from "@/components/prev-next.astro";
+import { capitalize } from "@/lib/utils";
 
 export function getStaticPaths() {
   return Object.values(WorksCategory).map((category) => ({
@@ -24,8 +25,8 @@ const filteredWorks = works
     {
       category && (
         <div class="mb-8 flex flex-col gap-6">
-          <ContextNav left={{ label: "All works", href: "/" }} />
-          <h1 class="text-4xl font-bold">{category}</h1>
+          <PrevNext left={{ label: "All works", href: "/" }} />
+          <h1 class="text-4xl font-bold">{capitalize(category)}</h1>
         </div>
       )
     }

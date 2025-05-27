@@ -2,8 +2,9 @@
 import Layout from "@/layouts/layout.astro";
 import { getCollection } from "astro:content";
 import { WritingCategory } from "@/config/categories";
-import ContextNav from "@/components/nav/context-nav.astro";
+import PrevNext from "@/components/prev-next.astro";
 import WritingGrid from "@/components/writing/writing-grid.astro";
+import { capitalize } from "@/lib/utils";
 
 export function getStaticPaths() {
   return Object.values(WritingCategory).map((category) => ({
@@ -23,8 +24,8 @@ const filteredWritings = writings
   {
     category && (
       <div class="mb-8 flex flex-col gap-6">
-        <ContextNav left={{ label: "All writing", href: "/writing" }} />
-        <h1 class="text-4xl font-bold">{category}</h1>
+        <PrevNext left={{ label: "All writing", href: "/writing" }} />
+        <h1 class="text-4xl font-bold">{capitalize(category)}</h1>
       </div>
     )
   }

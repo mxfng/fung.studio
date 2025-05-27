@@ -2,7 +2,7 @@
 import FancyImage from "@/components/util/fancy-image.astro";
 import Layout from "@/layouts/layout.astro";
 import avatarImage from "@/assets/images/avatar.webp";
-import SectionTitle from "@/components/ui/section-title.astro";
+import Section from "@/components/ui/section.astro";
 ---
 
 <Layout title="About">
@@ -20,22 +20,22 @@ import SectionTitle from "@/components/ui/section-title.astro";
         </div>
       </div>
       <div class="max-w-[55ch] flex-grow flex flex-col gap-4">
-        <SectionTitle label="Name">
+        <Section label="Name">
           <div class="prose -mt-9">
             <h2>Max Fung</h2>
           </div>
-        </SectionTitle>
-        <SectionTitle label="Occupation">
+        </Section>
+        <Section label="Occupation">
           <div class="prose -mt-6">
             <h3>Software Engineer, Musician, Designer</h3>
           </div>
-        </SectionTitle>
-        <SectionTitle label="Education">
+        </Section>
+        <Section label="Education">
           <div class="prose -mt-6">
             <h3>Loyola Marymount University</h3>
           </div>
-        </SectionTitle>
-        <SectionTitle label="Bio">
+        </Section>
+        <Section label="Bio">
           <div class="prose -mt-4">
             <p>
               I'm a creative person with a background in music, design, and
@@ -56,7 +56,7 @@ import SectionTitle from "@/components/ui/section-title.astro";
             </p>
             <p>Thanks for stopping by. CV available upon request.</p>
           </div>
-        </SectionTitle>
+        </Section>
       </div>
     </div>
   </main>

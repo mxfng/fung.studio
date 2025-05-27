@@ -1,7 +1,7 @@
 ---
 import PaddingX from "@/components/util/padding-x.astro";
 import Logo from "@/components/ui/logo.astro";
-import NavMenu from "./nav-menu";
+import NavMenu from "./nav-menu.astro";
 ---
 
 <nav class="border-b border-dashed">
@@ -10,12 +10,10 @@ import NavMenu from "./nav-menu";
       <div
         class="flex flex-col items-start w-full sm:flex-row sm:items-center sm:gap-8 sm:justify-between"
       >
-        <a href="/" class="text-5xl font-['boxy']">
+        <a href="/" class="text-5xl font-['boxy'] w-[20vw]">
           <Logo class="w-20 h-auto fill-primary stroke-primary py-4" />
         </a>
-        <div class="flex gap-4">
-          <NavMenu client:load currentPath={Astro.url.pathname} />
-        </div>
+        <NavMenu currentPath={Astro.url.pathname} />
       </div>
     </div>
   </PaddingX>

@@ -1,0 +1,116 @@
+---
+import { WorksCategory, WritingCategory } from "@/config/categories";
+import DropdownMenu from "@/components/ui/dropdown-menu.astro";
+import DropdownMenuLinks from "@/components/ui/dropdown-menu-links.astro";
+import NavigationMenuItem from "./nav-menu-item.astro";
+import { capitalize } from "@/lib/utils";
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+
+const CONTACT_LINKS = [
+  {
+    label: "Email",
+    href: "mailto:max@studiomakai.net",
+    description: "max@studiomakai.net",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/maxfung/",
+    description: "in/maxfung",
+  },
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/fungkadelic/",
+    description: "@fungkadelic",
+  },
+  {
+    label: "GitHub",
+    href: "https://www.github.com/mxfng",
+    description: "mxfng",
+  },
+] as const;
+
+const routeBuckets = {
+  works: ["/works"],
+  writing: ["/writing"],
+  about: ["/about"],
+};
+
+const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
+  return routeBuckets[bucket].some((prefix) => currentPath.startsWith(prefix));
+};
+
+const isExactRouteActive = (url: string): boolean => {
+  return currentPath === url;
+};
+
+const isWorksRouteActive = (): boolean => {
+  return (
+    currentPath === "/" ||
+    routeBuckets.works.some((prefix) => currentPath.startsWith(prefix))
+  );
+};
+
+const worksCategories = Object.values(WorksCategory);
+const writingCategories = Object.values(WritingCategory);
+---
+
+<nav class="w-full">
+  <ul class="flex items-center justify-between gap-4">
+    <DropdownMenu
+      triggerLabel="Works"
+      menuId="works-menu"
+      isActive={isWorksRouteActive() || isExactRouteActive("/")}
+    >
+      <NavigationMenuItem
+        href="/"
+        label="All works"
+        isActive={isExactRouteActive("/")}
+      />
+      {
+        worksCategories.map((category) => (
+          <NavigationMenuItem
+            href={`/works/category/${category}`}
+            label={capitalize(category)}
+            isActive={isExactRouteActive(`/works/category/${category}`)}
+          />
+        ))
+      }
+    </DropdownMenu>
+
+    <DropdownMenu
+      triggerLabel="Writing"
+      menuId="writing-menu"
+      isActive={isRouteActive("writing")}
+    >
+      <NavigationMenuItem
+        href="/writing"
+        label="All writing"
+        isActive={isExactRouteActive("/writing")}
+      />
+      {
+        writingCategories.map((category) => (
+          <NavigationMenuItem
+            href={`/writing/category/${category}`}
+            label={capitalize(category)}
+            isActive={isExactRouteActive(`/writing/category/${category}`)}
+          />
+        ))
+      }
+    </DropdownMenu>
+
+    <NavigationMenuItem
+      href="/about"
+      label="About"
+      isActive={isRouteActive("about")}
+    />
+
+    <DropdownMenu triggerLabel="Contact" menuId="contact-menu" align="right">
+      <DropdownMenuLinks links={CONTACT_LINKS} />
+    </DropdownMenu>
+  </ul>
+</nav>
