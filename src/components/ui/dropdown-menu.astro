@@ -26,6 +26,7 @@ const alignClasses = {
     )}
     aria-expanded="false"
     aria-controls={menuId}
+    data-dropdown-trigger
   >
     {triggerLabel}
     <ChevronDown
@@ -35,13 +36,57 @@ const alignClasses = {
   <div
     id={menuId}
     class={cn(
-      "absolute top-full z-50 opacity-0 invisible min-w-full w-xs rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
+      "absolute top-full z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
       alignClasses[align],
       "group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:backdrop-blur-md group-hover:shadow-lg"
     )}
+    data-dropdown-menu
   >
     <ul class="space-y-1">
       <slot />
     </ul>
   </div>
 </li>
+
+<script>
+  document.addEventListener("click", (event: MouseEvent) => {
+    const target = event.target as HTMLElement;
+    const trigger = target.closest("[data-dropdown-trigger]");
+    if (!trigger) {
+      // Close all dropdowns when clicking outside
+      document.querySelectorAll("[data-dropdown-menu]").forEach((menu) => {
+        menu.classList.remove("opacity-100", "visible", "scale-100");
+        menu.classList.add("opacity-0", "invisible", "scale-95");
+      });
+      return;
+    }
+
+    const menu = trigger.nextElementSibling;
+    if (!menu) return;
+
+    const isExpanded = trigger.getAttribute("aria-expanded") === "true";
+
+    // Close all other dropdowns
+    document.querySelectorAll("[data-dropdown-menu]").forEach((otherMenu) => {
+      if (otherMenu !== menu) {
+        otherMenu.classList.remove("opacity-100", "visible", "scale-100");
+        otherMenu.classList.add("opacity-0", "invisible", "scale-95");
+        otherMenu.previousElementSibling?.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+      }
+    });
+
+    // Toggle current dropdown
+    if (isExpanded) {
+      menu.classList.remove("opacity-100", "visible", "scale-100");
+      menu.classList.add("opacity-0", "invisible", "scale-95");
+      trigger.setAttribute("aria-expanded", "false");
+    } else {
+      menu.classList.add("opacity-100", "visible", "scale-100");
+      menu.classList.remove("opacity-0", "invisible", "scale-95");
+      trigger.setAttribute("aria-expanded", "true");
+    }
+  });
+</script>

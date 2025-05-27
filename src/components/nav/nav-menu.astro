@@ -79,7 +79,7 @@ const writingCategories = Object.values(WritingCategory);
       {
         worksCategories.map((category) => (
           <NavigationMenuItem
-            href={`/works/category/${category}`}
+            href={`/works/category/${category.toLowerCase()}`}
             label={capitalize(category)}
             isActive={isExactRouteActive(
               `/works/category/${category.toLowerCase()}`
@@ -102,7 +102,7 @@ const writingCategories = Object.values(WritingCategory);
       {
         writingCategories.map((category) => (
           <NavigationMenuItem
-            href={`/writing/category/${category}`}
+            href={`/writing/category/${category.toLowerCase()}`}
             label={capitalize(category)}
             isActive={isExactRouteActive(
               `/writing/category/${category.toLowerCase()}`
