@@ -36,6 +36,7 @@ const images = loadWorkImages(work.slug);
             <span>
               {
                 work.data.date.toLocaleDateString("en-US", {
+                  timeZone: "America/Los_Angeles",
                   year: "numeric",
                   month: "long",
                   day: "numeric",
