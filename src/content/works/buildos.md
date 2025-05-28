@@ -1,7 +1,7 @@
 ---
 title: "BuildOS"
 categories: ["software"]
-date: "2025-02-01"
+date: "2025-04-01T08:00:00.000Z"
 ---
 
 I led the front-end rebuild of Dirac’s flagship application, an industrial interface for manufacturing engineers working with complex mechanical assemblies. The goal: make model-based work instruction creation feel fast, legible, and intuitive. From a blank canvas, we architected and implemented a new system using React, TypeScript, Redux Toolkit, and Vite.
