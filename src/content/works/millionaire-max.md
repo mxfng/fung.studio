@@ -2,19 +2,6 @@
 title: "Millionaire Max"
 categories: ["music"]
 date: "2015-10-01"
-hero: "mm-3.jpg"
-images:
-  [
-    "mm-3.jpg",
-    "mm-1.JPG",
-    "mm-sp.jpg",
-    "mm-cover.JPG",
-    "mm-rep.jpg",
-    "mm-ne.jpg",
-    "mm-ciu.jpg",
-    "mm-bi.jpg",
-    "mm-sh.jpg",
-  ]
 ---
 
 Millionaire Max was the alias I used while writing, producing, and performing hip hop between 2015 and 2018. What started as genuine admiration for the genre quickly became an obsession. I recorded hundreds of tracks during that time, often chasing an identity I hadn’t fully grown into.
