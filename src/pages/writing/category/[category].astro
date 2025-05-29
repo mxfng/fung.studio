@@ -1,10 +1,9 @@
 ---
 import Layout from "@/layouts/layout.astro";
-import { getCollection } from "astro:content";
-import { WritingCategory } from "@/config/categories";
-import PrevNext from "@/components/prev-next.astro";
 import WritingGrid from "@/components/writing/writing-grid.astro";
-import { capitalize } from "@/lib/utils";
+import PrevNext from "@/components/prev-next.astro";
+import { WritingCategory } from "@/config/categories";
+import { capitalize, filterByCategory, getWritings } from "@/lib/utils";
 
 export function getStaticPaths() {
   return Object.values(WritingCategory).map((category) => ({
@@ -13,18 +12,18 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.params;
-const writings = await getCollection("writing");
-
-const filteredWritings = writings
-  .filter((writing) => writing.data.categories.includes(category))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const writings = await getWritings();
+const filteredWritings = filterByCategory<"writing">(
+  writings,
+  category as WritingCategory
+);
 ---
 
 <Layout title={category ? `${category} - Writing` : "Writing"}>
   {
     category && (
       <div class="mb-8 flex flex-col gap-6">
-        <PrevNext left={{ label: "All writing", href: "/writing" }} />
+        <PrevNext prev={{ label: "All writing", href: "/writing" }} />
         <h1 class="text-4xl font-bold">{capitalize(category)}</h1>
       </div>
     )

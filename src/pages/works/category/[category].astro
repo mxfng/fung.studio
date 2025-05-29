@@ -1,10 +1,9 @@
 ---
-import WorksGrid from "@/components/works/works-grid.astro";
 import Layout from "@/layouts/layout.astro";
-import { getCollection } from "astro:content";
-import { WorksCategory } from "@/config/categories";
+import WorksGrid from "@/components/works/works-grid.astro";
 import PrevNext from "@/components/prev-next.astro";
-import { capitalize } from "@/lib/utils";
+import { WorksCategory } from "@/config/categories";
+import { capitalize, filterByCategory, getWorks } from "@/lib/utils";
 
 export function getStaticPaths() {
   return Object.values(WorksCategory).map((category) => ({
@@ -13,23 +12,21 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.params;
-const works = await getCollection("works");
-
-const filteredWorks = works
-  .filter((work) => work.data.categories.includes(category))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const works = await getWorks();
+const filteredWorks = filterByCategory<"works">(
+  works,
+  category as WorksCategory
+);
 ---
 
 <Layout title={category ? `${category} - Works` : "Works"}>
-  <main>
-    {
-      category && (
-        <div class="mb-8 flex flex-col gap-6">
-          <PrevNext left={{ label: "All works", href: "/" }} />
-          <h1 class="text-4xl font-bold">{capitalize(category)}</h1>
-        </div>
-      )
-    }
-    <WorksGrid works={filteredWorks} />
-  </main>
+  {
+    category && (
+      <div class="mb-8 flex flex-col gap-6">
+        <PrevNext prev={{ label: "All works", href: "/" }} />
+        <h1 class="text-4xl font-bold">{capitalize(category)}</h1>
+      </div>
+    )
+  }
+  <WorksGrid works={filteredWorks} />
 </Layout>

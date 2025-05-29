@@ -1,14 +1,11 @@
 ---
 import Layout from "@/layouts/layout.astro";
-import { getCollection } from "astro:content";
 import WritingGrid from "@/components/writing/writing-grid.astro";
+import { getWritings } from "@/lib/utils";
 
-const writings = await getCollection("writing");
-const sortedWritings = writings.sort(
-  (a, b) => b.data.date.getTime() - a.data.date.getTime()
-);
+const writings = await getWritings();
 ---
 
 <Layout title="Writing">
-  <WritingGrid writings={sortedWritings} />
+  <WritingGrid writings={writings} />
 </Layout>

@@ -4,30 +4,30 @@ import ArrowRight from "lucide-static/icons/arrow-right.svg";
 import { cn } from "@/lib/utils";
 
 interface Props {
-  left?: {
+  prev?: {
     label: string;
     href: string;
   };
-  right?: {
+  next?: {
     label: string;
     href: string;
   };
 }
 
-const { left, right } = Astro.props;
+const { prev, next } = Astro.props;
 ---
 
 <nav class="w-full h-full flex flex-col md:flex-row gap-2">
   {
-    left ? (
+    prev ? (
       <a
-        href={left.href}
+        href={prev.href}
         class={cn(
           "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 h-full transition-colors duration-200"
         )}
       >
         <ArrowLeft class="w-6 h-6" />
-        <span>{left.label}</span>
+        <span>{prev.label}</span>
       </a>
     ) : (
       <div class="hidden md:block flex-1 h-full" />
@@ -35,14 +35,14 @@ const { left, right } = Astro.props;
   }
 
   {
-    right ? (
+    next ? (
       <a
-        href={right.href}
+        href={next.href}
         class={cn(
           "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 justify-end h-full transition-colors duration-200"
         )}
       >
-        <span>{right.label}</span>
+        <span>{next.label}</span>
         <ArrowRight class="w-6 h-6" />
       </a>
     ) : (

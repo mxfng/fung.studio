@@ -1,42 +1,27 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@/layouts/layout.astro";
+import { getCollection } from "astro:content";
 import PrevNext from "@/components/prev-next.astro";
 import WritingSummary from "@/components/writing/writing-summary.astro";
 import WritingFooter from "@/components/writing/writing-footer.astro";
+import { getWritings, getPrevNext } from "@/lib/utils";
 
 export async function getStaticPaths() {
-  const writings = await getCollection("writing");
-  const sortedWritings = writings.sort(
-    (a, b) => b.data.date.getTime() - a.data.date.getTime()
-  );
-
-  return sortedWritings.map((writing, index) => {
-    const newerWriting = sortedWritings[index - 1];
-    const olderWriting = sortedWritings[index + 1];
-
+  const writings = await getWritings();
+  return writings.map((writing) => {
+    const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
     return {
       params: { slug: writing.slug },
       props: {
         writing,
-        newerWriting: newerWriting
-          ? {
-              slug: newerWriting.slug,
-              title: newerWriting.data.title,
-            }
-          : null,
-        olderWriting: olderWriting
-          ? {
-              slug: olderWriting.slug,
-              title: olderWriting.data.title,
-            }
-          : null,
+        prevWriting: prevEntry,
+        nextWriting: nextEntry,
       },
     };
   });
 }
 
-const { writing, newerWriting, olderWriting } = Astro.props;
+const { writing, prevWriting, nextWriting } = Astro.props;
 const { Content } = await writing.render();
 ---
 
@@ -54,21 +39,21 @@ const { Content } = await writing.render();
       <WritingFooter />
     </article>
     {
-      (newerWriting || olderWriting) && (
+      (prevWriting || nextWriting) && (
         <PrevNext
-          left={
-            newerWriting
+          prev={
+            prevWriting
               ? {
-                  label: newerWriting.title,
-                  href: `/writing/${newerWriting.slug}`,
+                  label: prevWriting.title,
+                  href: `/writing/${prevWriting.slug}`,
                 }
               : undefined
           }
-          right={
-            olderWriting
+          next={
+            nextWriting
               ? {
-                  label: olderWriting.title,
-                  href: `/writing/${olderWriting.slug}`,
+                  label: nextWriting.title,
+                  href: `/writing/${nextWriting.slug}`,
                 }
               : undefined
           }

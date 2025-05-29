@@ -1,7 +1,6 @@
 ---
-import { getCollection } from "astro:content";
 import WorkCard from "@/components/works/work-card.astro";
-import type { WorksCategory } from "@/config/categories";
+import { findSimilarEntries, getWorks } from "@/lib/utils";
 
 interface Props {
   currentSlug: string;
@@ -9,34 +8,8 @@ interface Props {
 
 const { currentSlug } = Astro.props;
 
-const allWorks = await getCollection("works");
-
-const currentWork = allWorks.find((work) => work.slug === currentSlug);
-if (!currentWork) throw new Error(`Work with slug "${currentSlug}" not found.`);
-
-const otherWorks = allWorks.filter((work) => work.slug !== currentSlug);
-
-const scoredWorks = otherWorks
-  .map((work) => {
-    const sharedTags =
-      work.data.categories?.filter((category: WorksCategory) =>
-        currentWork.data.categories?.includes(category)
-      ) ?? [];
-    return { work, score: sharedTags.length };
-  })
-  .filter(({ score }) => score > 0)
-  .sort((a, b) => b.score - a.score);
-
-let similarWorks = scoredWorks.map(({ work }) => work).slice(0, 3);
-
-// Fallback: pad with unscored works if needed
-if (similarWorks.length < 3) {
-  const alreadyIncluded = new Set(similarWorks.map((p) => p.slug));
-  const fallbackWorks = otherWorks
-    .filter((p) => !alreadyIncluded.has(p.slug))
-    .slice(0, 3 - similarWorks.length);
-  similarWorks = [...similarWorks, ...fallbackWorks];
-}
+const allWorks = await getWorks();
+const similarWorks = findSimilarEntries<"works">(allWorks, currentSlug);
 ---
 
 <section class="mt-16">

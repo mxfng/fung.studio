@@ -1,15 +1,9 @@
 ---
 import WorksGrid from "@/components/works/works-grid.astro";
 import Layout from "@/layouts/layout.astro";
-import { getCollection } from "astro:content";
-import { WorksCategory } from "../config/categories";
+import { getWorks } from "@/lib/utils";
 
-export function getStaticPaths() {
-  return Object.values(WorksCategory).map((category) => ({
-    params: { category },
-  }));
-}
-const works = await getCollection("works");
+const works = await getWorks();
 ---
 
 <Layout>
