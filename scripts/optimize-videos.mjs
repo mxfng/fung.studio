@@ -26,7 +26,7 @@ async function findVideoFiles(dir) {
 async function convertToWebP(inputPath) {
   const outputPath = join(
     resolve(inputPath, ".."),
-    `${basename(inputPath, extname(inputPath))}.webp`
+    `${basename(inputPath, extname(inputPath))}.webp`,
   );
 
   const args = [

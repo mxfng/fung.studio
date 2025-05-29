@@ -28,7 +28,7 @@ async function getAllImageFiles() {
       dirents.map((d) => {
         const res = path.resolve(dir, d.name);
         return d.isDirectory() ? getFiles(res) : res;
-      })
+      }),
     );
     return files.flat();
   };
@@ -54,7 +54,7 @@ async function optimizeAllImages() {
 
   for (const [dir, files] of filesByDir.entries()) {
     const allowRename = RENAME_FILES_IN_DIRS.some((renamable) =>
-      dir.startsWith(path.resolve(renamable))
+      dir.startsWith(path.resolve(renamable)),
     );
 
     const sorted = files
@@ -62,7 +62,7 @@ async function optimizeAllImages() {
       .sort(
         (a, b) =>
           parseInt(path.basename(a).match(/\d+/)?.[0] || "99999") -
-          parseInt(path.basename(b).match(/\d+/)?.[0] || "99999")
+          parseInt(path.basename(b).match(/\d+/)?.[0] || "99999"),
       );
 
     let count = 1;
@@ -82,7 +82,7 @@ async function optimizeAllImages() {
             console.log(`✓ Renamed ${file} → ${outputPath}`);
           } else {
             console.log(
-              `✓ Skipped ${file} (already webp or renaming not allowed)`
+              `✓ Skipped ${file} (already webp or renaming not allowed)`,
             );
           }
         } else {
