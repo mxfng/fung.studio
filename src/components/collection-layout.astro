@@ -13,13 +13,18 @@ interface Props {
 
 const { type, category } = Astro.props;
 
-const displayTitle = category ? `${capitalize(category)} - ${capitalize(type)}` : capitalize(type);
+const displayTitle = category
+  ? `${capitalize(category)} - ${capitalize(type)}`
+  : capitalize(type);
 ---
 
 <Layout title={displayTitle}>
   <div class="mb-8 md:mb-16 flex flex-col gap-6">
-    <h1 class="text-3xl md:text-4xl font-medium tracking-tight">{capitalize(type)}</h1>
+    <h1 class="text-3xl md:text-4xl font-medium tracking-tight">
+      {capitalize(type)}
+    </h1>
     <CategorySelector type={type} />
   </div>
   <slot />
-</Layout> 
+</Layout>
+

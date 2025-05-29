@@ -29,27 +29,37 @@ const isActive = (category: string) => {
 
 <div class="relative">
   <!-- Gradient edges -->
-  <div class="pointer-events-none absolute inset-y-0 left-0 w-5 bg-gradient-to-r from-background to-transparent z-10 -ml-5" />
-  <div class="pointer-events-none absolute inset-y-0 right-0 w-5 bg-gradient-to-l from-background to-transparent z-10 -mr-5" />
+  <div
+    class="pointer-events-none absolute inset-y-0 left-0 w-5 bg-gradient-to-r from-background to-transparent z-10 -ml-5"
+  >
+  </div>
+  <div
+    class="pointer-events-none absolute inset-y-0 right-0 w-5 bg-gradient-to-l from-background to-transparent z-10 -mr-5"
+  >
+  </div>
 
   <!-- Scroll container -->
-  <div class="overflow-x-auto scrollbar-none -mx-4 px-4 overscroll-contain touch-auto hide-scrollbar">
+  <div
+    class="overflow-x-auto scrollbar-none -mx-4 px-4 overscroll-contain touch-auto hide-scrollbar"
+  >
     <ul class="flex items-center gap-6 min-w-max pr-5">
       <li>
         <CategorySelectorLink href={allPath} isActive={allIsActive}>
           All
         </CategorySelectorLink>
       </li>
-      {categories.map((category) => (
-        <li>
-          <CategorySelectorLink
-            href={getCategoryPath(category, `/${type}`)}
-            isActive={isActive(category)}
-          >
-            {capitalize(category)}
-          </CategorySelectorLink>
-        </li>
-      ))}
+      {
+        categories.map((category) => (
+          <li>
+            <CategorySelectorLink
+              href={getCategoryPath(category, `/${type}`)}
+              isActive={isActive(category)}
+            >
+              {capitalize(category)}
+            </CategorySelectorLink>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </div>

@@ -78,9 +78,7 @@ const worksCategories = Object.values(WorksCategory);
           <NavigationMenuItem
             href={getCategoryPath(category, "/works")}
             label={capitalize(category)}
-            isActive={isExactRouteActive(
-              getCategoryPath(category, "/works"),
-            )}
+            isActive={isExactRouteActive(getCategoryPath(category, "/works"))}
           />
         ))
       }
