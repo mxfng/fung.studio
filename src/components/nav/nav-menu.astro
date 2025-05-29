@@ -1,9 +1,9 @@
 ---
-import { WorksCategory, WritingCategory } from "@/config/categories";
+import { WorksCategory } from "@/config/categories";
 import DropdownMenu from "@/components/ui/dropdown-menu.astro";
 import DropdownMenuLinks from "@/components/ui/dropdown-menu-links.astro";
 import NavigationMenuItem from "./nav-menu-item.astro";
-import { capitalize, normalizePath } from "@/lib/utils";
+import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
 
 interface Props {
   currentPath: string;
@@ -59,7 +59,6 @@ const isWorksRouteActive = (): boolean => {
 };
 
 const worksCategories = Object.values(WorksCategory);
-const writingCategories = Object.values(WritingCategory);
 ---
 
 <nav class="w-full">
@@ -77,38 +76,21 @@ const writingCategories = Object.values(WritingCategory);
       {
         worksCategories.map((category) => (
           <NavigationMenuItem
-            href={`/works/category/${category.toLowerCase()}`}
+            href={getCategoryPath(category, "/works")}
             label={capitalize(category)}
             isActive={isExactRouteActive(
-              `/works/category/${category.toLowerCase()}`,
+              getCategoryPath(category, "/works"),
             )}
           />
         ))
       }
     </DropdownMenu>
 
-    <DropdownMenu
-      triggerLabel="Writing"
-      menuId="writing-menu"
+    <NavigationMenuItem
+      href="/writing"
+      label="Writing"
       isActive={isRouteActive("writing")}
-    >
-      <NavigationMenuItem
-        href="/writing"
-        label="All writing"
-        isActive={isExactRouteActive("/writing")}
-      />
-      {
-        writingCategories.map((category) => (
-          <NavigationMenuItem
-            href={`/writing/category/${category.toLowerCase()}`}
-            label={capitalize(category)}
-            isActive={isExactRouteActive(
-              `/writing/category/${category.toLowerCase()}`,
-            )}
-          />
-        ))
-      }
-    </DropdownMenu>
+    />
 
     <NavigationMenuItem
       href="/about"

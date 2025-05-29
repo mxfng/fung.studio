@@ -23,11 +23,11 @@ const { prev, next } = Astro.props;
       <a
         href={prev.href}
         class={cn(
-          "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 h-full transition-colors duration-200",
+          "border md:border-none flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 h-full transition-colors duration-200",
         )}
       >
         <ArrowLeft class="w-6 h-6" />
-        <span>{prev.label}</span>
+        <span class="text-sm md:text-base line-clamp-1">{prev.label}</span>
       </a>
     ) : (
       <div class="hidden md:block flex-1 h-full" />
@@ -39,10 +39,10 @@ const { prev, next } = Astro.props;
       <a
         href={next.href}
         class={cn(
-          "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 justify-end h-full transition-colors duration-200",
+          "border md:border-none flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 justify-end h-full transition-colors duration-200",
         )}
       >
-        <span>{next.label}</span>
+        <span class="text-sm md:text-base line-clamp-1">{next.label}</span>
         <ArrowRight class="w-6 h-6" />
       </a>
     ) : (

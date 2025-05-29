@@ -1,11 +1,16 @@
 ---
-import Layout from "@/layouts/layout.astro";
-import WritingGrid from "@/components/writing/writing-grid.astro";
+import CollectionLayout from "@/components/collection-layout.astro";
+import { formatCollection } from "@/lib/format-collection";
 import { getWritings } from "@/lib/get-collection";
+import WritingGrid from "@/components/writing/writing-grid.astro";
 
 const writings = await getWritings();
+const filteredWritings = formatCollection<"writing">(writings, {
+  sortBy: "date",
+  sortOrder: "desc",
+});
 ---
 
-<Layout title="Writing">
-  <WritingGrid writings={writings} />
-</Layout>
+<CollectionLayout type="writing">
+  <WritingGrid writings={filteredWritings} />
+</CollectionLayout>

@@ -1,11 +1,9 @@
 ---
-import { capitalize } from "@/lib/utils";
 import { formatCollection } from "@/lib/format-collection";
 import { getWritings } from "@/lib/get-collection";
 import { WritingCategory } from "@/config/categories";
-import Layout from "@/layouts/layout.astro";
-import PrevNext from "@/components/prev-next.astro";
 import WritingGrid from "@/components/writing/writing-grid.astro";
+import CollectionLayout from "@/components/collection-layout.astro";
 
 export function getStaticPaths() {
   return Object.values(WritingCategory).map((category) => ({
@@ -22,14 +20,9 @@ const filteredWritings = formatCollection<"writing">(writings, {
 });
 ---
 
-<Layout title={category ? `${category} - Writing` : "Writing"}>
-  {
-    category && (
-      <div class="mb-8 flex flex-col gap-6">
-        <PrevNext prev={{ label: "All writing", href: "/writing" }} />
-        <h1 class="text-4xl font-bold">{capitalize(category)}</h1>
-      </div>
-    )
-  }
+<CollectionLayout 
+  type="writing"
+  category={category}
+>
   <WritingGrid writings={filteredWritings} />
-</Layout>
+</CollectionLayout>

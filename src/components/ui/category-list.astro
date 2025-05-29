@@ -1,8 +1,9 @@
 ---
-import { capitalize } from "@/lib/utils";
+import type { Category } from "@/config/categories";
+import { capitalize, getCategoryPath } from "@/lib/utils";
 
 interface Props {
-  categories: string[];
+  categories: Category[];
   basePath: string;
   class?: string;
   asLinks?: boolean;
@@ -22,7 +23,7 @@ const {
       <span class="flex items-center">
         {asLinks ? (
           <a
-            href={`${basePath}/category/${category.toLowerCase()}`}
+            href={getCategoryPath(category, basePath)}
             class="hover:text-foreground"
           >
             {capitalize(category.trim())}

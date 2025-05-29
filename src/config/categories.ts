@@ -15,3 +15,5 @@ export enum WritingCategory {
   ART = "art",
   OTHER = "other",
 }
+
+export type Category = WorksCategory | WritingCategory;

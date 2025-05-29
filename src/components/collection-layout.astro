@@ -1,0 +1,25 @@
+---
+import Layout from "@/layouts/layout.astro";
+import { capitalize } from "@/lib/utils";
+import CategorySelector from "./ui/category-selector.astro";
+import { collections } from "@/content/config";
+
+type CollectionType = keyof typeof collections;
+
+interface Props {
+  type: CollectionType;
+  category?: string;
+}
+
+const { type, category } = Astro.props;
+
+const displayTitle = category ? `${capitalize(category)} - ${capitalize(type)}` : capitalize(type);
+---
+
+<Layout title={displayTitle}>
+  <div class="mb-8 md:mb-16 flex flex-col gap-6">
+    <h1 class="text-3xl md:text-4xl font-medium tracking-tight">{capitalize(type)}</h1>
+    <CategorySelector type={type} />
+  </div>
+  <slot />
+</Layout> 

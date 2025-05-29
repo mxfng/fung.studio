@@ -1,11 +1,16 @@
 ---
 import WorksGrid from "@/components/works/works-grid.astro";
-import Layout from "@/layouts/layout.astro";
 import { getWorks } from "@/lib/get-collection";
+import { formatCollection } from "@/lib/format-collection";
+import Layout from "@/layouts/layout.astro";
 
 const works = await getWorks();
+const filteredWorks = formatCollection<"works">(works, {
+  sortBy: "date",
+  sortOrder: "desc",
+});
 ---
 
 <Layout>
-  <WorksGrid works={works} />
+  <WorksGrid works={filteredWorks} />
 </Layout>
