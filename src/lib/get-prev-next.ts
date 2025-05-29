@@ -6,8 +6,8 @@ function getPrevNext<T extends "writing" | "works">(
 ) {
   const currentIndex = entries.findIndex((entry) => entry.slug === currentSlug);
 
-  const prevEntry = entries[currentIndex + 1];
-  const nextEntry = entries[currentIndex - 1];
+  const prevEntry = entries[currentIndex - 1];
+  const nextEntry = entries[currentIndex + 1];
 
   return {
     prevEntry: prevEntry
