@@ -3,6 +3,6 @@
   "name": "mf",
   "compatibility_date": "2025-05-24", // Update to today's date
   "assets": {
-    "directory": "./dist"
-  }
+    "directory": "./dist",
+  },
 }

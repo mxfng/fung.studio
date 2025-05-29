@@ -7,10 +7,16 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "tsc": "tsc",
+    "tsc:check": "tsc --noEmit",
     "optimize:images": "bun scripts/optimize-images.mjs",
     "optimize:videos": "bun scripts/optimize-videos.mjs",
+    "format": "bunx prettier . --write",
+    "lint": "bun x eslint .",
+    "lint:fix": "bun x eslint . --fix",
     "prepare": "husky install",
-    "deploy:worker": "astro build && bunx wrangler deploy"
+    "deploy:worker": "astro build && bunx wrangler deploy",
+    "pre-commit": "bun run tsc:check && bun run lint:fix && bun run format"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.7",
@@ -22,9 +28,18 @@
     "tailwindcss": "^4.1.7"
   },
   "devDependencies": {
+    "@eslint/js": "9.27.0",
+    "@typescript-eslint/parser": "8.33.0",
+    "eslint": "9.27.0",
+    "eslint-plugin-astro": "1.3.1",
+    "eslint-plugin-jsx-a11y": "6.10.2",
     "husky": "^8.0.0",
+    "prettier": "3.5.3",
+    "prettier-plugin-astro": "0.14.1",
     "sharp": "^0.34.2",
     "tw-animate-css": "^1.3.0",
+    "typescript": "5.8.3",
+    "typescript-eslint": "8.33.0",
     "wrangler": "^4.16.1"
   }
 }

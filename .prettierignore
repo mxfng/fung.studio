@@ -1,0 +1,50 @@
+# Build output
+dist/
+.output/
+
+# Dependencies
+node_modules/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.*
+
+# Cache
+.cache/
+.astro/
+
+# Generated files
+*.webp
+*.mp4
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Lock files
+bun.lock
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Cloudflare
+.wrangler/
+.dev.vars
+
+# IDE
+.vscode/
+.idea/
+
+# Husky
+.husky/
+
+# Generated Tailwind files
+*.css.map
