@@ -3,16 +3,16 @@ import { capitalize } from "@/lib/utils";
 
 interface Props {
   categories: string[];
+  basePath: string;
   class?: string;
   asLinks?: boolean;
-  basePath?: string;
 }
 
 const {
   categories,
+  basePath,
   class: className = "",
   asLinks = true,
-  basePath = "/works",
 } = Astro.props;
 ---
 

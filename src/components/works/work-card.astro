@@ -1,7 +1,12 @@
 ---
-import { loadFirstWorkImage, loadWorkHeroImage } from "@/lib/load-work-images";
-import CategoryList from "@/components/ui/category-list.astro";
 import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import CategoryList from "@/components/ui/category-list.astro";
+import { loadFirstWorkImage, loadWorkHeroImage } from "@/lib/load-work-images";
+
+interface Props {
+  work: CollectionEntry<"works">;
+}
 
 const { work } = Astro.props;
 
@@ -30,6 +35,7 @@ const image = heroImage || firstImage;
       </h1>
       <CategoryList
         categories={work.data.categories}
+        basePath="/works"
         class="text-sm text-muted-foreground font-['doto']"
         asLinks={true}
       />

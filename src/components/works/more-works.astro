@@ -1,6 +1,7 @@
 ---
 import WorkCard from "@/components/works/work-card.astro";
-import { findSimilarEntries, getWorks } from "@/lib/utils";
+import { getWorks } from "@/lib/get-collection";
+import { getSimilarEntries } from "@/lib/get-similar-entries";
 
 interface Props {
   currentSlug: string;
@@ -9,7 +10,7 @@ interface Props {
 const { currentSlug } = Astro.props;
 
 const allWorks = await getWorks();
-const similarWorks = findSimilarEntries<"works">(allWorks, currentSlug);
+const similarWorks = getSimilarEntries<"works">(allWorks, currentSlug);
 ---
 
 <section class="mt-16">

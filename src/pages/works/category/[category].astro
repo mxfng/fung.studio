@@ -3,7 +3,9 @@ import Layout from "@/layouts/layout.astro";
 import WorksGrid from "@/components/works/works-grid.astro";
 import PrevNext from "@/components/prev-next.astro";
 import { WorksCategory } from "@/config/categories";
-import { capitalize, filterByCategory, getWorks } from "@/lib/utils";
+import { capitalize } from "@/lib/utils";
+import { formatCollection } from "@/lib/format-collection";
+import { getWorks } from "@/lib/get-collection";
 
 export function getStaticPaths() {
   return Object.values(WorksCategory).map((category) => ({
@@ -13,10 +15,11 @@ export function getStaticPaths() {
 
 const { category } = Astro.params;
 const works = await getWorks();
-const filteredWorks = filterByCategory<"works">(
-  works,
-  category as WorksCategory
-);
+const filteredWorks = formatCollection<"works">(works, {
+  category: category as WorksCategory,
+  sortBy: "date",
+  sortOrder: "desc",
+});
 ---
 
 <Layout title={category ? `${category} - Works` : "Works"}>

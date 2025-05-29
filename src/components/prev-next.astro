@@ -23,7 +23,7 @@ const { prev, next } = Astro.props;
       <a
         href={prev.href}
         class={cn(
-          "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 h-full transition-colors duration-200"
+          "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 h-full transition-colors duration-200",
         )}
       >
         <ArrowLeft class="w-6 h-6" />
@@ -39,7 +39,7 @@ const { prev, next } = Astro.props;
       <a
         href={next.href}
         class={cn(
-          "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 justify-end h-full transition-colors duration-200"
+          "flex items-center gap-2 rounded-md px-6 py-4 hover:bg-accent/50 hover:text-accent-foreground font-medium flex-1 justify-end h-full transition-colors duration-200",
         )}
       >
         <span>{next.label}</span>

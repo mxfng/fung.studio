@@ -3,7 +3,7 @@ import { WorksCategory, WritingCategory } from "@/config/categories";
 import DropdownMenu from "@/components/ui/dropdown-menu.astro";
 import DropdownMenuLinks from "@/components/ui/dropdown-menu-links.astro";
 import NavigationMenuItem from "./nav-menu-item.astro";
-import { capitalize } from "@/lib/utils";
+import { capitalize, normalizePath } from "@/lib/utils";
 
 interface Props {
   currentPath: string;
@@ -39,8 +39,6 @@ const routeBuckets = {
   writing: ["/writing"],
   about: ["/about"],
 };
-
-const normalizePath = (url: string): string => url.replace(/\/+$/, "");
 
 const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
   return routeBuckets[bucket].some((prefix) => currentPath.startsWith(prefix));
@@ -82,7 +80,7 @@ const writingCategories = Object.values(WritingCategory);
             href={`/works/category/${category.toLowerCase()}`}
             label={capitalize(category)}
             isActive={isExactRouteActive(
-              `/works/category/${category.toLowerCase()}`
+              `/works/category/${category.toLowerCase()}`,
             )}
           />
         ))
@@ -105,7 +103,7 @@ const writingCategories = Object.values(WritingCategory);
             href={`/writing/category/${category.toLowerCase()}`}
             label={capitalize(category)}
             isActive={isExactRouteActive(
-              `/writing/category/${category.toLowerCase()}`
+              `/writing/category/${category.toLowerCase()}`,
             )}
           />
         ))

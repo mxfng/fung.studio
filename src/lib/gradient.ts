@@ -1,4 +1,4 @@
-export function generateHash(str: string): number {
+function generateHash(str: string): number {
   let hash = 0;
   for (let i = 0; i < str.length; i++) {
     const char = str.charCodeAt(i);
@@ -8,10 +8,12 @@ export function generateHash(str: string): number {
   return Math.abs(hash);
 }
 
-export function generateGradient(slug: string): { hue1: number; hue2: number } {
+function generateGradient(slug: string): { hue1: number; hue2: number } {
   const hash = generateHash(slug);
   return {
     hue1: hash % 360,
     hue2: (hash + 120) % 360,
   };
 }
+
+export { generateHash, generateGradient };

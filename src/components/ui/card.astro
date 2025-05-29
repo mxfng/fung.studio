@@ -1,10 +1,5 @@
 ---
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-function cn(...inputs: any[]) {
-  return twMerge(clsx(inputs));
-}
+import { cn } from "@/lib/utils";
 
 interface Props {
   class?: string;
@@ -18,7 +13,7 @@ const { class: className, ...props } = Astro.props;
   data-slot="card"
   class={cn(
     "bg-card text-card-foreground flex flex-col gap-6 rounded-xl border py-6 shadow-sm",
-    className
+    className,
   )}
   {...props}
 >

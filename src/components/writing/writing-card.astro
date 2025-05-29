@@ -1,6 +1,11 @@
 ---
 import CategoryList from "@/components/ui/category-list.astro";
 import { generateGradient } from "@/lib/gradient";
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  writing: CollectionEntry<"writing">;
+}
 
 const { writing } = Astro.props;
 const { hue1, hue2 } = generateGradient(writing.slug);

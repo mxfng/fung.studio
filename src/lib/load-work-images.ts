@@ -2,15 +2,15 @@ import type { ImageMetadata } from "astro";
 
 const allImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/works/*/*.{jpg,jpeg,png,webp,avif,JPG,PNG}",
-  { eager: true }
+  { eager: true },
 );
 
 const heroImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/hero/*.webp",
-  { eager: true }
+  { eager: true },
 );
 
-export function loadWorkImages(slug: string): ImageMetadata[] {
+function loadWorkImages(slug: string): ImageMetadata[] {
   const workPath = `/src/assets/works/${slug}/`;
   return Object.entries(allImages)
     .filter(([path]) => path.startsWith(workPath))
@@ -18,7 +18,7 @@ export function loadWorkImages(slug: string): ImageMetadata[] {
     .sort((a, b) => a.src.localeCompare(b.src));
 }
 
-export function loadFirstWorkImage(slug: string): ImageMetadata | undefined {
+function loadFirstWorkImage(slug: string): ImageMetadata | undefined {
   const workPath = `/src/assets/works/${slug}/`;
   const firstImage = Object.entries(allImages)
     .filter(([path]) => path.startsWith(workPath))
@@ -28,7 +28,9 @@ export function loadFirstWorkImage(slug: string): ImageMetadata | undefined {
   return firstImage;
 }
 
-export function loadWorkHeroImage(slug: string): ImageMetadata | undefined {
+function loadWorkHeroImage(slug: string): ImageMetadata | undefined {
   const heroPath = `/src/assets/hero/${slug}.webp`;
   return heroImages[heroPath]?.default;
 }
+
+export { loadWorkImages, loadFirstWorkImage, loadWorkHeroImage };

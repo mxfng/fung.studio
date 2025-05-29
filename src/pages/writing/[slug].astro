@@ -3,7 +3,8 @@ import Layout from "@/layouts/layout.astro";
 import PrevNext from "@/components/prev-next.astro";
 import WritingSummary from "@/components/writing/writing-summary.astro";
 import WritingFooter from "@/components/writing/writing-footer.astro";
-import { getWritings, getPrevNext } from "@/lib/utils";
+import { getWritings } from "@/lib/get-collection";
+import { getPrevNext } from "@/lib/get-prev-next";
 
 export async function getStaticPaths() {
   const writings = await getWritings();

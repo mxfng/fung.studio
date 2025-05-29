@@ -1,7 +1,7 @@
 ---
 import WorksGrid from "@/components/works/works-grid.astro";
 import Layout from "@/layouts/layout.astro";
-import { getWorks } from "@/lib/utils";
+import { getWorks } from "@/lib/get-collection";
 
 const works = await getWorks();
 ---

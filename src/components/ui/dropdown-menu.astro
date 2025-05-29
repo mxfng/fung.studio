@@ -11,7 +11,7 @@ interface Props {
 
 const { triggerLabel, menuId, align = "left", isActive = false } = Astro.props;
 
-const alignClasses = {
+const ALIGN_CLASSES = {
   left: "left-0",
   right: "right-0",
 };
@@ -22,7 +22,7 @@ const alignClasses = {
     type="button"
     class={cn(
       "dropdown-trigger flex items-center justify-between gap-1 rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
-      isActive && "text-primary hover:text-primary hover:bg-accent bg-accent"
+      isActive && "text-primary hover:text-primary hover:bg-accent bg-accent",
     )}
     aria-expanded="false"
     aria-controls={menuId}
@@ -37,8 +37,8 @@ const alignClasses = {
     id={menuId}
     class={cn(
       "dropdown-menu absolute top-full z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
-      alignClasses[align],
-      "group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:backdrop-blur-md group-hover:shadow-lg"
+      ALIGN_CLASSES[align],
+      "group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:backdrop-blur-md group-hover:shadow-lg",
     )}
     data-dropdown-menu
   >

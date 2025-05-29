@@ -15,7 +15,7 @@ const { href, label, isActive = false } = Astro.props;
     href={href}
     class={cn(
       "flex items-center justify-between rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
-      isActive && "text-primary hover:text-primary bg-accent hover:bg-accent"
+      isActive && "text-primary hover:text-primary bg-accent hover:bg-accent",
     )}
   >
     {label}

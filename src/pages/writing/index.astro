@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/layout.astro";
 import WritingGrid from "@/components/writing/writing-grid.astro";
-import { getWritings } from "@/lib/utils";
+import { getWritings } from "@/lib/get-collection";
 
 const writings = await getWritings();
 ---
