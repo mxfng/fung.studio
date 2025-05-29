@@ -1,6 +1,5 @@
 ---
 import Layout from "@/layouts/layout.astro";
-import { getCollection } from "astro:content";
 import PrevNext from "@/components/prev-next.astro";
 import WritingSummary from "@/components/writing/writing-summary.astro";
 import WritingFooter from "@/components/writing/writing-footer.astro";
@@ -8,21 +7,17 @@ import { getWritings, getPrevNext } from "@/lib/utils";
 
 export async function getStaticPaths() {
   const writings = await getWritings();
-  return writings.map((writing) => {
-    const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
-    return {
-      params: { slug: writing.slug },
-      props: {
-        writing,
-        prevWriting: prevEntry,
-        nextWriting: nextEntry,
-      },
-    };
-  });
+  return writings.map((writing) => ({
+    params: { slug: writing.slug },
+    props: { writing },
+  }));
 }
 
-const { writing, prevWriting, nextWriting } = Astro.props;
+const { writing } = Astro.props;
 const { Content } = await writing.render();
+
+const writings = await getWritings();
+const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
 ---
 
 <Layout title={writing.data.title}>
@@ -39,21 +34,21 @@ const { Content } = await writing.render();
       <WritingFooter />
     </article>
     {
-      (prevWriting || nextWriting) && (
+      (prevEntry || nextEntry) && (
         <PrevNext
           prev={
-            prevWriting
+            prevEntry
               ? {
-                  label: prevWriting.title,
-                  href: `/writing/${prevWriting.slug}`,
+                  label: prevEntry.title,
+                  href: `/writing/${prevEntry.slug}`,
                 }
               : undefined
           }
           next={
-            nextWriting
+            nextEntry
               ? {
-                  label: nextWriting.title,
-                  href: `/writing/${nextWriting.slug}`,
+                  label: nextEntry.title,
+                  href: `/writing/${nextEntry.slug}`,
                 }
               : undefined
           }
