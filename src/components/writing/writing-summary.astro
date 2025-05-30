@@ -13,7 +13,7 @@ const { writing } = Astro.props;
   <div class="flex flex-row gap-2 items-center w-full">
     <time
       datetime={writing.data.date.toISOString()}
-      class="text-sm text-muted-foreground font-['doto'] group-hover:text-foreground transition-colors whitespace-nowrap"
+      class="text-sm text-muted-foreground font-accent group-hover:text-foreground transition-colors whitespace-nowrap"
     >
       {
         writing.data.date.toLocaleDateString("en-US", {
@@ -23,10 +23,10 @@ const { writing } = Astro.props;
         })
       }
     </time>
-    <span class="inline-block text-muted-foreground font-['doto']">•</span>
+    <span class="inline-block text-muted-foreground font-accent">•</span>
     <CategoryList
       categories={writing.data.categories}
-      class="text-sm text-muted-foreground font-['doto'] group-hover:text-foreground transition-colors"
+      class="text-sm text-muted-foreground font-accent group-hover:text-foreground transition-colors"
       asLinks={true}
       basePath="/writing"
     />

@@ -56,6 +56,8 @@
 @theme {
   --breakpoint-xs: 30rem;
   --breakpoint-3xl: 120rem;
+  --font-sans: "Inter", sans-serif;
+  --font-accent: "Doto", sans-serif;
 }
 
 @layer base {
