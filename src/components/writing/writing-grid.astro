@@ -14,6 +14,6 @@ const sortedWritings = writings?.length
 	: [];
 ---
 
-<Grid hasItems={writings.length > 0} emptyMessage="No writings found">
+<Grid hasItems={writings.length > 0} emptyMessage="">
 	{sortedWritings.map((writing) => <WritingCard writing={writing} />)}
 </Grid>

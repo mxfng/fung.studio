@@ -24,7 +24,7 @@ const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
 <Layout title={writing.data.title}>
 	<div class="flex flex-col gap-12 px-4 pt-8">
 		<header class="mx-auto flex max-w-screen-sm flex-col items-center gap-6 text-center">
-			<WritingSummary writing={writing} />
+			<WritingSummary date={writing.data.date} categories={writing.data.categories} />
 			<h1 class="text-4xl font-medium md:text-5xl">
 				{writing.data.title}
 			</h1>
