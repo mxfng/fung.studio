@@ -4,16 +4,16 @@ import WorkCard from "@/components/works/work-card.astro";
 import Grid from "@/components/ui/grid.astro";
 
 interface Props {
-  works: CollectionEntry<"works">[];
+	works: CollectionEntry<"works">[];
 }
 
 const { works } = Astro.props;
 
 const sortedWorks = works?.length
-  ? [...works].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  : [];
+	? [...works].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+	: [];
 ---
 
 <Grid hasItems={works.length > 0} emptyMessage="No works found">
-  {sortedWorks.map((work) => <WorkCard work={work} />)}
+	{sortedWorks.map((work) => <WorkCard work={work} />)}
 </Grid>

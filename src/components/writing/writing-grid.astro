@@ -4,16 +4,16 @@ import WritingCard from "./writing-card.astro";
 import Grid from "@/components/ui/grid.astro";
 
 interface Props {
-  writings: CollectionEntry<"writing">[];
+	writings: CollectionEntry<"writing">[];
 }
 
 const { writings } = Astro.props;
 
 const sortedWritings = writings?.length
-  ? [...writings].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
-  : [];
+	? [...writings].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+	: [];
 ---
 
 <Grid hasItems={writings.length > 0} emptyMessage="No writings found">
-  {sortedWritings.map((writing) => <WritingCard writing={writing} />)}
+	{sortedWritings.map((writing) => <WritingCard writing={writing} />)}
 </Grid>

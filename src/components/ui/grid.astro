@@ -1,18 +1,18 @@
 ---
 interface Props {
-  hasItems: boolean;
-  emptyMessage?: string;
+	hasItems: boolean;
+	emptyMessage?: string;
 }
 
 const { hasItems, emptyMessage = "No items found" } = Astro.props;
 ---
 
 {
-  !hasItems ? (
-    <div class="text-center text-muted-foreground">{emptyMessage}</div>
-  ) : (
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-12">
-      <slot />
-    </div>
-  )
+	!hasItems ? (
+		<div class="text-muted-foreground text-center">{emptyMessage}</div>
+	) : (
+		<div class="grid gap-6 sm:grid-cols-2 sm:gap-12 md:grid-cols-3">
+			<slot />
+		</div>
+	)
 }

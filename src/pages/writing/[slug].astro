@@ -7,11 +7,11 @@ import { getWritings } from "@/lib/get-collection";
 import { getPrevNext } from "@/lib/get-prev-next";
 
 export async function getStaticPaths() {
-  const writings = await getWritings();
-  return writings.map((writing) => ({
-    params: { slug: writing.slug },
-    props: { writing },
-  }));
+	const writings = await getWritings();
+	return writings.map((writing) => ({
+		params: { slug: writing.slug },
+		props: { writing },
+	}));
 }
 
 const { writing } = Astro.props;
@@ -22,39 +22,41 @@ const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
 ---
 
 <Layout title={writing.data.title}>
-  <div class="flex-1 flex flex-col h-full gap-16 md:gap-32">
-    <article class="flex-1 flex flex-col w-full max-w-screen-sm mx-auto">
-      <header class="flex flex-col my-12 gap-2">
-        <h1 class="text-3xl">{writing.data.title}</h1>
-        <WritingSummary writing={writing} />
-      </header>
-      <div class="prose flex-1">
-        <Content />
-      </div>
-      <div class="border-t border-dashed my-12"></div>
-      <WritingFooter />
-    </article>
-    {
-      (prevEntry || nextEntry) && (
-        <PrevNext
-          prev={
-            prevEntry
-              ? {
-                  label: prevEntry.title,
-                  href: `/writing/${prevEntry.slug}`,
-                }
-              : undefined
-          }
-          next={
-            nextEntry
-              ? {
-                  label: nextEntry.title,
-                  href: `/writing/${nextEntry.slug}`,
-                }
-              : undefined
-          }
-        />
-      )
-    }
-  </div>
+	<div class="flex h-full flex-1 flex-col gap-16 md:gap-32">
+		<header class="my-12 flex flex-col items-center justify-center gap-2">
+			<WritingSummary writing={writing} />
+			<h1 class="text-5xl">{writing.data.title}</h1>
+		</header>
+		<article class="mx-auto flex w-full max-w-screen-sm flex-1 flex-col">
+			<div class="prose flex-1">
+				<Content />
+			</div>
+		</article>
+		<div class="my-12 border-t border-dashed"></div>
+		<div class="flex flex-col gap-4">
+			<WritingFooter />
+		</div>
+		{
+			(prevEntry || nextEntry) && (
+				<PrevNext
+					prev={
+						prevEntry
+							? {
+									label: prevEntry.title,
+									href: `/writing/${prevEntry.slug}`,
+								}
+							: undefined
+					}
+					next={
+						nextEntry
+							? {
+									label: nextEntry.title,
+									href: `/writing/${nextEntry.slug}`,
+								}
+							: undefined
+					}
+				/>
+			)
+		}
+	</div>
 </Layout>

@@ -1,8 +1,17 @@
-/* doto-regular - latin */
+/* switzer-variable */
 @font-face {
-  font-display: swap;
-  font-family: "Doto";
-  font-style: normal;
-  font-weight: 400;
-  src: url("/fonts/doto-v2-latin-regular.woff2") format("woff2");
+	font-family: "Switzer";
+	src: url("/fonts/switzer/Switzer-Variable.woff2") format("woff2");
+	font-weight: 300 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* switzer-variable-italic */
+@font-face {
+	font-family: "Switzer";
+	src: url("/fonts/switzer/Switzer-VariableItalic.woff2") format("woff2");
+	font-weight: 300 900;
+	font-style: italic;
+	font-display: swap;
 }

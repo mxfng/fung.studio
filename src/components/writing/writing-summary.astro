@@ -3,32 +3,29 @@ import type { CollectionEntry } from "astro:content";
 import CategoryList from "@/components/ui/category-list.astro";
 
 interface Props {
-  writing: CollectionEntry<"writing">;
+	writing: CollectionEntry<"writing">;
 }
 
 const { writing } = Astro.props;
 ---
 
-<div class="flex flex-col gap-2">
-  <div class="flex flex-row gap-2 items-center w-full">
-    <time
-      datetime={writing.data.date.toISOString()}
-      class="text-sm text-muted-foreground font-accent group-hover:text-foreground transition-colors whitespace-nowrap"
-    >
-      {
-        writing.data.date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
-      }
-    </time>
-    <span class="inline-block text-muted-foreground font-accent">•</span>
-    <CategoryList
-      categories={writing.data.categories}
-      class="text-sm text-muted-foreground font-accent group-hover:text-foreground transition-colors"
-      asLinks={true}
-      basePath="/writing"
-    />
-  </div>
+<div class="flex w-full flex-row items-center justify-center gap-4">
+	<time
+		datetime={writing.data.date.toISOString()}
+		class="font-accent group-hover:text-foreground text-sm whitespace-nowrap transition-colors"
+	>
+		{
+			writing.data.date.toLocaleDateString("en-US", {
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			})
+		}
+	</time>
+	<CategoryList
+		categories={writing.data.categories}
+		class="text-muted-foreground font-accent group-hover:text-foreground text-sm transition-colors"
+		asLinks={true}
+		basePath="/writing"
+	/>
 </div>

@@ -3,36 +3,28 @@ import type { Category } from "@/config/categories";
 import { capitalize, getCategoryPath } from "@/lib/utils";
 
 interface Props {
-  categories: Category[];
-  basePath: string;
-  class?: string;
-  asLinks?: boolean;
+	categories: Category[];
+	basePath: string;
+	class?: string;
+	asLinks?: boolean;
 }
 
-const {
-  categories,
-  basePath,
-  class: className = "",
-  asLinks = true,
-} = Astro.props;
+const { categories, basePath, class: className = "", asLinks = true } = Astro.props;
 ---
 
 <div class={`flex flex-wrap ${className}`}>
-  {
-    categories.map((category, index) => (
-      <span class="flex items-center">
-        {asLinks ? (
-          <a
-            href={getCategoryPath(category, basePath)}
-            class="hover:text-foreground"
-          >
-            {capitalize(category.trim())}
-          </a>
-        ) : (
-          <span>{capitalize(category.trim())}</span>
-        )}
-        {index < categories.length - 1 && <span class="ml-[1px] mr-2">,</span>}
-      </span>
-    ))
-  }
+	{
+		categories.map((category, index) => (
+			<span class="flex items-center">
+				{asLinks ? (
+					<a href={getCategoryPath(category, basePath)} class="hover:text-foreground">
+						{capitalize(category.trim())}
+					</a>
+				) : (
+					<span>{capitalize(category.trim())}</span>
+				)}
+				{index < categories.length - 1 && <span class="mr-1 ml-[1px]">,</span>}
+			</span>
+		))
+	}
 </div>

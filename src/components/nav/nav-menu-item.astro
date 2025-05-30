@@ -2,22 +2,22 @@
 import { cn } from "@/lib/utils";
 
 interface Props {
-  href: string;
-  label: string;
-  isActive?: boolean;
+	href: string;
+	label: string;
+	isActive?: boolean;
 }
 
 const { href, label, isActive = false } = Astro.props;
 ---
 
 <li class="w-full">
-  <a
-    href={href}
-    class={cn(
-      "flex items-center justify-between rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
-      isActive && "text-primary hover:text-primary bg-accent hover:bg-accent",
-    )}
-  >
-    {label}
-  </a>
+	<a
+		href={href}
+		class={cn(
+			"flex items-center justify-between rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
+			isActive && "text-primary hover:text-primary bg-accent hover:bg-accent",
+		)}
+	>
+		{label}
+	</a>
 </li>

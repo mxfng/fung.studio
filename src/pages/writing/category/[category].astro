@@ -6,20 +6,20 @@ import WritingGrid from "@/components/writing/writing-grid.astro";
 import CollectionLayout from "@/components/collection-layout.astro";
 
 export function getStaticPaths() {
-  return Object.values(WritingCategory).map((category) => ({
-    params: { category },
-  }));
+	return Object.values(WritingCategory).map((category) => ({
+		params: { category },
+	}));
 }
 
 const { category } = Astro.params;
 const writings = await getWritings();
 const filteredWritings = formatCollection<"writing">(writings, {
-  category: category as WritingCategory,
-  sortBy: "date",
-  sortOrder: "desc",
+	category: category as WritingCategory,
+	sortBy: "date",
+	sortOrder: "desc",
 });
 ---
 
 <CollectionLayout type="writing" category={category}>
-  <WritingGrid writings={filteredWritings} />
+	<WritingGrid writings={filteredWritings} />
 </CollectionLayout>

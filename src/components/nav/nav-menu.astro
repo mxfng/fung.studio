@@ -6,102 +6,95 @@ import NavigationMenuItem from "./nav-menu-item.astro";
 import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
 
 interface Props {
-  currentPath: string;
+	currentPath: string;
 }
 
 const { currentPath } = Astro.props;
 
 const CONTACT_LINKS = [
-  {
-    label: "Email",
-    href: "mailto:max@studiomakai.net",
-    description: "max@studiomakai.net",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/maxfung/",
-    description: "in/maxfung",
-  },
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/fungkadelic/",
-    description: "@fungkadelic",
-  },
-  {
-    label: "GitHub",
-    href: "https://www.github.com/mxfng",
-    description: "mxfng",
-  },
+	{
+		label: "Email",
+		href: "mailto:max@studiomakai.net",
+		description: "max@studiomakai.net",
+	},
+	{
+		label: "LinkedIn",
+		href: "https://www.linkedin.com/in/maxfung/",
+		description: "in/maxfung",
+	},
+	{
+		label: "Instagram",
+		href: "https://www.instagram.com/fungkadelic/",
+		description: "@fungkadelic",
+	},
+	{
+		label: "GitHub",
+		href: "https://www.github.com/mxfng",
+		description: "mxfng",
+	},
 ] as const;
 
 const routeBuckets = {
-  works: ["/works"],
-  writing: ["/writing"],
-  about: ["/about"],
+	works: ["/works"],
+	writing: ["/writing"],
+	about: ["/about"],
 };
 
 const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
-  return routeBuckets[bucket].some((prefix) =>
-    normalizePath(currentPath).startsWith(normalizePath(prefix)),
-  );
+	return routeBuckets[bucket].some((prefix) =>
+		normalizePath(currentPath).startsWith(normalizePath(prefix)),
+	);
 };
 
 const isExactRouteActive = (url: string): boolean => {
-  return (
-    normalizePath(currentPath).toLowerCase() ===
-    normalizePath(url).toLowerCase()
-  );
+	return normalizePath(currentPath).toLowerCase() === normalizePath(url).toLowerCase();
 };
 
 const isWorksRouteActive = (): boolean => {
-  return (
-    normalizePath(currentPath) === "/" ||
-    routeBuckets.works.some((prefix) =>
-      normalizePath(currentPath).startsWith(normalizePath(prefix)),
-    )
-  );
+	return (
+		normalizePath(currentPath) === "/" ||
+		routeBuckets.works.some((prefix) =>
+			normalizePath(currentPath).startsWith(normalizePath(prefix)),
+		)
+	);
 };
 
 const worksCategories = Object.values(WorksCategory);
 ---
 
 <nav class="w-full">
-  <ul class="flex items-center justify-between gap-4">
-    <DropdownMenu
-      triggerLabel="Works"
-      menuId="works-menu"
-      isActive={isWorksRouteActive() || isExactRouteActive("/")}
-    >
-      <NavigationMenuItem
-        href="/"
-        label="All works"
-        isActive={isExactRouteActive("/")}
-      />
-      {
-        worksCategories.map((category) => (
-          <NavigationMenuItem
-            href={getCategoryPath(category, "/works")}
-            label={capitalize(category)}
-            isActive={isExactRouteActive(getCategoryPath(category, "/works"))}
-          />
-        ))
-      }
-    </DropdownMenu>
+	<ul class="flex items-center justify-between gap-4">
+		<DropdownMenu
+			triggerLabel="Works"
+			menuId="works-menu"
+			isActive={isWorksRouteActive() || isExactRouteActive("/")}
+		>
+			<NavigationMenuItem href="/" label="All works" isActive={isExactRouteActive("/")} />
+			{
+				worksCategories.map((category) => (
+					<NavigationMenuItem
+						href={getCategoryPath(category, "/works")}
+						label={capitalize(category)}
+						isActive={isExactRouteActive(getCategoryPath(category, "/works"))}
+					/>
+				))
+			}
+		</DropdownMenu>
 
-    <NavigationMenuItem
-      href={normalizePath("/writing")}
-      label="Writing"
-      isActive={isRouteActive("writing")}
-    />
+		<NavigationMenuItem
+			href={normalizePath("/writing")}
+			label="Writing"
+			isActive={isRouteActive("writing")}
+		/>
 
-    <NavigationMenuItem
-      href={normalizePath("/about")}
-      label="About"
-      isActive={isRouteActive("about")}
-    />
+		<NavigationMenuItem
+			href={normalizePath("/about")}
+			label="About"
+			isActive={isRouteActive("about")}
+		/>
 
-    <DropdownMenu triggerLabel="Contact" menuId="contact-menu" align="right">
-      <DropdownMenuLinks links={CONTACT_LINKS} />
-    </DropdownMenu>
-  </ul>
+		<DropdownMenu triggerLabel="Contact" menuId="contact-menu" align="right">
+			<DropdownMenuLinks links={CONTACT_LINKS} />
+		</DropdownMenu>
+	</ul>
 </nav>

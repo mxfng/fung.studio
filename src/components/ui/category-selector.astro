@@ -7,7 +7,7 @@ import CategorySelectorLink from "./category-selector-link.astro";
 type CollectionType = keyof typeof collections;
 
 interface Props {
-  type: CollectionType;
+	type: CollectionType;
 }
 
 const { type } = Astro.props;
@@ -16,50 +16,48 @@ const allPath = normalizePath(type === "works" ? "/" : `/${type}`);
 const allIsActive = normalizePath(currentPath) === allPath;
 
 const categoryMap = {
-  works: WorksCategory,
-  writing: WritingCategory,
+	works: WorksCategory,
+	writing: WritingCategory,
 } as const;
 
 const categories = Object.values(categoryMap[type]);
 
 const isActive = (category: string) => {
-  return normalizePath(currentPath).includes(category.toLowerCase());
+	return normalizePath(currentPath).includes(category.toLowerCase());
 };
 ---
 
 <div class="relative">
-  <!-- Gradient edges -->
-  <div
-    class="pointer-events-none absolute inset-y-0 left-0 w-5 bg-gradient-to-r from-background to-transparent z-10 -ml-5"
-  >
-  </div>
-  <div
-    class="pointer-events-none absolute inset-y-0 right-0 w-5 bg-gradient-to-l from-background to-transparent z-10 -mr-5"
-  >
-  </div>
+	<!-- Gradient edges -->
+	<div
+		class="from-background pointer-events-none absolute inset-y-0 left-0 z-10 -ml-5 w-5 bg-gradient-to-r to-transparent"
+	>
+	</div>
+	<div
+		class="from-background pointer-events-none absolute inset-y-0 right-0 z-10 -mr-5 w-5 bg-gradient-to-l to-transparent"
+	>
+	</div>
 
-  <!-- Scroll container -->
-  <div
-    class="overflow-x-auto scrollbar-none -mx-4 px-4 overscroll-contain touch-auto hide-scrollbar"
-  >
-    <ul class="flex items-center gap-6 min-w-max pr-5">
-      <li>
-        <CategorySelectorLink href={allPath} isActive={allIsActive}>
-          All
-        </CategorySelectorLink>
-      </li>
-      {
-        categories.map((category) => (
-          <li>
-            <CategorySelectorLink
-              href={getCategoryPath(category, `/${type}`)}
-              isActive={isActive(category)}
-            >
-              {capitalize(category)}
-            </CategorySelectorLink>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+	<!-- Scroll container -->
+	<div
+		class="scrollbar-none hide-scrollbar -mx-4 touch-auto overflow-x-auto overscroll-contain px-4"
+	>
+		<ul class="flex min-w-max items-center gap-6 pr-5">
+			<li>
+				<CategorySelectorLink href={allPath} isActive={allIsActive}> All </CategorySelectorLink>
+			</li>
+			{
+				categories.map((category) => (
+					<li>
+						<CategorySelectorLink
+							href={getCategoryPath(category, `/${type}`)}
+							isActive={isActive(category)}
+						>
+							{capitalize(category)}
+						</CategorySelectorLink>
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </div>

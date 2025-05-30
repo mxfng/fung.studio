@@ -6,11 +6,11 @@ import Layout from "@/layouts/layout.astro";
 
 const works = await getWorks();
 const filteredWorks = formatCollection<"works">(works, {
-  sortBy: "date",
-  sortOrder: "desc",
+	sortBy: "date",
+	sortOrder: "desc",
 });
 ---
 
 <Layout>
-  <WorksGrid works={filteredWorks} />
+	<WorksGrid works={filteredWorks} />
 </Layout>

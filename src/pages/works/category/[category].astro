@@ -8,33 +8,30 @@ import { capitalize } from "@/lib/utils";
 import X from "lucide-static/icons/x.svg";
 
 export function getStaticPaths() {
-  return Object.values(WorksCategory).map((category) => ({
-    params: { category },
-  }));
+	return Object.values(WorksCategory).map((category) => ({
+		params: { category },
+	}));
 }
 
 const { category } = Astro.params;
 const works = await getWorks();
 const filteredWorks = formatCollection<"works">(works, {
-  category: category as WorksCategory,
-  sortBy: "date",
-  sortOrder: "desc",
+	category: category as WorksCategory,
+	sortBy: "date",
+	sortOrder: "desc",
 });
 ---
 
 <Layout title={`${capitalize(category)} - Works`}>
-  <div class="mb-8 md:mb-16 flex flex-col gap-6">
-    <div
-      class="rounded-xl bg-muted text-muted-foreground py-2 px-4 w-fit flex text-center items-center gap-2"
-    >
-      <h1 class="font-accent">{capitalize(category)}</h1>
-      <a
-        href={`/`}
-        class="hover:text-foreground/80 transition-colors duration-200"
-      >
-        <X class="w-4 h-4" />
-      </a>
-    </div>
-  </div>
-  <WorksGrid works={filteredWorks} />
+	<div class="mb-8 flex flex-col gap-6 md:mb-16">
+		<div
+			class="bg-muted text-muted-foreground flex w-fit items-center gap-2 rounded-xl px-4 py-2 text-center"
+		>
+			<h1 class="font-accent">{capitalize(category)}</h1>
+			<a href={`/`} class="hover:text-foreground/80 transition-colors duration-200">
+				<X class="h-4 w-4" />
+			</a>
+		</div>
+	</div>
+	<WorksGrid works={filteredWorks} />
 </Layout>

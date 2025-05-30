@@ -1,66 +1,74 @@
 @layer base {
-  .prose {
-    @apply max-w-none text-base leading-relaxed text-foreground;
-  }
+	.prose {
+		@apply text-foreground max-w-none text-base leading-relaxed;
+	}
 
-  .prose h1 {
-    @apply text-4xl leading-tight mb-4;
-  }
+	.prose h1 {
+		@apply mb-4 text-4xl leading-tight;
+	}
 
-  .prose h2 {
-    @apply text-2xl leading-snug mt-8 mb-4;
-  }
+	.prose h2 {
+		@apply mt-12 mb-6 text-2xl leading-snug;
+	}
 
-  .prose h3 {
-    @apply text-xl mt-6 mb-2;
-  }
+	.prose h3 {
+		@apply mt-8 mb-2 text-xl;
+	}
 
-  .prose h4 {
-    @apply text-lg mt-4 mb-2;
-  }
+	.prose h4 {
+		@apply mt-6 mb-2 text-lg;
+	}
 
-  .prose p {
-    @apply my-4;
-  }
+	.prose p {
+		@apply my-6 leading-loose;
+	}
 
-  .prose a {
-    @apply text-primary underline underline-offset-2 hover:text-primary-foreground transition-colors;
-  }
+	.prose p + h1 {
+		@apply mt-24;
+	}
 
-  .prose ul,
-  .prose ol {
-    @apply pl-6 my-4 list-disc;
-  }
+	.prose p + h2 {
+		@apply mt-24;
+	}
 
-  .prose ol {
-    @apply list-decimal;
-  }
+	.prose a {
+		@apply text-primary hover:text-primary-foreground underline underline-offset-2 transition-colors;
+	}
 
-  .prose blockquote {
-    @apply border-l-4 border-muted pl-4 italic text-muted-foreground my-4;
-  }
+	.prose ul,
+	.prose ol {
+		@apply my-4 list-disc pl-6;
+	}
 
-  .prose code {
-    @apply bg-muted text-sm px-1 py-0.5 rounded;
-  }
+	.prose ol {
+		@apply list-decimal;
+	}
 
-  .prose pre {
-    @apply bg-muted p-4 rounded overflow-x-auto my-4;
-  }
+	.prose blockquote {
+		@apply border-muted text-muted-foreground my-4 border-l-4 pl-4 italic;
+	}
 
-  .prose img {
-    @apply rounded-lg my-4;
-  }
+	.prose code {
+		@apply bg-muted rounded px-1 py-0.5 text-sm;
+	}
 
-  .prose strong {
-    @apply font-semibold;
-  }
+	.prose pre {
+		@apply bg-muted my-4 overflow-x-auto rounded p-4;
+	}
 
-  .prose hr {
-    @apply my-8 border-t border-muted;
-  }
+	.prose img {
+		@apply my-4 rounded-lg;
+	}
 
-  .prose a {
-    @apply text-muted-foreground underline underline-offset-2 hover:text-foreground transition-colors;
-  }
+	.prose strong {
+		@apply font-semibold;
+	}
+
+	.prose hr {
+		@apply border-muted my-8 border-t;
+	}
+
+	.prose a {
+		@apply text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors;
+	}
 }

@@ -5,16 +5,16 @@ import NavMenu from "./nav-menu.astro";
 ---
 
 <nav class="border-b border-dashed">
-  <PaddingX>
-    <div class="flex items-center justify-between">
-      <div
-        class="flex flex-col items-start w-full pb-2 sm:pb-0 sm:flex-row sm:items-center sm:gap-8 sm:justify-between"
-      >
-        <a href="/" class="w-[20vw]">
-          <Logo class="w-20 h-auto fill-primary stroke-primary py-4" />
-        </a>
-        <NavMenu currentPath={Astro.url.pathname} />
-      </div>
-    </div>
-  </PaddingX>
+	<PaddingX>
+		<div class="flex items-center justify-between">
+			<div
+				class="flex w-full flex-col items-start pb-2 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:pb-0"
+			>
+				<a href="/" class="w-[20vw]">
+					<Logo class="fill-primary stroke-primary h-auto w-20 py-4" />
+				</a>
+				<NavMenu currentPath={Astro.url.pathname} />
+			</div>
+		</div>
+	</PaddingX>
 </nav>

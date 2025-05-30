@@ -4,7 +4,7 @@ import { getWorks } from "@/lib/get-collection";
 import { getSimilarEntries } from "@/lib/get-similar-entries";
 
 interface Props {
-  currentSlug: string;
+	currentSlug: string;
 }
 
 const { currentSlug } = Astro.props;
@@ -14,8 +14,8 @@ const similarWorks = getSimilarEntries<"works">(allWorks, currentSlug);
 ---
 
 <section class="mt-16">
-  <h2 class="text-2xl mb-8">More Works</h2>
-  <div class="grid md:grid-cols-3 gap-12 md:px-8">
-    {similarWorks.map((work) => <WorkCard work={work} />)}
-  </div>
+	<h2 class="mb-8 text-2xl">More Works</h2>
+	<div class="grid gap-12 md:grid-cols-3 md:px-8">
+		{similarWorks.map((work) => <WorkCard work={work} />)}
+	</div>
 </section>

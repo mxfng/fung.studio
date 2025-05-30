@@ -3,47 +3,45 @@ import { cn } from "@/lib/utils";
 import ChevronDown from "lucide-static/icons/chevron-down.svg";
 
 interface Props {
-  triggerLabel: string;
-  menuId: string;
-  align?: "left" | "right";
-  isActive?: boolean;
+	triggerLabel: string;
+	menuId: string;
+	align?: "left" | "right";
+	isActive?: boolean;
 }
 
 const { triggerLabel, menuId, align = "left", isActive = false } = Astro.props;
 
 const ALIGN_CLASSES = {
-  left: "left-0",
-  right: "right-0",
+	left: "left-0",
+	right: "right-0",
 };
 ---
 
-<li class="relative group w-full" data-dropdown>
-  <button
-    type="button"
-    class={cn(
-      "dropdown-trigger flex items-center justify-between gap-1 rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
-      isActive && "text-primary hover:text-primary hover:bg-accent bg-accent",
-    )}
-    aria-expanded="false"
-    aria-controls={menuId}
-    data-dropdown-trigger
-  >
-    {triggerLabel}
-    <ChevronDown
-      class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
-    />
-  </button>
-  <div
-    id={menuId}
-    class={cn(
-      "dropdown-menu absolute top-full z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
-      ALIGN_CLASSES[align],
-      "group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:backdrop-blur-md group-hover:shadow-lg",
-    )}
-    data-dropdown-menu
-  >
-    <ul class="space-y-1">
-      <slot />
-    </ul>
-  </div>
+<li class="group relative w-full" data-dropdown>
+	<button
+		type="button"
+		class={cn(
+			"dropdown-trigger flex items-center justify-between gap-1 rounded-md px-3 py-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
+			isActive && "text-primary hover:text-primary hover:bg-accent bg-accent",
+		)}
+		aria-expanded="false"
+		aria-controls={menuId}
+		data-dropdown-trigger
+	>
+		{triggerLabel}
+		<ChevronDown class="h-4 w-4 transition-transform duration-200 group-hover:rotate-180" />
+	</button>
+	<div
+		id={menuId}
+		class={cn(
+			"dropdown-menu absolute top-full z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
+			ALIGN_CLASSES[align],
+			"group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:backdrop-blur-md group-hover:shadow-lg",
+		)}
+		data-dropdown-menu
+	>
+		<ul class="space-y-1">
+			<slot />
+		</ul>
+	</div>
 </li>

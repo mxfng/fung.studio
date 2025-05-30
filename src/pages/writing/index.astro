@@ -6,11 +6,11 @@ import WritingGrid from "@/components/writing/writing-grid.astro";
 
 const writings = await getWritings();
 const filteredWritings = formatCollection<"writing">(writings, {
-  sortBy: "date",
-  sortOrder: "desc",
+	sortBy: "date",
+	sortOrder: "desc",
 });
 ---
 
 <CollectionLayout type="writing">
-  <WritingGrid writings={filteredWritings} />
+	<WritingGrid writings={filteredWritings} />
 </CollectionLayout>

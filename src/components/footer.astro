@@ -2,13 +2,13 @@
 import PaddingX from "@/components/util/padding-x.astro";
 ---
 
-<footer class="border-t py-8 bg-secondary text-secondary-foreground text-xs">
-  <PaddingX>
-    <div class="flex flex-col lg:flex-row justify-between font-accent gap-2">
-      <div>
-        © {new Date().getFullYear()} Max Fung and Studio Makai LLC. All rights reserved
-      </div>
-      <div>Currently — looking for software engineering opportunities</div>
-    </div>
-  </PaddingX>
+<footer class="bg-secondary text-secondary-foreground border-t py-8 text-xs">
+	<PaddingX>
+		<div class="font-accent flex flex-col justify-between gap-2 lg:flex-row">
+			<div>
+				© {new Date().getFullYear()} Max Fung and Studio Makai LLC. All rights reserved
+			</div>
+			<div>Currently — looking for software engineering opportunities</div>
+		</div>
+	</PaddingX>
 </footer>

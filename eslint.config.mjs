@@ -1,33 +1,55 @@
-import eslint from "@eslint/js";
-import tseslint from "typescript-eslint";
-import eslintPluginAstro from "eslint-plugin-astro";
-import { globalIgnores } from "eslint/config";
+import { defineConfig } from "eslint/config";
 import globals from "globals";
+import js from "@eslint/js";
+import tseslint from "typescript-eslint";
+import astro from "eslint-plugin-astro";
+import prettier from "eslint-plugin-prettier";
 
-export default tseslint.config(
-  eslint.configs.recommended,
-  tseslint.configs.recommended,
-  eslintPluginAstro.configs.recommended,
-  {
-    rules: {
-      "astro/no-set-html-directive": "error",
-    },
-  },
-  {
-    files: ["scripts/**/*.js", "scripts/**/*.mjs"],
-    languageOptions: {
-      globals: {
-        ...globals.node,
-      },
-    },
-  },
-  {
-    files: ["public/scripts/**/*.js"],
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
-    },
-  },
-  globalIgnores(["dist/*", ".astro/*"]),
-);
+const tsParser = tseslint.parser;
+const astroParser = astro.parser;
+
+export default defineConfig([
+	{
+		languageOptions: {
+			globals: {
+				...globals.browser,
+				...globals.node,
+			},
+		},
+	},
+
+	js.configs.recommended,
+	tseslint.configs.recommended,
+	{
+		plugins: {
+			prettier: prettier,
+		},
+		rules: {
+			"prettier/prettier": "off",
+		},
+	},
+
+	astro.configs.recommended,
+	astro.configs["jsx-a11y-recommended"],
+	{
+		files: ["**/*.astro"],
+		languageOptions: {
+			parser: astroParser,
+			parserOptions: {
+				parser: tsParser,
+				extraFileExtensions: [".astro"],
+				sourceType: "module",
+				ecmaVersion: "latest",
+				project: "./tsconfig.json",
+			},
+		},
+		rules: {
+			"no-undef": "off",
+			"@typescript-eslint/no-explicit-any": "off",
+		},
+	},
+
+	{
+		ignores: ["dist/**", "**/*.d.ts", ".github/"],
+	},
+]);
