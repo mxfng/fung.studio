@@ -16,7 +16,7 @@
 		"lint:fix": "bun x eslint . --fix",
 		"prepare": "husky install",
 		"deploy:worker": "astro build && bunx wrangler deploy",
-		"pre-commit": "bun run tsc:check && bun run lint:fix && bun run format"
+		"pre-commit": "bun run tsc:check && bun run lint && bun run format"
 	},
 	"dependencies": {
 		"@tailwindcss/vite": "^4.1.7",
