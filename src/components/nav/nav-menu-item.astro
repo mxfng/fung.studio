@@ -3,11 +3,11 @@ import { cn } from "@/lib/utils";
 
 interface Props {
 	href: string;
-	label: string;
+
 	isActive?: boolean;
 }
 
-const { href, label, isActive = false } = Astro.props;
+const { href, isActive = false } = Astro.props;
 ---
 
 <li class="w-full">
@@ -18,6 +18,6 @@ const { href, label, isActive = false } = Astro.props;
 			isActive && "text-primary hover:text-primary bg-accent hover:bg-accent",
 		)}
 	>
-		{label}
+		<slot />
 	</a>
 </li>

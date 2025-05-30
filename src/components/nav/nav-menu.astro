@@ -1,9 +1,11 @@
 ---
+import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
 import { WorksCategory } from "@/config/categories";
+import CircleUserRound from "lucide-static/icons/circle-user-round.svg";
 import DropdownMenu from "@/components/ui/dropdown-menu.astro";
 import DropdownMenuLinks from "@/components/ui/dropdown-menu-links.astro";
 import NavigationMenuItem from "./nav-menu-item.astro";
-import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
+import Pencil from "lucide-static/icons/pencil.svg";
 
 interface Props {
 	currentPath: string;
@@ -69,29 +71,28 @@ const worksCategories = Object.values(WorksCategory);
 			menuId="works-menu"
 			isActive={isWorksRouteActive() || isExactRouteActive("/")}
 		>
-			<NavigationMenuItem href="/" label="All works" isActive={isExactRouteActive("/")} />
+			<NavigationMenuItem href="/" isActive={isExactRouteActive("/")}>
+				All works
+			</NavigationMenuItem>
 			{
 				worksCategories.map((category) => (
 					<NavigationMenuItem
 						href={getCategoryPath(category, "/works")}
-						label={capitalize(category)}
 						isActive={isExactRouteActive(getCategoryPath(category, "/works"))}
-					/>
+					>
+						{capitalize(category)}
+					</NavigationMenuItem>
 				))
 			}
 		</DropdownMenu>
 
-		<NavigationMenuItem
-			href={normalizePath("/writing")}
-			label="Writing"
-			isActive={isRouteActive("writing")}
-		/>
+		<NavigationMenuItem href={normalizePath("/writing")} isActive={isRouteActive("writing")}>
+			Writing<Pencil class="h-4 w-4" />
+		</NavigationMenuItem>
 
-		<NavigationMenuItem
-			href={normalizePath("/about")}
-			label="About"
-			isActive={isRouteActive("about")}
-		/>
+		<NavigationMenuItem href={normalizePath("/about")} isActive={isRouteActive("about")}>
+			About<CircleUserRound class="h-4 w-4" />
+		</NavigationMenuItem>
 
 		<DropdownMenu triggerLabel="Contact" menuId="contact-menu" align="right">
 			<DropdownMenuLinks links={CONTACT_LINKS} />
