@@ -22,20 +22,25 @@ const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
 ---
 
 <Layout title={writing.data.title}>
-	<div class="flex h-full flex-1 flex-col gap-16 md:gap-32">
-		<header class="my-12 flex flex-col items-center justify-center gap-2">
+	<div class="flex flex-col gap-12 px-4 pt-8">
+		<header class="mx-auto flex max-w-screen-sm flex-col items-center gap-6 text-center">
 			<WritingSummary writing={writing} />
-			<h1 class="text-5xl">{writing.data.title}</h1>
+			<h1 class="text-4xl font-medium md:text-5xl">
+				{writing.data.title}
+			</h1>
 		</header>
-		<article class="mx-auto flex w-full max-w-screen-sm flex-1 flex-col">
-			<div class="prose flex-1">
+		<article class="mx-auto w-full max-w-screen-lg pt-8">
+			<div class="prose">
 				<Content />
 			</div>
 		</article>
-		<div class="my-12 border-t border-dashed"></div>
-		<div class="flex flex-col gap-4">
-			<WritingFooter />
-		</div>
+
+		<footer class="bg-muted text-muted-foreground rounded-lg border p-6">
+			<div class="mx-auto max-w-screen-sm">
+				<WritingFooter />
+			</div>
+		</footer>
+
 		{
 			(prevEntry || nextEntry) && (
 				<PrevNext

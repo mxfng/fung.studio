@@ -3,61 +3,97 @@
 		@apply text-foreground max-w-none text-base leading-relaxed;
 	}
 
+	/* Narrow max-width for body content */
+	.prose h1,
+	.prose h2,
+	.prose h3,
+	.prose h4,
+	.prose p,
+	.prose ul,
+	.prose ol,
+	.prose hr {
+		@apply max-w-screen-sm mx-auto;
+	}
+
 	.prose h1 {
-		@apply mb-4 text-4xl leading-tight;
+		@apply mb-4 text-4xl font-bold leading-tight;
 	}
 
 	.prose h2 {
-		@apply mt-12 mb-6 text-2xl leading-snug;
+		@apply mt-10 mb-4 text-2xl font-semibold leading-snug;
 	}
 
 	.prose h3 {
-		@apply mt-8 mb-2 text-xl;
+		@apply mt-8 mb-2 text-xl font-medium;
 	}
 
 	.prose h4 {
-		@apply mt-6 mb-2 text-lg;
+		@apply mt-6 mb-2 text-lg font-medium;
 	}
 
 	.prose p {
-		@apply my-6 leading-loose;
+		@apply my-5 leading-loose;
 	}
 
-	.prose p + h1 {
-		@apply mt-24;
-	}
-
+	.prose p + h1,
 	.prose p + h2 {
-		@apply mt-24;
+		@apply mt-16;
 	}
 
 	.prose a {
-		@apply text-primary hover:text-primary-foreground underline underline-offset-2 transition-colors;
+		@apply text-primary underline underline-offset-2 transition-colors hover:text-primary-foreground;
 	}
 
 	.prose ul,
 	.prose ol {
-		@apply my-4 list-disc pl-6;
+		@apply my-5 pl-6 leading-relaxed;
+	}
+
+	.prose ul {
+		@apply list-disc;
 	}
 
 	.prose ol {
 		@apply list-decimal;
 	}
 
+	.prose ul li,
+	.prose ol li,
+	.prose ul li > p,
+	.prose ol li > p {
+		@apply my-1;
+	}
+
 	.prose blockquote {
-		@apply border-muted text-muted-foreground my-4 border-l-4 pl-4 italic;
+		@apply my-12 text-center text-2xl italic text-foreground font-medium;
+	}
+
+	.prose blockquote p::before {
+		content: open-quote;
+	}
+
+	.prose blockquote p::after {
+		content: close-quote;
+	}
+
+	.prose blockquote p {
+		@apply max-w-screen-md leading-normal;
 	}
 
 	.prose code {
-		@apply bg-muted rounded px-1 py-0.5 text-sm;
+		@apply rounded bg-muted px-1 py-0.5 text-sm;
 	}
 
 	.prose pre {
-		@apply bg-muted my-4 overflow-x-auto rounded p-4;
+		@apply my-6 rounded bg-muted p-4 overflow-x-auto text-sm;
 	}
 
 	.prose img {
-		@apply my-4 rounded-lg;
+		@apply my-12 mx-auto max-w-screen-md rounded-lg;
+	}
+
+	.prose p:has(> img:only-child) {
+		@apply max-w-none;
 	}
 
 	.prose strong {
@@ -65,10 +101,6 @@
 	}
 
 	.prose hr {
-		@apply border-muted my-8 border-t;
-	}
-
-	.prose a {
-		@apply text-muted-foreground hover:text-foreground underline underline-offset-2 transition-colors;
+		@apply my-10 border-t border-muted;
 	}
 }
