@@ -1,0 +1,31 @@
+---
+interface Props {
+	paths: string[];
+}
+
+const { paths } = Astro.props;
+---
+
+<svg viewBox="0 0 400 400" width="200" height="200">
+	<path
+		id="morph"
+		d={paths[0]}
+		fill="none"
+		stroke="black"
+		stroke-width="2"
+		data-paths={JSON.stringify(paths)}></path>
+</svg>
+
+<script type="module">
+	import { interpolate } from "https://cdn.jsdelivr.net/npm/flubber@0.4.2/+esm";
+
+	window.addEventListener("DOMContentLoaded", () => {
+		const path = document.querySelector("#morph");
+		const paths = JSON.parse(path.dataset.paths);
+
+		const interpolator = interpolate(paths[0], paths[1]);
+
+		const result = interpolator(1); // get the fully morphed path
+		path.setAttribute("d", result);
+	});
+</script>

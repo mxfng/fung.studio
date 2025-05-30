@@ -1,0 +1,17 @@
+---
+import SvgMorph from "../svg-morph.astro";
+import { circle, square, triangle } from "./paths.js";
+---
+
+<svg
+	id="c"
+	xmlns="http://www.w3.org/2000/svg"
+	width="1816.97"
+	height="486.9"
+	viewBox="0 0 1816.97 486.9"
+>
+	<!-- <path id="circle" d={circle}></path>
+	<path id="square" d={square}></path>
+	<path id="triangle" d={triangle}></path> -->
+	<SvgMorph paths={[circle, square, triangle]} />
+</svg>
