@@ -82,11 +82,11 @@
 	}
 
 	h1 {
-		@apply text-4xl font-medium leading-tight;
+		@apply text-4xl leading-tight font-medium;
 	}
 
 	h2 {
-		@apply text-2xl font-medium leading-snug;
+		@apply text-2xl leading-snug font-medium;
 	}
 
 	h3 {
@@ -102,7 +102,7 @@
 	}
 
 	p a {
-		@apply text-foreground hover:text-muted-foreground underline decoration-muted-foreground hover:decoration-foreground hover:decoration-2 underline-offset-2 transition-all;
+		@apply text-foreground hover:text-muted-foreground decoration-muted-foreground hover:decoration-foreground underline underline-offset-2 transition-all hover:decoration-2;
 	}
 
 	blockquote {
@@ -110,11 +110,11 @@
 	}
 
 	code {
-		@apply bg-muted px-1 py-0.5 rounded text-sm;
+		@apply bg-muted rounded px-1 py-0.5 text-sm;
 	}
 
 	pre {
-		@apply bg-muted p-4 rounded my-6 overflow-x-auto text-sm;
+		@apply bg-muted my-6 overflow-x-auto rounded p-4 text-sm;
 	}
 
 	img {
@@ -122,7 +122,7 @@
 	}
 
 	hr {
-		@apply border-muted border-t my-8;
+		@apply border-muted my-8 border-t;
 	}
 
 	strong {
