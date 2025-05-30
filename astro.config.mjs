@@ -3,19 +3,26 @@ import { defineConfig } from "astro/config";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import tailwindcss from "@tailwindcss/vite";
+import { cjsInterop } from "vite-plugin-cjs-interop";
 
 import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-      plugins: [tailwindcss()],
-      resolve: {
-          alias: {
-              "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./src"),
-          },
-      },
+	vite: {
+		plugins: [
+			tailwindcss(),
+			cjsInterop({
+				dependencies: ["flubber"],
+			}),
+		],
+
+		resolve: {
+			alias: {
+				"@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./src"),
+			},
+		},
 	},
 
-  integrations: [react()],
+	integrations: [react()],
 });

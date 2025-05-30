@@ -1,13 +1,11 @@
 ---
-import PeaceCircle from "./ui/logos/peace-circle.astro";
-import PeaceSquare from "./ui/logos/peace-square.astro";
-import PeaceTriangle from "./ui/logos/peace-triangle.astro";
+import Harmony from "./animation/harmony";
 ---
 
-<div class="mx-auto mb-12">
-	<div class="grid h-48 w-full grid-cols-3 gap-16 px-8 py-8">
-		<PeaceCircle class="fill-foreground h-full w-full object-contain" />
-		<PeaceSquare class="fill-foreground h-full w-full object-contain" />
-		<PeaceTriangle class="fill-foreground h-full w-full object-contain" />
+<div
+	class="relative mx-auto mt-16 mb-32 flex w-full flex-col items-center justify-center gap-16 md:mt-32 md:mb-48"
+>
+	<div id="harmony" class="flex h-24 items-center justify-center md:h-64">
+		<Harmony client:load />
 	</div>
 </div>
