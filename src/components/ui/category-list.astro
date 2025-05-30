@@ -16,7 +16,7 @@ const { categories, basePath, class: className = "", asLinks = true, commas = fa
 <div class={cn("flex flex-wrap", className)}>
 	{
 		categories.map((category, index) => (
-			<span class="flex items-center">
+			<span class="flex items-center break-words">
 				{asLinks ? (
 					<a
 						href={getCategoryPath(category, basePath)}

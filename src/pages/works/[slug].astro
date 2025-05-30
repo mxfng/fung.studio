@@ -17,51 +17,48 @@ export async function getStaticPaths() {
 
 const { work } = Astro.props;
 const { Content } = await work.render();
-
 const images = loadWorkImages(work.slug);
 ---
 
 <Layout title={work.data.title}>
 	<main class="flex flex-1 flex-col gap-16">
-		<article>
-			<div class="mb-6 flex w-full flex-col gap-12 md:mb-12 md:flex-row">
-				<header class="flex flex-col gap-8 md:w-1/2">
-					<Section label="Title">
-						<h1 class="text-3xl">{work.data.title}</h1>
-					</Section>
+		<article class="space-y-16 md:space-y-24">
+			<header class="mx-auto">
+				<h1 class="text-center text-4xl break-words md:text-6xl xl:text-8xl">
+					{work.data.title}
+				</h1>
+			</header>
+			<div class="mx-auto mb-24 flex w-full max-w-screen-lg flex-col gap-12 xl:flex-row">
+				<header
+					class="mx-auto flex w-full max-w-3xl justify-between gap-16 px-4 xl:mx-0 xl:w-1/4 xl:flex-col xl:justify-start"
+				>
 					<Section label="Categories">
 						<CategoryList
 							categories={work.data.categories}
 							basePath="/works"
-							class="text-3xl"
+							class="text-xl xl:text-3xl"
 							asLinks={false}
 							commas
 						/>
 					</Section>
 					<Section label="Date">
-						<span>
-							{
-								work.data.date.toLocaleDateString("en-US", {
-									timeZone: "America/Los_Angeles",
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								})
-							}
-						</span>
+						{
+							work.data.date.toLocaleDateString("en-US", {
+								timeZone: "America/Los_Angeles",
+								year: "numeric",
+								month: "long",
+								day: "numeric",
+							})
+						}
 					</Section>
 				</header>
-				<div class="md:w-1/2">
-					<Section label="Details">
-						<article class="prose -mt-2">
-							<Content />
-						</article>
-					</Section>
-				</div>
+				<article class="prose -mt-5">
+					<Content />
+				</article>
 			</div>
 			{
 				images.length > 0 && (
-					<section class="w-full px-4">
+					<section class="w-full">
 						<div class="columns-1 gap-4 space-y-4 md:columns-2">
 							{images.map((img) => (
 								<div class="break-inside-avoid overflow-hidden rounded-2xl">
