@@ -2,58 +2,43 @@
 import { Image } from "astro:assets";
 import avatarImage from "@/assets/images/avatar.webp";
 import Layout from "@/layouts/layout.astro";
-import Section from "@/components/ui/section.astro";
 ---
 
 <Layout title="About">
-	<main class="max-w-screen-3xl mx-auto">
-		<div class="flex flex-col gap-6 md:flex-row md:gap-12">
-			<div>
-				<div class="h-xs aspect-square w-xs flex-shrink-0 overflow-hidden rounded-4xl">
-					<Image src={avatarImage} alt="Background" class="h-full w-full object-cover" />
-				</div>
+	<main>
+		<div class="flex flex-col items-center gap-16">
+			<div class="aspect-square max-w-xl flex-shrink-0 overflow-hidden rounded-xl">
+				<Image src={avatarImage} alt="Background" class="object-cover" />
 			</div>
-			<div class="flex max-w-[55ch] flex-grow flex-col gap-4">
-				<Section label="Name">
-					<h2>Max Fung</h2>
-				</Section>
-				<Section label="Occupation">
-					<h3>Software Engineer, Musician, Designer</h3>
-				</Section>
-				<Section label="Education">
-					<h3>Loyola Marymount University</h3>
-				</Section>
-				<Section label="Bio">
-					<div class="space-y-4">
-						<p>
-							I'm a creative person with a software engineering problem. A lifelong musician,
-							artist, tinkerer, and designer.
-						</p>
-						<p>
-							My mediums include songwriting, audio production, digital art, web/mobile development,
-							and branding.
-						</p>
-						<p>
-							I run <a href="https://www.studiomakai.net">Studio Makai</a>, a small creative studio
-							in LA focused on projects at the intersection of sound, software, and storytelling.
-						</p>
-						<p>
-							I make music as <a href="https://www.instagram.com/tokomakai/">Toko Makai</a> and <a
-								href="https://www.instagram.com/fungkadelic/">Max Fung</a
-							>, writing and producing for myself and others. I was born into a musical family and
-							basically grew up in the studio.
-						</p>
-						<p>
-							I've worked professionally in software since 2021—mostly frontend, architecture, and
-							web platforms for startups and tech companies.
-						</p>
-						<p>
-							Over the years, I've been lucky to work with thoughtful people on meaningful projects
-							to bring creative and technical ideas to life.
-						</p>
-						<p>Thanks for stopping by. CV available upon request.</p>
-					</div>
-				</Section>
+			<div class="mx-auto max-w-md space-y-4 text-center">
+				<p>
+					I'm a creative person with a software engineering problem. A lifelong musician, artist,
+					tinkerer, and designer.
+				</p>
+				<p>
+					My mediums include songwriting, audio production, digital art, web/mobile development, and
+					branding.
+				</p>
+				<p>
+					I run <a href="https://www.studiomakai.net">Studio Makai</a>, a small creative studio in
+					LA focused on projects at the intersection of sound, software, and storytelling.
+				</p>
+				<p>
+					I make music as <a href="https://www.instagram.com/tokomakai/">Toko Makai</a> and <a
+						href="https://www.instagram.com/fungkadelic/">Max Fung</a
+					>, writing and producing for myself and others. I was born into a musical family and
+					basically grew up in the studio.
+				</p>
+				<p>
+					I've worked professionally in software since 2021—mostly frontend, architecture, and web
+					platforms for startups and tech companies.
+				</p>
+				<p>
+					Over the years, I've been lucky to work with thoughtful people on meaningful projects to
+					bring creative and technical ideas to life.
+				</p>
+				<p>Thanks for stopping by. CV available upon request.</p>
+				<p>— Max</p>
 			</div>
 		</div>
 	</main>

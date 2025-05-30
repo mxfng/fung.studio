@@ -30,7 +30,12 @@ const images = loadWorkImages(work.slug);
 						<h1 class="text-3xl">{work.data.title}</h1>
 					</Section>
 					<Section label="Categories">
-						<CategoryList categories={work.data.categories} basePath="/works" class="text-3xl" />
+						<CategoryList
+							categories={work.data.categories}
+							basePath="/works"
+							class="text-3xl"
+							asLinks={false}
+						/>
 					</Section>
 					<Section label="Date">
 						<span>
