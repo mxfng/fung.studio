@@ -23,7 +23,9 @@
 		"astro": "5.8.0",
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
+		"flubber": "^0.4.2",
 		"lucide-static": "^0.511.0",
+		"motion": "^12.15.0",
 		"tailwind-merge": "^3.3.0",
 		"tailwindcss": "^4.1.7"
 	},
