@@ -6,12 +6,12 @@ import NavMenu from "./nav-menu.astro";
 <nav class="bg-background top-0 right-0 left-0 z-50 mt-4 md:fixed md:mt-0">
 	<PaddingX>
 		<div
-			class="flex w-full flex-col items-start gap-4 py-2 md:flex-row md:items-center md:justify-between md:gap-8 md:py-4"
+			class="flex w-full flex-col items-start gap-8 py-2 md:flex-row md:items-center md:justify-between md:gap-8 md:gap-24 md:py-4"
 		>
-			<a href="/" class="w-[20vw] min-w-sm">
+			<a href="/">
 				<h1 class="text-2xl font-medium tracking-tight">Max Fung</h1>
 			</a>
-			<div class="flex max-w-screen-lg flex-1 justify-end">
+			<div class="flex w-full max-w-screen-lg flex-1 justify-end">
 				<NavMenu currentPath={Astro.url.pathname} />
 			</div>
 		</div>

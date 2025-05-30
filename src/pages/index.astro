@@ -3,6 +3,7 @@ import WorksGrid from "@/components/works/works-grid.astro";
 import { getWorks } from "@/lib/get-collection";
 import { formatCollection } from "@/lib/format-collection";
 import Layout from "@/layouts/layout.astro";
+import Landing from "@/components/landing.astro";
 
 const works = await getWorks();
 const filteredWorks = formatCollection<"works">(works, {
@@ -12,5 +13,6 @@ const filteredWorks = formatCollection<"works">(works, {
 ---
 
 <Layout size="wide">
+	<Landing />
 	<WorksGrid works={filteredWorks} />
 </Layout>
