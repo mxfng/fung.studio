@@ -11,10 +11,7 @@ const { href, isActive } = Astro.props;
 
 <a
 	href={href}
-	class={cn(
-		"md:text-lg text-muted-foreground hover:text-foreground/80 transition-colors duration-200",
-		isActive && "text-foreground hover:text-foreground",
-	)}
+	class={cn("md:text-lg link-subtle", isActive && "text-foreground hover:text-foreground")}
 >
 	<slot />
 </a>

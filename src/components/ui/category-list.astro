@@ -17,13 +17,13 @@ const { categories, basePath, class: className = "", asLinks = true } = Astro.pr
 		categories.map((category, index) => (
 			<span class="flex items-center">
 				{asLinks ? (
-					<a href={getCategoryPath(category, basePath)} class="hover:text-foreground">
+					<a href={getCategoryPath(category, basePath)} class="link-subtle">
 						{capitalize(category.trim())}
 					</a>
 				) : (
 					<span>{capitalize(category.trim())}</span>
 				)}
-				{index < categories.length - 1 && <span class="mr-1 ml-[1px]">,</span>}
+				{index < categories.length - 1 && <span class="mr-1 ml-[1px]">, </span>}
 			</span>
 		))
 	}
