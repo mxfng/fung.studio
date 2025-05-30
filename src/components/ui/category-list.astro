@@ -1,29 +1,33 @@
 ---
 import type { Category } from "@/config/categories";
-import { capitalize, getCategoryPath } from "@/lib/utils";
+import { capitalize, cn, getCategoryPath } from "@/lib/utils";
 
 interface Props {
 	categories: Category[];
 	basePath: string;
 	class?: string;
 	asLinks?: boolean;
+	commas?: boolean;
 }
 
-const { categories, basePath, class: className = "", asLinks = true } = Astro.props;
+const { categories, basePath, class: className = "", asLinks = true, commas = false } = Astro.props;
 ---
 
-<div class={`flex flex-wrap ${className}`}>
+<div class={cn("flex flex-wrap", className)}>
 	{
 		categories.map((category, index) => (
 			<span class="flex items-center">
 				{asLinks ? (
-					<a href={getCategoryPath(category, basePath)} class="link-subtle">
+					<a
+						href={getCategoryPath(category, basePath)}
+						class={cn("link-subtle", !commas && "mr-2")}
+					>
 						{capitalize(category.trim())}
 					</a>
 				) : (
 					<span>{capitalize(category.trim())}</span>
 				)}
-				{index < categories.length - 1 && <span class="mr-1 ml-[1px]">, </span>}
+				{commas && index < categories.length - 1 && <span class="mr-3 ml-[1px]">, </span>}
 			</span>
 		))
 	}

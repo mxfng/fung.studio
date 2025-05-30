@@ -15,7 +15,7 @@ const similarWorks = getSimilarEntries<"works">(allWorks, currentSlug);
 
 <section class="mt-16">
 	<h2 class="mb-8 text-2xl">More Works</h2>
-	<div class="grid gap-12 md:grid-cols-3 md:px-8">
+	<div class="grid gap-12 md:grid-cols-3">
 		{similarWorks.map((work) => <WorkCard work={work} />)}
 	</div>
 </section>
