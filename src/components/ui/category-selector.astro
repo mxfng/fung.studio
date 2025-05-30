@@ -1,6 +1,6 @@
 ---
 import { WorksCategory, WritingCategory } from "@/config/categories";
-import { capitalize, getCategoryPath } from "@/lib/utils";
+import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
 import { collections } from "@/content/config";
 import CategorySelectorLink from "./category-selector-link.astro";
 
@@ -12,8 +12,8 @@ interface Props {
 
 const { type } = Astro.props;
 const currentPath = Astro.url.pathname;
-const allPath = type === "works" ? "/" : `/${type}`;
-const allIsActive = currentPath === allPath;
+const allPath = normalizePath(type === "works" ? "/" : `/${type}`);
+const allIsActive = normalizePath(currentPath) === allPath;
 
 const categoryMap = {
   works: WorksCategory,
@@ -23,7 +23,7 @@ const categoryMap = {
 const categories = Object.values(categoryMap[type]);
 
 const isActive = (category: string) => {
-  return currentPath.includes(category.toLowerCase());
+  return normalizePath(currentPath).includes(category.toLowerCase());
 };
 ---
 

@@ -41,7 +41,9 @@ const routeBuckets = {
 };
 
 const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
-  return routeBuckets[bucket].some((prefix) => currentPath.startsWith(prefix));
+  return routeBuckets[bucket].some((prefix) =>
+    normalizePath(currentPath).startsWith(normalizePath(prefix)),
+  );
 };
 
 const isExactRouteActive = (url: string): boolean => {
@@ -53,8 +55,10 @@ const isExactRouteActive = (url: string): boolean => {
 
 const isWorksRouteActive = (): boolean => {
   return (
-    currentPath === "/" ||
-    routeBuckets.works.some((prefix) => currentPath.startsWith(prefix))
+    normalizePath(currentPath) === "/" ||
+    routeBuckets.works.some((prefix) =>
+      normalizePath(currentPath).startsWith(normalizePath(prefix)),
+    )
   );
 };
 
@@ -85,13 +89,13 @@ const worksCategories = Object.values(WorksCategory);
     </DropdownMenu>
 
     <NavigationMenuItem
-      href="/writing"
+      href={normalizePath("/writing")}
       label="Writing"
       isActive={isRouteActive("writing")}
     />
 
     <NavigationMenuItem
-      href="/about"
+      href={normalizePath("/about")}
       label="About"
       isActive={isRouteActive("about")}
     />
