@@ -57,8 +57,6 @@
 	--breakpoint-xs: 30rem;
 	--breakpoint-3xl: 120rem;
 	--font-sans: "Switzer", sans-serif;
-	--font-accent: "Switzer", sans-serif;
-	--font-accent-weight: 300;
 }
 
 @layer base {
@@ -74,12 +72,68 @@
 		@apply bg-background text-foreground font-sans;
 	}
 
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-medium;
+	}
+
+	h1 {
+		@apply text-4xl font-medium leading-tight;
+	}
+
+	h2 {
+		@apply text-2xl font-medium leading-snug;
+	}
+
+	h3 {
+		@apply text-xl font-medium;
+	}
+
+	h4 {
+		@apply text-lg font-medium;
+	}
+
+	p {
+		@apply text-base leading-relaxed;
+	}
+
+	p a {
+		@apply text-foreground hover:text-muted-foreground underline decoration-muted-foreground hover:decoration-foreground hover:decoration-2 underline-offset-2 transition-all;
+	}
+
+	blockquote {
+		@apply text-foreground my-12 text-center text-2xl font-medium italic;
+	}
+
+	code {
+		@apply bg-muted px-1 py-0.5 rounded text-sm;
+	}
+
+	pre {
+		@apply bg-muted p-4 rounded my-6 overflow-x-auto text-sm;
+	}
+
 	img {
 		@apply bg-muted;
 	}
 
+	hr {
+		@apply border-muted border-t my-8;
+	}
+
+	strong {
+		@apply font-semibold;
+	}
+
+	.link-subtle {
+		@apply text-muted-foreground hover:text-foreground/80 transition-colors duration-200;
+	}
+
 	.font-accent {
-		font-family: var(--font-accent);
-		font-weight: var(--font-accent-weight);
+		@apply font-light;
 	}
 }

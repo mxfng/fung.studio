@@ -1,6 +1,6 @@
 @layer base {
 	.prose {
-		@apply text-foreground max-w-none text-base leading-relaxed;
+		@apply max-w-none leading-relaxed;
 	}
 
 	/* Narrow max-width for body content */
@@ -12,23 +12,23 @@
 	.prose ul,
 	.prose ol,
 	.prose hr {
-		@apply max-w-screen-sm mx-auto;
+		@apply mx-auto max-w-screen-sm;
 	}
 
 	.prose h1 {
-		@apply mb-4 text-4xl font-bold leading-tight;
+		@apply mb-4;
 	}
 
 	.prose h2 {
-		@apply mt-10 mb-4 text-2xl font-semibold leading-snug;
+		@apply mt-10 mb-4;
 	}
 
 	.prose h3 {
-		@apply mt-8 mb-2 text-xl font-medium;
+		@apply mt-8 mb-2;
 	}
 
 	.prose h4 {
-		@apply mt-6 mb-2 text-lg font-medium;
+		@apply mt-6 mb-2;
 	}
 
 	.prose p {
@@ -38,10 +38,6 @@
 	.prose p + h1,
 	.prose p + h2 {
 		@apply mt-16;
-	}
-
-	.prose a {
-		@apply text-primary underline underline-offset-2 transition-colors hover:text-primary-foreground;
 	}
 
 	.prose ul,
@@ -64,10 +60,6 @@
 		@apply my-1;
 	}
 
-	.prose blockquote {
-		@apply my-12 text-center text-2xl italic text-foreground font-medium;
-	}
-
 	.prose blockquote p::before {
 		content: open-quote;
 	}
@@ -80,27 +72,15 @@
 		@apply max-w-screen-md leading-normal;
 	}
 
-	.prose code {
-		@apply rounded bg-muted px-1 py-0.5 text-sm;
-	}
-
 	.prose pre {
-		@apply my-6 rounded bg-muted p-4 overflow-x-auto text-sm;
+		@apply bg-muted my-6 overflow-x-auto rounded p-4 text-sm;
 	}
 
 	.prose img {
-		@apply my-12 mx-auto max-w-screen-md rounded-lg;
+		@apply mx-auto my-12 max-w-screen-md rounded-lg;
 	}
 
 	.prose p:has(> img:only-child) {
 		@apply max-w-none;
-	}
-
-	.prose strong {
-		@apply font-semibold;
-	}
-
-	.prose hr {
-		@apply my-10 border-t border-muted;
 	}
 }
