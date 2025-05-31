@@ -8,12 +8,13 @@ import WritingGrid from "@/components/writing/writing-grid.astro";
 import Wrapper from "@/components/ui/wrapper.astro";
 import Section from "@/components/ui/section.astro";
 import Manifesto from "../components/manifesto.astro";
+import Button from "@/components/ui/button.astro";
 
 const works = await getWorks();
 const formattedWorks = formatCollection<"works">(works, {
 	sortBy: "date",
 	sortOrder: "desc",
-	maxItems: 2,
+	maxItems: 4,
 });
 
 const latestWorks = formattedWorks;
@@ -22,28 +23,38 @@ const writings = await getWritings();
 const latestWritings = formatCollection<"writing">(writings, {
 	sortBy: "date",
 	sortOrder: "desc",
-	maxItems: 3,
+	maxItems: 6,
 });
 ---
 
 <Layout size="wide">
 	<Landing />
 	<div class="w-full space-y-28">
-		<div class="mx-auto flex max-w-screen-2xl flex-col">
-			<div class="mb-10 flex flex-row items-baseline justify-between">
+		<div class="mx-auto flex max-w-screen-2xl flex-col gap-10">
+			<div class="flex flex-row items-baseline justify-between">
 				<h3>Latest works</h3>
 				<a href="/works" class="link-subtle-foreground text-sm">View all</a>
 			</div>
 			<WorksGrid works={latestWorks} maxColumns={2} />
+			<div class="mx-auto w-fit">
+				<a href="/works">
+					<Button size="lg"> View all </Button>
+				</a>
+			</div>
 		</div>
-		<div class="mx-auto flex max-w-screen-2xl flex-col">
-			<div class="mb-10 flex flex-row items-baseline justify-between">
+		<div class="mx-auto flex max-w-screen-2xl flex-col gap-10">
+			<div class="flex flex-row items-baseline justify-between">
 				<h3>Latest writing</h3>
 				<a href="/writing" class="link-subtle-foreground text-sm">View all</a>
 			</div>
 			<WritingGrid writings={latestWritings} />
+			<div class="mx-auto w-fit">
+				<a href="/writing">
+					<Button size="lg"> View all </Button>
+				</a>
+			</div>
 		</div>
-		<div class="mx-auto flex max-w-screen-2xl flex-col">
+		<div class="mx-auto flex max-w-screen-2xl flex-col gap-10">
 			<Wrapper class="py-10">
 				<Section label="Manifesto" align="center">
 					<Manifesto />
