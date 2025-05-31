@@ -1,59 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useMotionValue, animate } from "motion/react";
+import { motion } from "motion/react";
 import Morph from "./morph";
-import { PATHS } from "./morph/path-data";
+import { useHarmony } from "./use-harmony";
+import { SQUARE, TRIANGLE } from "./morph/path-data";
+import { FadeIn } from "./fade-in";
 
-export default function LayeredPathMorphing() {
-	const progress = useMotionValue(0);
-	const [index, setIndex] = useState(0);
-	const [isAnimating, setIsAnimating] = useState(false);
-	const [hasInitialAnimation, setHasInitialAnimation] = useState(false);
-
-	const startAnimation = () => {
-		if (isAnimating) return;
-		setIsAnimating(true);
-		setIndex(1);
-		progress.set(0);
-	};
-
-	// Initial animation on page load
-	useEffect(() => {
-		if (!hasInitialAnimation) {
-			setHasInitialAnimation(true);
-			startAnimation();
-		}
-	}, [hasInitialAnimation]);
-
-	useEffect(() => {
-		if (!isAnimating) return;
-
-		const morphAnim = animate(progress, index, {
-			duration: 1.5,
-			ease: "easeInOut",
-			onComplete: () => {
-				setTimeout(() => {
-					const next = (index + 1) % PATHS.outline.length;
-					if (next === 0) {
-						setIsAnimating(false);
-					} else {
-						setIndex(next);
-					}
-				}, 500);
-			},
-		});
-
-		return () => {
-			morphAnim.stop();
-		};
-	}, [index, progress, isAnimating]);
+export default function Harmony() {
+	const { progress } = useHarmony();
 
 	return (
-		<div className="h-full w-full" onClick={startAnimation}>
+		<div className="grid h-full w-full grid-cols-2 grid-rows-2 items-center justify-center gap-4">
+			<FadeIn delay={2000}>
+				<div className="absolute inset-0">
+					<svg width="100%" height="100%" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+						<g transform="translate(-22.5 0.8)">
+							<motion.path stroke="#ffffff" d={TRIANGLE} className="fill-none" />
+						</g>
+					</svg>
+				</div>
+			</FadeIn>
 			{(["outline", "center", "left", "right"] as const).map((type) => (
 				<Morph key={type} type={type} progress={progress} />
 			))}
+			<FadeIn delay={3000}>
+				<div className="absolute inset-0">
+					<svg width="100%" height="100%" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
+						<g transform="translate(28.5 0.8)">
+							<motion.path stroke="#ffffff" d={SQUARE} className="fill-none" />
+						</g>
+					</svg>
+				</div>
+			</FadeIn>
 		</div>
 	);
 }

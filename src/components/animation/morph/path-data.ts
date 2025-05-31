@@ -33,4 +33,10 @@ export const PATHS = {
 	],
 };
 
+export const TRIANGLE =
+	"M10.46,1.19l8.54,19.98H1.92L10.46,1.19ZM10.53,1.68v19.1M10.53,11.14l7.26,7.26M10.53,11.14l-7.73,7.88";
+
+export const SQUARE =
+	"M1.2,1.92h18.53v18.53H1.2V1.92ZM10.44,2.18v18.25M19.72,20.45l-9.29-9.31M1.32,20.25l9.12-9.11";
+
 export const COLORS = ["#ffffff", "#ffffff", "#fff312", "#ff0088", "#dd00ee", "#ffffff"];

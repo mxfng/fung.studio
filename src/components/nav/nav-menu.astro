@@ -52,26 +52,13 @@ const isExactRouteActive = (url: string): boolean => {
 	return normalizePath(currentPath).toLowerCase() === normalizePath(url).toLowerCase();
 };
 
-const isWorksRouteActive = (): boolean => {
-	return (
-		normalizePath(currentPath) === "/" ||
-		routeBuckets.works.some((prefix) =>
-			normalizePath(currentPath).startsWith(normalizePath(prefix)),
-		)
-	);
-};
-
 const worksCategories = Object.values(WorksCategory);
 ---
 
 <nav class="w-full">
 	<ul class="flex items-center justify-between gap-0 md:gap-4">
-		<DropdownMenu
-			triggerLabel="Works"
-			menuId="works-menu"
-			isActive={isWorksRouteActive() || isExactRouteActive("/")}
-		>
-			<NavigationMenuItem href="/" isActive={isExactRouteActive("/")}>
+		<DropdownMenu triggerLabel="Works" menuId="works-menu" isActive={isRouteActive("works")}>
+			<NavigationMenuItem href="/works" isActive={isExactRouteActive("/works")}>
 				All works
 			</NavigationMenuItem>
 			{

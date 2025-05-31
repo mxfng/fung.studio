@@ -24,7 +24,7 @@ export default function PathMorphing({ type, progress: external }: PathMorphingP
 		<svg
 			width="100%"
 			height="100%"
-			className="absolute inset-0"
+			className="absolute inset-0 z-10"
 			viewBox="0 0 24 24"
 			preserveAspectRatio="xMidYMid meet"
 		>

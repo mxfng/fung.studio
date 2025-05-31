@@ -12,7 +12,7 @@ interface Props {
 
 const { type } = Astro.props;
 const currentPath = Astro.url.pathname;
-const allPath = normalizePath(type === "works" ? "/" : `/${type}`);
+const allPath = normalizePath(type === "works" ? "/works" : `/${type}`);
 const allIsActive = normalizePath(currentPath) === allPath;
 
 const categoryMap = {
