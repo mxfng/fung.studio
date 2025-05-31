@@ -158,7 +158,15 @@
 		@apply text-muted-foreground hover:text-foreground/80 transition-colors duration-200;
 	}
 
+	.link-subtle-foreground {
+		@apply text-foreground hover:text-foreground/80 transition-colors duration-200;
+	}
+
 	.font-accent {
 		@apply font-light;
+	}
+
+	.font-manifesto {
+		@apply text-center text-2xl font-light;
 	}
 }

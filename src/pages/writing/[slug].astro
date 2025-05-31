@@ -5,6 +5,7 @@ import WritingSummary from "@/components/writing/writing-summary.astro";
 import WritingFooter from "@/components/writing/writing-footer.astro";
 import { getWritings } from "@/lib/get-collection";
 import { getPrevNext } from "@/lib/get-prev-next";
+import Wrapper from "@/components/ui/wrapper.astro";
 
 export async function getStaticPaths() {
 	const writings = await getWritings();
@@ -35,11 +36,11 @@ const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
 			</div>
 		</article>
 
-		<footer class="bg-muted text-muted-foreground rounded-lg border p-6">
+		<Wrapper>
 			<div class="mx-auto max-w-screen-sm">
 				<WritingFooter />
 			</div>
-		</footer>
+		</Wrapper>
 
 		{
 			(prevEntry || nextEntry) && (

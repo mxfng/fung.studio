@@ -1,0 +1,13 @@
+---
+interface Props {
+	class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<footer class:list={["bg-muted text-muted-foreground rounded-lg border p-6", className]}>
+	<div class="mx-auto max-w-screen-2xl">
+		<slot />
+	</div>
+</footer>
