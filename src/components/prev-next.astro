@@ -21,7 +21,7 @@ const { prev, next } = Astro.props;
 	{
 		prev ? (
 			<a href={prev.href}>
-				<Button class="w-full md:w-auto">
+				<Button class="w-full md:w-auto" size="lg">
 					<ArrowLeft class="h-6 w-6" />
 					<span class="line-clamp-1 text-sm md:text-base">{prev.label}</span>
 				</Button>
@@ -34,7 +34,7 @@ const { prev, next } = Astro.props;
 	{
 		next ? (
 			<a href={next.href}>
-				<Button class="w-full md:w-auto">
+				<Button class="w-full md:w-auto" size="lg">
 					<span class="line-clamp-1 text-sm md:text-base">{next.label}</span>
 					<ArrowRight class="h-6 w-6" />
 				</Button>

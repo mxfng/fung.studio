@@ -126,8 +126,12 @@
 		@apply text-foreground hover:text-muted-foreground decoration-muted-foreground hover:decoration-foreground underline underline-offset-2 transition-all hover:decoration-2;
 	}
 
-	blockquote {
-		@apply text-foreground my-12 text-center text-2xl font-medium;
+		blockquote {
+			@apply text-foreground my-12 text-center font-medium;
+	}
+
+	blockquote p {
+		@apply text-2xl font-medium;
 	}
 
 	blockquote cite {
@@ -167,6 +171,6 @@
 	}
 
 	.font-manifesto {
-		@apply text-center text-2xl font-light;
+		@apply text-center md:text-lg font-light;
 	}
 }

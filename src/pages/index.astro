@@ -7,6 +7,7 @@ import Landing from "@/components/landing.astro";
 import WritingGrid from "@/components/writing/writing-grid.astro";
 import Wrapper from "@/components/ui/wrapper.astro";
 import Section from "@/components/ui/section.astro";
+import Manifesto from "../components/manifesto.astro";
 
 const works = await getWorks();
 const formattedWorks = formatCollection<"works">(works, {
@@ -45,50 +46,7 @@ const latestWritings = formatCollection<"writing">(writings, {
 		<div class="mx-auto flex max-w-screen-2xl flex-col">
 			<Wrapper class="py-10">
 				<Section label="Manifesto" align="center">
-					<div class="prose mb-12">
-						<p class="font-manifesto leading-normal">
-							I believe in the power of love, music, and creativity to guide us, heal us, and
-							connect us to a deeper source.
-						</p>
-
-						<p class="font-manifesto leading-normal">
-							I believe in building beautiful, sustainable things — slowly, with care. In
-							craftsmanship, passion, and mastery.
-						</p>
-
-						<p class="font-manifesto leading-normal">
-							I believe in diversity, equity, and community. That we are better together. That all
-							of us are family, on a cosmic and evolutionary scale.
-						</p>
-
-						<p class="font-manifesto leading-normal">
-							I believe in caring for body and mind. Drinking water, taking rest, exercising, and
-							treating ourselves with compassion.
-						</p>
-
-						<p class="font-manifesto leading-normal">
-							I believe in stewarding this planet. In shaping systems that protect and restore
-							what’s finite and precious. In leaving things better than we found them.
-						</p>
-
-						<p class="font-manifesto leading-normal">
-							I believe in knowledge, science, and bold ideas — toward a freer, kinder, more
-							expressive world. In systems that are self-correcting and flexible to change.
-						</p>
-
-						<p class="font-manifesto mt-8 leading-normal">
-							Be kind. Be humble. Be present. Know yourself. Look for the things you see which
-							others cannot. Follow your heart and your gut. Embrace what makes you unique.
-						</p>
-
-						<p class="font-manifesto mt-8 leading-normal">
-							Find something you love to do, and do it every single day.
-						</p>
-
-						<p class="font-manifesto mt-8 leading-normal">
-							The world will be a better place for it.
-						</p>
-					</div>
+					<Manifesto />
 				</Section>
 			</Wrapper>
 		</div>
