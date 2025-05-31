@@ -39,4 +39,4 @@ export const TRIANGLE =
 export const SQUARE =
 	"M1.2,1.92h18.53v18.53H1.2V1.92ZM10.44,2.18v18.25M19.72,20.45l-9.29-9.31M1.32,20.25l9.12-9.11";
 
-export const COLORS = ["#ffffff", "#ffffff", "#fff312", "#ff0088", "#dd00ee", "#ffffff"];
+export const COLORS = ["#ffffff", "#ffffff", "#ff5400", "#ff0054", "#9e0059", "#ffffff"];
