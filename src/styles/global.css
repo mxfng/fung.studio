@@ -127,7 +127,11 @@
 	}
 
 	blockquote {
-		@apply text-foreground my-12 text-center text-2xl font-medium italic;
+		@apply text-foreground my-12 text-center text-2xl font-medium;
+	}
+
+	blockquote cite {
+		@apply text-base font-normal not-italic;
 	}
 
 	code {

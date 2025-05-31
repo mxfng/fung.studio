@@ -1,18 +1,44 @@
 ---
 import WorksGrid from "@/components/works/works-grid.astro";
-import { getWorks } from "@/lib/get-collection";
+import { getWorks, getWritings } from "@/lib/get-collection";
 import { formatCollection } from "@/lib/format-collection";
 import Layout from "@/layouts/layout.astro";
 import Landing from "@/components/landing.astro";
+import WritingGrid from "@/components/writing/writing-grid.astro";
 
 const works = await getWorks();
-const filteredWorks = formatCollection<"works">(works, {
+const formattedWorks = formatCollection<"works">(works, {
 	sortBy: "date",
 	sortOrder: "desc",
+	maxItems: 2,
+});
+
+const latestWorks = formattedWorks;
+
+const writings = await getWritings();
+const latestWritings = formatCollection<"writing">(writings, {
+	sortBy: "date",
+	sortOrder: "desc",
+	maxItems: 3,
 });
 ---
 
 <Layout size="wide">
 	<Landing />
-	<WorksGrid works={filteredWorks} />
+	<div class="w-full space-y-28">
+		<div class="mx-auto flex max-w-screen-2xl flex-col">
+			<div class="mb-10 flex flex-row items-baseline justify-between">
+				<h3>Latest works</h3>
+				<a href="/works" class="text-sm">View all</a>
+			</div>
+			<WorksGrid works={latestWorks} maxColumns={2} />
+		</div>
+		<div class="mx-auto flex max-w-screen-2xl flex-col">
+			<div class="mb-10 flex flex-row items-baseline justify-between">
+				<h3>Latest writing</h3>
+				<a href="/writing" class="text-sm">View all</a>
+			</div>
+			<WritingGrid writings={latestWritings} />
+		</div>
+	</div>
 </Layout>

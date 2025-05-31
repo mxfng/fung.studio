@@ -3,9 +3,17 @@ import Harmony from "./animation/harmony";
 ---
 
 <div
-	class="relative mx-auto mt-16 mb-32 flex w-full flex-col items-center justify-center gap-16 md:mt-32 md:mb-48"
+	class="mx-auto mt-16 mb-32 flex w-full flex-col items-center justify-center gap-16 md:mt-32 md:mb-48"
 >
-	<div id="harmony" class="flex h-28 items-center justify-center md:h-72">
-		<Harmony client:load />
+	<div class="relative w-full">
+		<div id="harmony" class="flex h-28 items-center justify-center md:h-72">
+			<Harmony client:load />
+		</div>
+	</div>
+	<div class="prose">
+		<blockquote>
+			<p class="text-2xl md:text-4xl">The music is not in the notes, but in the silence between.</p>
+			<cite>Wolfgang Amadeus Mozart</cite>
+		</blockquote>
 	</div>
 </div>

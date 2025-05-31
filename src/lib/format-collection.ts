@@ -6,13 +6,14 @@ type FormatOptions<T extends "writing" | "works"> = {
 	sortBy?: "date" | "title";
 	sortOrder?: "asc" | "desc";
 	filterOutFuture?: boolean;
+	maxItems?: number;
 };
 
 function formatCollection<T extends "writing" | "works">(
 	entries: CollectionEntry<T>[],
 	options: FormatOptions<T> = {},
 ): CollectionEntry<T>[] {
-	const { category, sortBy, sortOrder = "desc", filterOutFuture = true } = options;
+	const { category, sortBy, sortOrder = "desc", filterOutFuture = true, maxItems } = options;
 
 	type CategoryType = T extends "writing" ? WritingCategory : WorksCategory;
 
@@ -50,6 +51,11 @@ function formatCollection<T extends "writing" | "works">(
 					return 0;
 			}
 		});
+	}
+
+	// Apply maxItems limit if specified
+	if (maxItems !== undefined && maxItems > 0) {
+		result = result.slice(0, maxItems);
 	}
 
 	return result;

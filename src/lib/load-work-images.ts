@@ -9,12 +9,13 @@ const heroImages = import.meta.glob<{ default: ImageMetadata }>("/src/assets/her
 	eager: true,
 });
 
-function loadWorkImages(slug: string): ImageMetadata[] {
+function loadWorkImages(slug: string, maxItems?: number): ImageMetadata[] {
 	const workPath = `/src/assets/works/${slug}/`;
 	return Object.entries(allImages)
 		.filter(([path]) => path.startsWith(workPath))
 		.map(([, mod]) => mod.default)
-		.sort((a, b) => a.src.localeCompare(b.src));
+		.sort((a, b) => a.src.localeCompare(b.src))
+		.slice(0, maxItems);
 }
 
 function loadFirstWorkImage(slug: string): ImageMetadata | undefined {
