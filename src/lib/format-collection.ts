@@ -1,4 +1,4 @@
-import type { WritingCategory, WorksCategory } from "@/config/categories";
+import type { WritingCategory, WorksCategory } from "@/content/categories";
 import type { CollectionEntry } from "astro:content";
 
 type FormatOptions<T extends "writing" | "works"> = {

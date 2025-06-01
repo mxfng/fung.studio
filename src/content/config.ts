@@ -1,5 +1,5 @@
 import { defineCollection, z } from "astro:content";
-import { WorksCategory, WritingCategory } from "../config/categories";
+import { WorksCategory, WritingCategory } from "./categories";
 
 const worksCollection = defineCollection({
 	type: "content",

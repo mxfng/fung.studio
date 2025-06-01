@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { type Category } from "@/config/categories";
+import { type Category } from "@/content/categories";
 
 function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
