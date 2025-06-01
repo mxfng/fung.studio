@@ -7,6 +7,8 @@ import { cjsInterop } from "vite-plugin-cjs-interop";
 
 import react from "@astrojs/react";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
 	vite: {
@@ -23,6 +25,6 @@ export default defineConfig({
 			},
 		},
 	},
-
-	integrations: [react()],
+	site: "https://maxfung.net",
+	integrations: [react(), sitemap()],
 });
