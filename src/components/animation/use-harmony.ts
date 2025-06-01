@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMotionValue, animate } from "motion/react";
+import type { MotionValue } from "motion/react";
 import { PATHS } from "./morph/path-data";
 
 const SPRING_CONFIG = {
@@ -9,7 +10,7 @@ const SPRING_CONFIG = {
 	mass: 0.5,
 };
 
-export function useHarmony() {
+export function useHarmony(): { progress: MotionValue<number>; startAnimation: () => void } {
 	const progress = useMotionValue(0);
 	const [index, setIndex] = useState(0);
 	const [isAnimating, setIsAnimating] = useState(false);

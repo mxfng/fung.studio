@@ -1,5 +1,6 @@
 import { interpolate } from "flubber";
-import { MotionValue, useTransform } from "motion/react";
+import { useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
 
 export function useFlubber(progress: MotionValue<number>, paths: string[]) {
 	return useTransform(

@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, MotionValue, useMotionValue, useTransform } from "motion/react";
+import { motion, useMotionValue, useTransform } from "motion/react";
+import type { MotionValue } from "motion/react";
 import { useFlubber } from "./use-flubber";
 import { PATHS, COLORS } from "./path-data";
 
