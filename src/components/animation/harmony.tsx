@@ -23,11 +23,7 @@ export default function Harmony() {
 		>
 			<div className="relative h-full w-full">
 				<div className="absolute inset-0 flex items-center justify-center">
-					<svg
-						className="h-full w-full"
-						viewBox="-30.1 0 81 24"
-						preserveAspectRatio="xMidYMid meet"
-					>
+					<svg className="h-full w-full" viewBox="-30 0 85 24" preserveAspectRatio="xMidYMid meet">
 						<motion.g
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}

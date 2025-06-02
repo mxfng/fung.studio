@@ -4,7 +4,7 @@ import { TRIANGLE, SQUARE, CIRCLE } from "./path-data";
 
 export default function StaticHarmony() {
 	return (
-		<svg width="100%" height="100%" viewBox="-15.1 0 51 24" preserveAspectRatio="xMidYMid meet">
+		<svg width="100%" height="100%" viewBox="-14.5 0 54.5 24" preserveAspectRatio="xMidYMid meet">
 			<g transform="translate(-23.8 0.8)">
 				<path stroke="#ffffff" d={TRIANGLE} className="fill-none" />
 			</g>
