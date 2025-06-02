@@ -16,12 +16,12 @@ const ALIGN_CLASSES = {
 };
 ---
 
-<div class="group relative" data-dropdown>
+<div data-dropdown class={cn("group relative", className)}>
 	<slot name="trigger" />
 	<div
 		id={menuId}
 		class={cn(
-			"dropdown-menu absolute top-full mt-4 z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
+			"absolute top-full mt-4 z-50 opacity-0 invisible min-w-full w-[15rem] rounded-lg border bg-background p-2 shadow-lg transition-all duration-200 transform origin-top scale-95",
 			ALIGN_CLASSES[align],
 			"group-hover:opacity-100 group-hover:visible group-hover:scale-100 group-hover:backdrop-blur-md group-hover:shadow-lg",
 			className,

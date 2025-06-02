@@ -1,0 +1,101 @@
+---
+import { cn, normalizePath } from "@/lib/utils";
+import NavMenuItem from "./nav-menu-item.astro";
+import Button from "../ui/button.astro";
+import X from "lucide-static/icons/x.svg";
+
+const currentPath = Astro.url.pathname;
+
+const routeBuckets = {
+	works: ["/works"],
+	writing: ["/writing"],
+	about: ["/about"],
+};
+
+const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
+	return routeBuckets[bucket].some((prefix) =>
+		normalizePath(currentPath).startsWith(normalizePath(prefix)),
+	);
+};
+---
+
+<style>
+	:global(body.menu-open) {
+		overflow: hidden;
+		position: fixed;
+		width: 100%;
+	}
+</style>
+
+<div class="md:hidden">
+	<Button variant="outline" size="default" id="menu-trigger"> Menu </Button>
+
+	<div
+		id="mobile-menu"
+		class="bg-background fixed inset-0 z-50 translate-x-full transition-transform duration-300 ease-in-out"
+	>
+		<div class="flex h-full flex-col items-start justify-center gap-8 px-12 py-24">
+			<div
+				class="bg-accent text-background absolute top-8 right-8 flex aspect-square w-16 cursor-pointer items-center justify-center rounded-full"
+				id="menu-close"
+			>
+				<X class="h-12 w-12" />
+			</div>
+			<NavMenuItem href="/" class={cn(currentPath === "/" && "active")} size="lg">
+				Home
+			</NavMenuItem>
+			<NavMenuItem
+				href={normalizePath("/works")}
+				class={cn(isRouteActive("works") && "active")}
+				size="lg"
+			>
+				Works
+			</NavMenuItem>
+			<NavMenuItem
+				href={normalizePath("/writing")}
+				class={cn(isRouteActive("writing") && "active")}
+				size="lg"
+			>
+				Writing
+			</NavMenuItem>
+			<NavMenuItem
+				href={normalizePath("/about")}
+				class={cn(isRouteActive("about") && "active")}
+				size="lg"
+			>
+				About
+			</NavMenuItem>
+		</div>
+	</div>
+</div>
+
+<script>
+	const menu = document.getElementById("mobile-menu");
+	const trigger = document.getElementById("menu-trigger");
+	const close = document.getElementById("menu-close");
+	let scrollPosition = 0;
+
+	trigger?.addEventListener("click", () => {
+		scrollPosition = window.scrollY;
+		menu?.classList.remove("translate-x-full");
+		document.body.classList.add("menu-open");
+		document.body.style.top = `-${scrollPosition}px`;
+	});
+
+	close?.addEventListener("click", () => {
+		menu?.classList.add("translate-x-full");
+		document.body.classList.remove("menu-open");
+		document.body.style.top = "";
+		window.scrollTo(0, scrollPosition);
+	});
+
+	// Close menu when clicking a link
+	menu?.querySelectorAll("a").forEach((link) => {
+		link.addEventListener("click", () => {
+			menu?.classList.add("translate-x-full");
+			document.body.classList.remove("menu-open");
+			document.body.style.top = "";
+			window.scrollTo(0, scrollPosition);
+		});
+	});
+</script>

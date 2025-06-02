@@ -1,25 +1,23 @@
 ---
 import PaddingX from "@/components/util/padding-x.astro";
-import NavMenu from "./nav-menu.astro";
 import DropdownMenu from "../ui/dropdown-menu.astro";
 import DropdownMenuTrigger from "@/components/ui/dropdown-menu-trigger.astro";
 import DropdownMenuContent from "../ui/dropdown-menu-content.astro";
 import ContactLinks from "../ui/contact-links.astro";
 import Button from "../ui/button.astro";
+import Nav from "./nav.astro";
 ---
 
-<nav class="bg-background fixed top-0 right-0 left-0 z-50">
+<nav class="bg-background fixed inset-x-0 top-0 z-50 h-14 py-2 md:h-20 md:py-0">
 	<PaddingX>
-		<div
-			class="flex w-full flex-row items-center gap-4 md:items-center md:justify-between md:gap-8 md:py-4 lg:gap-24"
-		>
+		<div class="flex w-full items-center gap-4 md:justify-between md:gap-8 md:py-4 lg:gap-24">
 			<a href="/" class="w-28">
 				<h1 class="text-xl font-medium tracking-tight md:text-2xl">Max Fung</h1>
 			</a>
-			<div class="flex flex-1 items-center justify-end md:justify-center">
-				<NavMenu currentPath={Astro.url.pathname} />
+			<div class="flex flex-1 justify-end md:justify-center">
+				<Nav />
 			</div>
-			<div class="hidden w-28 justify-end md:flex">
+			<div class="hidden justify-end md:flex md:w-28">
 				<DropdownMenu menuId="contact-menu" align="right">
 					<DropdownMenuTrigger slot="trigger" menuId="contact-menu">
 						<Button class="text-sm md:text-base">Contact</Button>

@@ -48,7 +48,7 @@ const pageTitle = title ? `${title} - Max Fung` : "Max Fung";
 	<body class="overflow-x-hidden">
 		<div class="flex min-h-dvh flex-col">
 			<Navbar />
-			<main class="flex flex-1 flex-col md:mt-18">
+			<main class="mt-14 flex flex-1 flex-col md:mt-20">
 				<PaddingX
 					class={cn("flex flex-1 flex-col pt-12 pb-42", size === "default" && "max-w-screen-2xl")}
 				>
@@ -57,6 +57,5 @@ const pageTitle = title ? `${title} - Max Fung` : "Max Fung";
 			</main>
 			<Footer />
 		</div>
-		<script src="/scripts/dropdown-controller.js" type="module"></script>
 	</body>
 </html>
