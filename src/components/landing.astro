@@ -7,7 +7,7 @@ import StaticHarmony from "./animation/static-harmony";
 ---
 
 <div
-	class="relative mx-auto -mt-12 flex min-h-[50vh] w-full flex-col items-center justify-center gap-8 overflow-visible py-12 md:mt-0 md:mb-28 md:gap-12 md:px-8 lg:px-12"
+	class="relative mx-auto -mt-8 flex min-h-[40vh] w-full flex-col items-center justify-center gap-6 overflow-visible py-8 md:mt-0 md:mb-20 md:gap-8 md:px-6 lg:px-8"
 >
 	<div
 		class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-visible"
@@ -16,14 +16,14 @@ import StaticHarmony from "./animation/static-harmony";
 			<Harmony client:load />
 		</div>
 	</div>
-	<div class="animate-fade-in absolute inset-0 z-10 p-4 md:p-8 lg:p-12" style="--delay: 6.5s">
+	<div class="animate-fade-in absolute inset-0 z-10 p-3 md:p-6 lg:p-8" style="--delay: 6.5s">
 		<TextTrail client:load />
 	</div>
 	<div
-		class="animate-fade-in relative mx-auto flex max-w-5xl flex-col items-center"
+		class="animate-fade-in relative mx-auto flex max-w-screen-2xl flex-col items-center"
 		style="--delay: 5.5s"
 	>
-		<div class="mb-8 h-28 w-full md:mb-12 md:h-40 lg:h-64">
+		<div class="mb-6 h-24 w-full md:mb-8 md:h-32 lg:h-48">
 			<StaticHarmony client:load />
 		</div>
 		<HeroText client:load />

@@ -40,7 +40,7 @@ export default function HeroText() {
 			variants={container}
 			initial="hidden"
 			animate="show"
-			className="pointer-events-none text-center text-2xl font-medium tracking-tight md:text-4xl lg:text-5xl xl:text-6xl"
+			className="pointer-events-none text-center text-2xl font-medium tracking-tight md:text-4xl xl:text-5xl"
 			onAnimationComplete={() => {
 				document.querySelector("h1")?.classList.remove("pointer-events-none");
 			}}
