@@ -1,37 +1,67 @@
 "use client";
 
-import { motion } from "motion/react";
-import Morph from "./morph";
+import { motion, useTransform } from "motion/react";
 import { useHarmony } from "./use-harmony";
-import { SQUARE, TRIANGLE } from "./morph/path-data";
-import { FadeIn } from "./fade-in";
+import { SQUARE, TRIANGLE, PATHS, COLORS } from "./path-data";
+import { useFlubber } from "./morph/use-flubber";
 
 export default function Harmony() {
 	const { progress } = useHarmony();
 
 	return (
-		<div className="grid h-full w-full grid-cols-2 grid-rows-2 items-center justify-center gap-4">
-			<FadeIn delay={2000}>
-				<div className="absolute inset-0">
-					<svg width="100%" height="100%" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-						<g transform="translate(-22.5 0.8)">
+		<motion.div
+			className="h-full w-full"
+			initial={{ opacity: 1 }}
+			animate={{ opacity: 0 }}
+			transition={{
+				opacity: {
+					duration: 0.5,
+					delay: 4.5,
+					ease: "easeOut",
+				},
+			}}
+		>
+			<div className="relative h-full w-full">
+				<div className="absolute inset-0 flex items-center justify-center">
+					<svg
+						className="h-full w-full"
+						viewBox="-30.1 0 81 24"
+						preserveAspectRatio="xMidYMid meet"
+					>
+						<motion.g
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 1.5, delay: 2, ease: "easeOut" }}
+							transform="translate(-23.8 0.8)"
+						>
 							<motion.path stroke="#ffffff" d={TRIANGLE} className="fill-none" />
-						</g>
-					</svg>
-				</div>
-			</FadeIn>
-			{(["outline", "center", "left", "right"] as const).map((type) => (
-				<Morph key={type} type={type} progress={progress} />
-			))}
-			<FadeIn delay={3000}>
-				<div className="absolute inset-0">
-					<svg width="100%" height="100%" viewBox="0 0 24 24" preserveAspectRatio="xMidYMid meet">
-						<g transform="translate(28.5 0.8)">
+						</motion.g>
+						{(["outline", "center", "left", "right"] as const).map((type) => {
+							const paths = PATHS[type];
+							const stroke = useTransform(
+								progress,
+								paths.map((_, i) => i),
+								COLORS,
+							);
+							const d = useFlubber(progress, paths);
+
+							return (
+								<g key={type} transform="translate(0 0.8)">
+									<motion.path stroke={stroke} className="fill-none" d={d} />
+								</g>
+							);
+						})}
+						<motion.g
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							transition={{ duration: 1.5, delay: 3, ease: "easeOut" }}
+							transform="translate(27.5 0.8)"
+						>
 							<motion.path stroke="#ffffff" d={SQUARE} className="fill-none" />
-						</g>
+						</motion.g>
 					</svg>
 				</div>
-			</FadeIn>
-		</div>
+			</div>
+		</motion.div>
 	);
 }

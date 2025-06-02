@@ -41,12 +41,15 @@ const TRAIL_LIFESPAN_MS = 10000;
 const CLEANUP_INTERVAL_MS = 500;
 const TRAIL_MAX_LENGTH = 100;
 const FADE_DURATION_SEC = 2.5;
+const BASE_OPACITY = 0.05;
+const OPACITY_DECREASE = 0.005;
 
 interface TrailItem {
 	id: number;
 	text: string;
 	x: number;
 	y: number;
+	opacity: number;
 }
 
 export default function TextTrail() {
@@ -92,10 +95,16 @@ export default function TextTrail() {
 				lastEmit.current = now;
 				lastPos.current = { x, y };
 
-				setTrail((prev) => [
-					...prev.slice(Math.max(0, prev.length - (TRAIL_MAX_LENGTH - 1))),
-					{ id: now, text: STRINGS[index], x, y },
-				]);
+				setTrail((prev) => {
+					const newTrail = [...prev];
+					newTrail.forEach((item) => {
+						item.opacity = Math.max(0, item.opacity - OPACITY_DECREASE);
+					});
+					return [
+						...newTrail.slice(Math.max(0, newTrail.length - (TRAIL_MAX_LENGTH - 1))),
+						{ id: now, text: STRINGS[index], x, y, opacity: BASE_OPACITY },
+					];
+				});
 				setIndex((i) => (i + 1) % STRINGS.length);
 			}
 		};
@@ -119,13 +128,13 @@ export default function TextTrail() {
 			<div
 				ref={overlayRef}
 				className={`pointer-events-none absolute inset-0 z-20 transition-opacity duration-500 ${
-					isActive ? "opacity-20" : "opacity-0"
+					isActive ? "opacity-100" : "opacity-0"
 				}`}
 			>
 				{trail.map((item) => (
 					<motion.div
 						key={item.id}
-						initial={{ opacity: 1 }}
+						initial={{ opacity: item.opacity }}
 						animate={{ opacity: 0 }}
 						transition={{ duration: FADE_DURATION_SEC, ease: "easeOut" }}
 						style={{

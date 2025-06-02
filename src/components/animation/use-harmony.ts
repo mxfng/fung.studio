@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMotionValue, animate } from "motion/react";
 import type { MotionValue } from "motion/react";
-import { PATHS } from "./morph/path-data";
+import { PATHS } from "./path-data";
 
 const SPRING_CONFIG = {
 	type: "spring" as const,

@@ -2,21 +2,58 @@
 import Harmony from "./animation/harmony";
 import Donate from "./donate.astro";
 import TextTrail from "./animation/text-trail";
+import HeroText from "./animation/hero-text";
+import StaticHarmony from "./animation/static-harmony";
 ---
 
 <div
-	class="mx-auto -mt-12 flex min-h-[60vh] w-full flex-col items-center justify-center gap-6 md:gap-10"
+	class="relative mx-auto -mt-12 flex min-h-[50vh] w-full flex-col items-center justify-center gap-8 overflow-visible py-12 md:mt-0 md:mb-28 md:gap-12 md:px-8 lg:px-12"
 >
-	<div class="relative w-full">
-		<div
-			id="harmony"
-			class="flex h-24 max-w-full items-center justify-center sm:h-40 md:h-50 lg:h-60 xl:h-80"
-		>
+	<div
+		class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-visible"
+	>
+		<div id="harmony" class="flex h-full w-full items-center justify-center">
 			<Harmony client:load />
 		</div>
-		<div class="absolute inset-0">
-			<TextTrail client:load />
-		</div>
 	</div>
-	<Donate />
+	<div class="animate-fade-in absolute inset-0 z-10 p-4 md:p-8 lg:p-12" style="--delay: 6.5s">
+		<TextTrail client:load />
+	</div>
+	<div
+		class="animate-fade-in relative mx-auto flex max-w-5xl flex-col items-center"
+		style="--delay: 5.5s"
+	>
+		<div class="mb-8 h-28 w-full md:mb-12 md:h-40 lg:h-64">
+			<StaticHarmony client:load />
+		</div>
+		<HeroText client:load />
+	</div>
+	<div
+		class="animate-fade-in relative z-20"
+		style="--delay: 6.2s"
+		onanimationend="this.classList.remove('pointer-events-none')"
+	>
+		<Donate />
+	</div>
 </div>
+
+<style>
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+			transform: translateY(1rem);
+			filter: blur(8px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+			filter: blur(0);
+		}
+	}
+
+	.animate-fade-in {
+		animation: fade-in 0.8s ease-out forwards;
+		animation-delay: var(--delay, 0s);
+		opacity: 0;
+	}
+</style>
