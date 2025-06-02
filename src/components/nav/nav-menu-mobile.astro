@@ -81,6 +81,8 @@ const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
 	const close = document.getElementById("menu-close");
 	let scrollPosition = 0;
 
+	menu?.classList.add("translate-x-full");
+
 	trigger?.addEventListener("click", () => {
 		scrollPosition = window.scrollY;
 		menu?.classList.remove("translate-x-full");
@@ -93,5 +95,13 @@ const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
 		document.body.classList.remove("menu-open");
 		document.body.style.top = "";
 		window.scrollTo(0, scrollPosition);
+	});
+
+	document.addEventListener("visibilitychange", () => {
+		if (document.visibilityState === "hidden") {
+			menu?.classList.add("translate-x-full");
+			document.body.classList.remove("menu-open");
+			document.body.style.top = "";
+		}
 	});
 </script>
