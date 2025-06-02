@@ -3,21 +3,20 @@ import { cn } from "@/lib/utils";
 
 interface Props {
 	href: string;
-
-	isActive?: boolean;
+	class?: string;
 }
 
-const { href, isActive = false } = Astro.props;
+const { href, class: className } = Astro.props;
+const isActive = className?.includes("active");
 ---
 
-<li class="w-full">
-	<a
-		href={href}
-		class={cn(
-			"flex items-center justify-between rounded-md px-1.5 py-1.5 xs:px-3 xs:py-2 gap-1 xs:gap-2 hover:bg-accent/50 hover:text-accent-foreground w-full transition-colors duration-200",
-			isActive && "text-primary hover:text-primary bg-accent hover:bg-accent",
-		)}
-	>
-		<slot />
-	</a>
-</li>
+<a
+	href={href}
+	class={cn(
+		"flex items-center px-2 py-1 text-sm link-subtle-foreground",
+		isActive && "underline",
+		className,
+	)}
+>
+	<slot />
+</a>

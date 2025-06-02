@@ -1,40 +1,12 @@
 ---
-import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
-import { WorksCategory } from "@/content/categories";
-import CircleUserRound from "lucide-static/icons/circle-user-round.svg";
-import DropdownMenu from "@/components/ui/dropdown-menu.astro";
-import DropdownMenuLinks from "@/components/ui/dropdown-menu-link.astro";
-import NavigationMenuItem from "./nav-menu-item.astro";
-import Pencil from "lucide-static/icons/pencil.svg";
+import { cn, normalizePath } from "@/lib/utils";
+import NavMenuItem from "./nav-menu-item.astro";
 
 interface Props {
 	currentPath: string;
 }
 
 const { currentPath } = Astro.props;
-
-const CONTACT_LINKS = [
-	{
-		label: "Email",
-		href: "mailto:max@studiomakai.net",
-		description: "max@studiomakai.net",
-	},
-	{
-		label: "LinkedIn",
-		href: "https://www.linkedin.com/in/maxfung/",
-		description: "in/maxfung",
-	},
-	{
-		label: "Instagram",
-		href: "https://www.instagram.com/fungkadelic/",
-		description: "@fungkadelic",
-	},
-	{
-		label: "GitHub",
-		href: "https://www.github.com/mxfng",
-		description: "mxfng",
-	},
-] as const;
 
 const routeBuckets = {
 	works: ["/works"],
@@ -47,42 +19,16 @@ const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
 		normalizePath(currentPath).startsWith(normalizePath(prefix)),
 	);
 };
-
-const isExactRouteActive = (url: string): boolean => {
-	return normalizePath(currentPath).toLowerCase() === normalizePath(url).toLowerCase();
-};
-
-const worksCategories = Object.values(WorksCategory);
 ---
 
-<nav class="w-full">
-	<ul class="xs:gap-1 flex items-center justify-between gap-2 md:gap-4">
-		<DropdownMenu triggerLabel="Works" menuId="works-menu" isActive={isRouteActive("works")}>
-			<NavigationMenuItem href="/works" isActive={isExactRouteActive("/works")}>
-				All works
-			</NavigationMenuItem>
-			{
-				worksCategories.map((category) => (
-					<NavigationMenuItem
-						href={getCategoryPath(category, "/works")}
-						isActive={isExactRouteActive(getCategoryPath(category, "/works"))}
-					>
-						{capitalize(category)}
-					</NavigationMenuItem>
-				))
-			}
-		</DropdownMenu>
-
-		<NavigationMenuItem href={normalizePath("/writing")} isActive={isRouteActive("writing")}>
-			Writing<Pencil class="h-4 w-4" />
-		</NavigationMenuItem>
-
-		<NavigationMenuItem href={normalizePath("/about")} isActive={isRouteActive("about")}>
-			About<CircleUserRound class="h-4 w-4" />
-		</NavigationMenuItem>
-
-		<DropdownMenu triggerLabel="Contact" menuId="contact-menu" align="right">
-			<DropdownMenuLinks links={CONTACT_LINKS} />
-		</DropdownMenu>
-	</ul>
+<nav class="flex h-full items-center justify-between gap-2 lg:gap-18">
+	<NavMenuItem href={normalizePath("/works")} class={cn(isRouteActive("works") && "active")}>
+		Works
+	</NavMenuItem>
+	<NavMenuItem href={normalizePath("/writing")} class={cn(isRouteActive("writing") && "active")}>
+		Writing
+	</NavMenuItem>
+	<NavMenuItem href={normalizePath("/about")} class={cn(isRouteActive("about") && "active")}>
+		About
+	</NavMenuItem>
 </nav>
