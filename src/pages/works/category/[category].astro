@@ -1,11 +1,9 @@
 ---
 import WorksGrid from "@/components/works/works-grid.astro";
 import { WorksCategory } from "@/content/categories";
-import Layout from "@/layouts/layout.astro";
+import CollectionLayout from "@/layouts/collection-layout.astro";
 import { formatCollection } from "@/lib/format-collection";
 import { getWorks } from "@/lib/get-collection";
-import { capitalize } from "@/lib/utils";
-import X from "lucide-static/icons/x.svg";
 
 export function getStaticPaths() {
 	return Object.values(WorksCategory).map((category) => ({
@@ -22,18 +20,6 @@ const filteredWorks = formatCollection<"works">(works, {
 });
 ---
 
-<Layout title={`${capitalize(category)} - Works`}>
-	<div class="mb-8 flex flex-col gap-8 md:mb-16">
-		<div
-			class="bg-muted text-muted-foreground flex w-fit items-center gap-16 rounded-full px-6 py-3 text-center"
-		>
-			<h3 class="font-accent">{capitalize(category)}</h3>
-			<a href={`/works`} class="hover:text-foreground/80 transition-colors duration-200">
-				<X class="h-4 w-4" />
-			</a>
-		</div>
-		<div class="border-t"></div>
-	</div>
-
+<CollectionLayout type="works" category={category} tag>
 	<WorksGrid works={filteredWorks} />
-</Layout>
+</CollectionLayout>

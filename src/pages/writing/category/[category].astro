@@ -20,6 +20,6 @@ const filteredWritings = formatCollection<"writing">(writings, {
 });
 ---
 
-<CollectionLayout type="writing" category={category}>
+<CollectionLayout type="writing" category={category} selector>
 	<WritingGrid writings={filteredWritings} />
 </CollectionLayout>
