@@ -39,8 +39,6 @@
 	--ring: oklch(0.6 0 0);
 }
 
-
-
 @theme {
 	--breakpoint-xs: 30rem;
 	--font-sans: "Switzer", sans-serif;
