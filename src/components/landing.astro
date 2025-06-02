@@ -3,7 +3,7 @@ import Harmony from "./animation/harmony";
 import Donate from "./donate.astro";
 import TextTrail from "./animation/text-trail";
 import HeroText from "./animation/hero-text";
-import StaticHarmony from "./animation/static-harmony";
+import HarmonyIcons from "./harmony-icons.astro";
 ---
 
 <div
@@ -24,7 +24,7 @@ import StaticHarmony from "./animation/static-harmony";
 		style="--delay: 5.5s"
 	>
 		<div class="mb-6 h-24 w-full md:mb-8 md:h-32 lg:h-48">
-			<StaticHarmony client:load />
+			<HarmonyIcons />
 		</div>
 		<HeroText client:load />
 	</div>
