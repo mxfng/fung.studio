@@ -11,11 +11,14 @@ const words = [
 	{ text: "Designer", muted: false },
 	{ text: "living in", muted: true },
 	{ text: "Los Angeles", muted: false },
-	{ text: ". A collection of my", muted: true, margin: "-ml-[0.2em]" },
-	{ text: "works", muted: false },
-	{ text: "and", muted: true },
-	{ text: "writings", muted: false },
-	{ text: "are shared here.", muted: true },
+	{ text: ". This is my", muted: true, margin: "-ml-[0.2em]" },
+	{ text: " archive of", muted: true },
+	{ text: "work", muted: false },
+	{ text: ",", muted: true, margin: "-ml-[0.2em]" },
+	{ text: "ideas", muted: false },
+	{ text: ", and", muted: true, margin: "-ml-[0.2em]" },
+	{ text: "experiments", muted: false },
+	{ text: ".", muted: true, margin: "-ml-[0.2em]" },
 ];
 
 const container = {
