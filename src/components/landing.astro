@@ -1,6 +1,7 @@
 ---
 import Harmony from "./animation/harmony";
 import Donate from "./donate.astro";
+import TextTrail from "./animation/text-trail";
 ---
 
 <div
@@ -12,6 +13,9 @@ import Donate from "./donate.astro";
 			class="flex h-24 max-w-full items-center justify-center sm:h-40 md:h-50 lg:h-60 xl:h-80"
 		>
 			<Harmony client:load />
+		</div>
+		<div class="absolute inset-0">
+			<TextTrail client:load />
 		</div>
 	</div>
 	<Donate />
