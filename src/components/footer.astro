@@ -1,12 +1,16 @@
 ---
 import PaddingX from "@/components/util/padding-x.astro";
+import SocialLinks from "@/components/social-links.astro";
 ---
 
 <footer class="py-8 text-xs">
 	<PaddingX>
 		<div
-			class="font-accent flex flex-col justify-between gap-6 text-center lg:flex-row lg:text-left"
+			class="font-accent flex flex-col justify-between gap-4 text-center lg:flex-row lg:gap-6 lg:text-left"
 		>
+			<div class="flex justify-center">
+				<SocialLinks />
+			</div>
 			<div>
 				© {new Date().getFullYear()} Max Fung and Studio Makai LLC. All rights reserved
 			</div>

@@ -3,6 +3,7 @@ import { cn, normalizePath } from "@/lib/utils";
 import NavMenuItem from "./nav-menu-item.astro";
 import Button from "../ui/button.astro";
 import X from "lucide-static/icons/x.svg";
+import SocialLinks from "../social-links.astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -34,37 +35,42 @@ const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
 		id="mobile-menu"
 		class="bg-background fixed inset-0 z-50 translate-x-full transition-transform duration-300 ease-in-out"
 	>
-		<div class="flex h-full flex-col items-start justify-center gap-8 px-12 py-24">
+		<div class="relative flex h-full flex-col px-12 py-8">
 			<div
 				class="bg-accent text-background absolute top-8 right-8 flex aspect-square w-16 cursor-pointer items-center justify-center rounded-full"
 				id="menu-close"
 			>
 				<X class="h-12 w-12" />
 			</div>
-			<NavMenuItem href="/" class={cn(currentPath === "/" && "active")} size="lg">
-				Home
-			</NavMenuItem>
-			<NavMenuItem
-				href={normalizePath("/works")}
-				class={cn(isRouteActive("works") && "active")}
-				size="lg"
-			>
-				Works
-			</NavMenuItem>
-			<NavMenuItem
-				href={normalizePath("/writing")}
-				class={cn(isRouteActive("writing") && "active")}
-				size="lg"
-			>
-				Writing
-			</NavMenuItem>
-			<NavMenuItem
-				href={normalizePath("/about")}
-				class={cn(isRouteActive("about") && "active")}
-				size="lg"
-			>
-				About
-			</NavMenuItem>
+			<div class="flex flex-1 items-center">
+				<div class="flex flex-col gap-8">
+					<NavMenuItem href="/" class={cn(currentPath === "/" && "active")} size="lg">
+						Home
+					</NavMenuItem>
+					<NavMenuItem
+						href={normalizePath("/works")}
+						class={cn(isRouteActive("works") && "active")}
+						size="lg"
+					>
+						Works
+					</NavMenuItem>
+					<NavMenuItem
+						href={normalizePath("/writing")}
+						class={cn(isRouteActive("writing") && "active")}
+						size="lg"
+					>
+						Writing
+					</NavMenuItem>
+					<NavMenuItem
+						href={normalizePath("/about")}
+						class={cn(isRouteActive("about") && "active")}
+						size="lg"
+					>
+						About
+					</NavMenuItem>
+				</div>
+			</div>
+			<SocialLinks />
 		</div>
 	</div>
 </div>
@@ -87,15 +93,5 @@ const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
 		document.body.classList.remove("menu-open");
 		document.body.style.top = "";
 		window.scrollTo(0, scrollPosition);
-	});
-
-	// Close menu when clicking a link
-	menu?.querySelectorAll("a").forEach((link) => {
-		link.addEventListener("click", () => {
-			menu?.classList.add("translate-x-full");
-			document.body.classList.remove("menu-open");
-			document.body.style.top = "";
-			window.scrollTo(0, scrollPosition);
-		});
 	});
 </script>

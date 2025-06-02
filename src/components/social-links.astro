@@ -1,0 +1,25 @@
+---
+import { cn } from "@/lib/utils";
+import SOCIAL_LINKS from "@/content/social-links";
+
+interface Props {
+	class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class={cn("flex flex-wrap gap-4", className)}>
+	{
+		SOCIAL_LINKS.map((link) => (
+			<a
+				href={link.href}
+				class="link-subtle text-sm"
+				target={link.href.startsWith("http") ? "_blank" : undefined}
+				rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+			>
+				{link.label}
+			</a>
+		))
+	}
+</div>
