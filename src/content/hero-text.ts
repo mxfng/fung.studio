@@ -18,10 +18,6 @@ export const LANDING_PAGE_HERO_TEXT: HeroTextChunk[] = [
 	{ text: "ideas" },
 	{ text: ", and", muted: true, kernStart: true },
 	{ text: "experiments." },
-	{ text: "A living record of ", muted: true },
-	{ text: "what I've made" },
-	{ text: " and ", muted: true },
-	{ text: "where I'm going." },
 	{ text: " All shared here to ", muted: true },
 	{ text: "inspire you." },
 ];
