@@ -17,4 +17,9 @@ async function getWritings() {
 	});
 }
 
-export { getWorks, getWritings };
+async function getExperiences() {
+	const experiences = await getCollection("experience");
+	return experiences.sort((a, b) => b.data.startDate.getTime() - a.data.startDate.getTime());
+}
+
+export { getWorks, getWritings, getExperiences };

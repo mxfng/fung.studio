@@ -20,7 +20,23 @@ const writingCollection = defineCollection({
 	}),
 });
 
+const experienceCollection = defineCollection({
+	type: "content",
+	schema: z.object({
+		company: z.string(),
+		position: z.string(),
+		startDate: z.string().transform((str) => new Date(str)),
+		endDate: z
+			.string()
+			.transform((str) => new Date(str))
+			.optional(),
+		location: z.string(),
+		logo: z.string(),
+	}),
+});
+
 export const collections = {
 	works: worksCollection,
 	writing: writingCollection,
+	experience: experienceCollection,
 };

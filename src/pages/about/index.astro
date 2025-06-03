@@ -2,9 +2,21 @@
 import { Image } from "astro:assets";
 import avatarImage from "@/assets/images/avatar.webp";
 import avatarImage2 from "@/assets/images/avatar2.jpg";
+import diracLogo from "@/assets/experience/dirac.png";
+import flexeLogo from "@/assets/experience/flexe.png";
+import boeingLogo from "@/assets/experience/boeing.png";
 import Layout from "@/layouts/layout.astro";
 import { ABOUT_PAGE_HERO_TEXT } from "@/content/hero-text";
 import HeroText from "@/components/animation/hero-text";
+import { getExperiences } from "@/lib/get-collection";
+
+const experiences = await getExperiences();
+
+const logos = {
+	Dirac: diracLogo,
+	Flexe: flexeLogo,
+	Boeing: boeingLogo,
+};
 ---
 
 <Layout title="About">
@@ -42,14 +54,53 @@ import HeroText from "@/components/animation/hero-text";
 							I've worked professionally in software since 2021—mostly frontend, architecture, and
 							web platforms for startups and tech companies.
 						</p>
-						<h4>
+						<p>
 							Over the years, I've been lucky to work with thoughtful people on meaningful projects
 							to bring creative and technical ideas to life.
-						</h4>
-						<p>Thanks for stopping by. CV available upon request.</p>
-						<p>— Max</p>
+						</p>
 					</div>
 				</div>
+			</div>
+			<div
+				id="work-experience"
+				class="mt-12 grid w-full gap-8 border-b pb-16 md:grid-cols-2 md:gap-16 md:pb-24"
+			>
+				<div class="grid md:grid-cols-2">
+					<div></div><h2 class="text-4xl font-medium">Work Experience</h2>
+				</div>
+				<div class="space-y-16">
+					{
+						experiences.map((experience) => (
+							<div class="flex flex-col items-start space-y-10">
+								<Image
+									src={logos[experience.data.company as keyof typeof logos]}
+									alt={experience.data.company}
+									class="h-14 w-14"
+								/>
+								<div>
+									<h5>
+										{experience.data.company}, {experience.data.position}
+									</h5>
+									<h5>
+										{experience.data.startDate.getFullYear()} -{" "}
+										{experience.data.endDate ? experience.data.endDate.getFullYear() : "Present"}.{" "}
+										{experience.data.location}
+									</h5>
+								</div>
+								<div class="prose text-muted-foreground -mt-8">
+									<p set:html={experience.rendered?.html} />
+								</div>
+							</div>
+						))
+					}
+				</div>
+			</div>
+			<div class="mt-12 flex w-full flex-col gap-8">
+				<h1 class="text-mega">
+					Thanks for stopping by. If you made it this far, please do not hesitate to reach out. I'm
+					always down to chat.
+				</h1>
+				<p class="w-full text-right">— Max</p>
 			</div>
 		</div>
 	</main>

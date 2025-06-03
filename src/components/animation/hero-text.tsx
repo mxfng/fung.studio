@@ -32,10 +32,7 @@ export default function HeroText({ chunks, delayFadeIn = false, className }: Her
 			variants={containerVariants}
 			initial="hidden"
 			animate="show"
-			className={cn(
-				"pointer-events-none text-2xl font-medium tracking-tight md:text-4xl xl:text-5xl",
-				className,
-			)}
+			className={cn("text-mega pointer-events-none", className)}
 			onAnimationComplete={() => {
 				document.querySelector("h1")?.classList.remove("pointer-events-none");
 			}}

@@ -19,7 +19,7 @@
 		"pre-commit": "bun run tsc:check && bun run lint && bun run format"
 	},
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": [
+		"*.{js,jsx,ts,tsx,astro}": [
 			"eslint --fix",
 			"prettier --write"
 		],

@@ -137,4 +137,8 @@
 	.font-manifesto {
 		@apply text-center font-light md:text-lg;
 	}
+
+	.text-mega {
+		@apply text-2xl font-medium tracking-tight md:text-4xl xl:text-5xl;
+	}
 }
