@@ -1,61 +1,53 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { HeroTextChunk } from "@/content/hero-text";
+import { cn } from "@/lib/utils";
 
-const words = [
-	{ text: "I'm a", muted: true },
-	{ text: "Musician", muted: false },
-	{ text: ",", muted: true, margin: "-ml-[0.2em]" },
-	{ text: "Software Developer", muted: false },
-	{ text: ", and", muted: true, margin: "-ml-[0.2em]" },
-	{ text: "Designer", muted: false },
-	{ text: "living in", muted: true },
-	{ text: "Los Angeles", muted: false },
-	{ text: ". This is my", muted: true, margin: "-ml-[0.2em]" },
-	{ text: " archive of", muted: true },
-	{ text: "work", muted: false },
-	{ text: ",", muted: true, margin: "-ml-[0.2em]" },
-	{ text: "ideas", muted: false },
-	{ text: ", and", muted: true, margin: "-ml-[0.2em]" },
-	{ text: "experiments", muted: false },
-	{ text: ".", muted: true, margin: "-ml-[0.2em]" },
-];
-
-const container = {
-	hidden: { opacity: 0 },
-	show: {
-		opacity: 1,
-		transition: {
-			staggerChildren: 0.2,
-			delayChildren: 3.2,
-		},
-	},
-};
-
-const item = {
+const MOTION_SPAN_VARIANTS = {
 	hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
 	show: { opacity: 1, y: 0, filter: "blur(0px)" },
 };
 
-export default function HeroText() {
+interface HeroTextProps {
+	chunks: HeroTextChunk[];
+	delayFadeIn?: boolean;
+	className?: string;
+}
+
+export default function HeroText({ chunks, delayFadeIn = false, className }: HeroTextProps) {
+	const containerVariants = {
+		hidden: { opacity: 0 },
+		show: {
+			opacity: 1,
+			transition: {
+				staggerChildren: 0.2,
+				delayChildren: delayFadeIn ? 3.2 : 0,
+			},
+		},
+	};
+
 	return (
 		<motion.h1
-			variants={container}
+			variants={containerVariants}
 			initial="hidden"
 			animate="show"
-			className="pointer-events-none text-center text-2xl font-medium tracking-tight md:text-4xl xl:text-5xl"
+			className={cn(
+				"pointer-events-none text-2xl font-medium tracking-tight md:text-4xl xl:text-5xl",
+				className,
+			)}
 			onAnimationComplete={() => {
 				document.querySelector("h1")?.classList.remove("pointer-events-none");
 			}}
 		>
-			{words.map((word, index) => (
+			{chunks.map((chunk, index) => (
 				<motion.span
 					key={index}
-					variants={item}
+					variants={MOTION_SPAN_VARIANTS}
 					transition={{ duration: 0.8, ease: "easeOut" }}
-					className={`${word.muted ? "text-muted-foreground" : ""} ${word.margin || ""}`}
+					className={`${chunk.muted ? "text-muted-foreground" : ""} ${chunk.kernStart && "ml-[-0.2em]"}`}
 				>
-					{word.text}{" "}
+					{chunk.text}{" "}
 				</motion.span>
 			))}
 		</motion.h1>

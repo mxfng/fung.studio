@@ -4,6 +4,7 @@ import Donate from "./donate.astro";
 import TextTrail from "./animation/text-trail";
 import HeroText from "./animation/hero-text";
 import HarmonyIcons from "./harmony-icons.astro";
+import { LANDING_PAGE_HERO_TEXT } from "@/content/hero-text";
 ---
 
 <div
@@ -26,7 +27,7 @@ import HarmonyIcons from "./harmony-icons.astro";
 		<div class="mb-6 h-24 w-full md:mb-8 md:h-32 lg:h-48">
 			<HarmonyIcons />
 		</div>
-		<HeroText client:load />
+		<HeroText client:load chunks={LANDING_PAGE_HERO_TEXT} className="text-center" delayFadeIn />
 	</div>
 	<div
 		class="animate-fade-in relative z-20"
