@@ -18,6 +18,15 @@
 		"deploy:worker": "astro build && bunx wrangler deploy",
 		"pre-commit": "bun run tsc:check && bun run lint && bun run format"
 	},
+	"lint-staged": {
+		"*.{js,jsx,ts,tsx}": [
+			"eslint --fix",
+			"prettier --write"
+		],
+		"*.{json,md,css}": [
+			"prettier --write"
+		]
+	},
 	"dependencies": {
 		"@astrojs/react": "^4.3.0",
 		"@astrojs/sitemap": "^3.4.0",
@@ -28,6 +37,7 @@
 		"class-variance-authority": "^0.7.1",
 		"clsx": "^2.1.1",
 		"flubber": "^0.4.2",
+		"lint-staged": "^16.1.0",
 		"lucide-static": "^0.511.0",
 		"motion": "^12.15.0",
 		"react": "^19.1.0",
