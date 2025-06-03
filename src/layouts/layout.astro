@@ -40,12 +40,12 @@ const pageTitle = title ? `${title} - Max Fung` : "Max Fung";
 		href="/fonts/switzer/Switzer-Variable.woff2"
 		as="font"
 		type="font/woff2"
-		crossorigin
+		crossorigin="anonymous"
 	/>
 	<meta name="generator" content={Astro.generator} />
 	<title>{pageTitle}</title>
 
-	<body class="flex min-h-dvh flex-col">
+	<body class="flex min-h-dvh flex-col font-sans">
 		<Navbar />
 		<main class="mt-14 flex flex-1 flex-col md:mt-20">
 			<PaddingX
