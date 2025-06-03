@@ -11,7 +11,11 @@ interface Props {
 	size?: "default" | "lg";
 }
 
-const { title, description = "A collection of works", size = "default" } = Astro.props;
+const {
+	title,
+	description = "This is my archive of work, ideas, and experiments. A living record of what I've made and where I'm going.",
+	size = "default",
+} = Astro.props;
 
 const pageTitle = title ? `${title} - Max Fung` : "Max Fung";
 ---
