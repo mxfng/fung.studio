@@ -1,23 +1,5 @@
----
-import type { collections } from "@/content/config";
-import { capitalize } from "@/lib/utils";
-import X from "lucide-static/icons/x.svg";
-
-type CollectionType = keyof typeof collections;
-
-interface Props {
-	type: CollectionType;
-	category: string;
-}
-
-const { type, category } = Astro.props;
----
-
 <div
-	class="bg-muted text-muted-foreground flex w-fit items-center gap-8 rounded-full px-4 py-2 text-center md:gap-16 md:px-6 md:py-3"
+	class="bg-muted text-muted-foreground flex w-fit items-center gap-8 rounded-full px-4 py-2 text-center text-sm lg:gap-16 lg:px-6 lg:py-3 lg:text-base"
 >
-	<h3 class="font-accent text-sm md:text-base">{capitalize(category)}</h3>
-	<a href={`/${type}`} class="hover:text-foreground/80 transition-colors duration-200">
-		<X class="h-3 w-3 md:h-4 md:w-4" />
-	</a>
+	<slot />
 </div>

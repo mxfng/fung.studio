@@ -17,3 +17,10 @@ export enum WritingCategory {
 }
 
 export type Category = WorksCategory | WritingCategory;
+
+export const CATEGORY_MAP = {
+	works: WorksCategory,
+	writing: WritingCategory,
+} as const;
+
+export type CategoryCollectionType = keyof typeof CATEGORY_MAP;

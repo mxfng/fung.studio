@@ -15,7 +15,7 @@ const heroImage = loadWorkHeroImage(work.slug);
 const image = heroImage || firstImage;
 ---
 
-<div class="group flex flex-col">
+<div class="group space-y-4">
 	<a href={`/works/${work.slug}`} class="space-y-6">
 		{
 			image && (

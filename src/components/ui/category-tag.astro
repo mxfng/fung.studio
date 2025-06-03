@@ -1,0 +1,20 @@
+---
+import type { CategoryCollectionType } from "@/content/categories";
+import { capitalize } from "@/lib/utils";
+import X from "lucide-static/icons/x.svg";
+import Tag from "./tag.astro";
+
+interface Props {
+	type: CategoryCollectionType;
+	category: string;
+}
+
+const { type, category } = Astro.props;
+---
+
+<Tag>
+	<h3>{capitalize(category)}</h3>
+	<a href={`/${type}`} class="hover:text-foreground/80 transition-colors duration-200">
+		<X class="h-3 w-3 md:h-5 md:w-5" />
+	</a>
+</Tag>

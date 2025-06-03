@@ -30,7 +30,7 @@ const latestWritings = formatCollection<"writing">(writings, {
 <Layout size="lg">
 	<Landing />
 	<div class="w-full space-y-28">
-		<div class="mx-auto flex max-w-screen-2xl flex-col gap-10">
+		<div class="mx-auto max-w-screen-2xl space-y-10">
 			<div class="flex flex-row items-baseline justify-between">
 				<h3>Latest works</h3>
 				<a href="/works" class="link-subtle-foreground text-sm">View all</a>
@@ -42,7 +42,7 @@ const latestWritings = formatCollection<"writing">(writings, {
 				</a>
 			</div>
 		</div>
-		<div class="mx-auto flex max-w-screen-2xl flex-col gap-10">
+		<div class="mx-auto max-w-screen-2xl space-y-10">
 			<div class="flex flex-row items-baseline justify-between">
 				<h3>Latest writing</h3>
 				<a href="/writing" class="link-subtle-foreground text-sm">View all</a>
@@ -54,7 +54,7 @@ const latestWritings = formatCollection<"writing">(writings, {
 				</a>
 			</div>
 		</div>
-		<div class="mx-auto flex max-w-screen-2xl flex-col gap-10">
+		<div class="mx-auto max-w-screen-2xl space-y-10">
 			<Wrapper class="py-10">
 				<Section label="Manifesto" align="center">
 					<Manifesto />

@@ -2,14 +2,12 @@
 import Layout from "@/layouts/layout.astro";
 import { capitalize } from "@/lib/utils";
 import CategorySelector from "@/components/ui/category-selector.astro";
-import Tag from "@/components/ui/tag.astro";
-import { collections } from "@/content/config";
 import { cva } from "class-variance-authority";
-
-type CollectionType = keyof typeof collections;
+import type { CategoryCollectionType } from "@/content/categories";
+import CategoryTag from "@/components/ui/category-tag.astro";
 
 interface Props {
-	type: CollectionType;
+	type: CategoryCollectionType;
 	category?: string;
 	selector?: boolean;
 	size?: "default" | "lg";
@@ -20,7 +18,7 @@ const { type, category, selector = false, size = "default", tag = false } = Astr
 
 const displayTitle = category ? `${capitalize(category)} - ${capitalize(type)}` : capitalize(type);
 
-const containerVariants = cva("flex flex-col", {
+const containerVariants = cva("", {
 	variants: {
 		size: {
 			default: "max-w-screen-2xl",
@@ -35,12 +33,12 @@ const containerVariants = cva("flex flex-col", {
 
 <Layout title={displayTitle} size={size}>
 	<div class={containerVariants({ size })}>
-		<div class="mb-8 flex flex-col gap-6 border-b pb-6 md:mb-16 md:border-none md:pb-0">
+		<div class="mb-8 space-y-6 border-b pb-6 md:mb-16 md:border-none md:pb-0">
 			<h1 class="text-3xl font-medium md:text-4xl">
 				{capitalize(type)}
 			</h1>
 			{selector && <CategorySelector type={type} />}
-			{tag && category && <Tag type={type} category={category} />}
+			{tag && category && <CategoryTag type={type} category={category} />}
 		</div>
 		<slot />
 	</div>

@@ -1,13 +1,10 @@
 ---
-import { WorksCategory, WritingCategory } from "@/content/categories";
+import { CATEGORY_MAP, type CategoryCollectionType } from "@/content/categories";
 import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
-import { collections } from "@/content/config";
 import CategorySelectorLink from "./category-selector-link.astro";
 
-type CollectionType = keyof typeof collections;
-
 interface Props {
-	type: CollectionType;
+	type: CategoryCollectionType;
 }
 
 const { type } = Astro.props;
@@ -15,26 +12,21 @@ const currentPath = Astro.url.pathname;
 const allPath = normalizePath(type === "works" ? "/works" : `/${type}`);
 const allIsActive = normalizePath(currentPath) === allPath;
 
-const categoryMap = {
-	works: WorksCategory,
-	writing: WritingCategory,
-} as const;
-
-const categories = Object.values(categoryMap[type]);
+const categories = Object.values(CATEGORY_MAP[type]);
 
 const isActive = (category: string) => {
 	return normalizePath(currentPath).includes(category.toLowerCase());
 };
 ---
 
-<div class="relative">
+<div class="relative -mx-4 max-w-dvw overflow-x-hidden px-4">
 	<!-- Gradient edges -->
 	<div
-		class="from-background pointer-events-none absolute inset-y-0 left-0 z-10 -ml-5 w-5 bg-gradient-to-r to-transparent"
+		class="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-5 bg-gradient-to-r to-transparent"
 	>
 	</div>
 	<div
-		class="from-background pointer-events-none absolute inset-y-0 right-0 z-10 -mr-5 w-5 bg-gradient-to-l to-transparent"
+		class="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-5 bg-gradient-to-l to-transparent"
 	>
 	</div>
 
