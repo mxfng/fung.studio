@@ -20,53 +20,58 @@ const { Content } = await work.render();
 const images = loadWorkImages(work.slug);
 ---
 
-<Layout title={work.data.title}>
+<Layout title={work.data.title} size="lg">
 	<main class="flex flex-1 flex-col gap-16">
-		<article class="space-y-16 md:space-y-24">
+		<div class="space-y-16 md:space-y-24">
 			<header class="mx-auto">
 				<h1 class="text-center text-4xl break-words md:text-6xl xl:text-8xl">
 					{work.data.title}
 				</h1>
 			</header>
-			<div class="mx-auto mb-24 flex w-full max-w-screen-lg flex-col gap-12 xl:flex-row">
-				<header
-					class="mx-auto flex w-full max-w-3xl justify-between gap-16 px-4 xl:mx-0 xl:w-1/4 xl:flex-col xl:justify-start"
-				>
-					<Section label="Categories">
-						<CategoryList
-							categories={work.data.categories}
-							basePath="/works"
-							class="text-xl xl:text-3xl"
-							asLinks={false}
-							commas
-						/>
-					</Section>
-					<Section label="Date">
-						{
-							work.data.date.toLocaleDateString("en-US", {
-								timeZone: "America/Los_Angeles",
-								year: "numeric",
-								month: "long",
-								day: "numeric",
-							})
-						}
-					</Section>
-				</header>
-				<article class="prose -mt-5">
-					<Content />
-				</article>
-			</div>
+			<section class="mx-auto max-w-screen-2xl">
+				<div class="mx-auto mb-24 flex w-full flex-col gap-12 xl:flex-row">
+					<header
+						class="mx-auto flex w-full max-w-3xl justify-between gap-16 px-4 xl:mx-0 xl:w-1/4 xl:flex-col xl:justify-start"
+					>
+						<Section label="Categories">
+							<CategoryList
+								categories={work.data.categories}
+								basePath="/works"
+								class="text-xl xl:text-3xl"
+								asLinks={false}
+								commas
+							/>
+						</Section>
+						<Section label="Date">
+							{
+								work.data.date.toLocaleDateString("en-US", {
+									timeZone: "America/Los_Angeles",
+									year: "numeric",
+									month: "long",
+									day: "numeric",
+								})
+							}
+						</Section>
+					</header>
+					<article
+						class="prose mx-auto -mt-5 max-w-none md:max-w-2/3 [&_h1]:max-w-none [&_h2]:max-w-none [&_h3]:max-w-none [&_h4]:max-w-none [&_hr]:max-w-none [&_ol]:max-w-none [&_p]:max-w-none [&_ul]:max-w-none"
+					>
+						<Content />
+					</article>
+				</div>
+			</section>
 			{
 				images.length > 0 && (
-					<section class="w-full">
+					<section class="mx-auto max-w-screen-2xl">
 						<div class="columns-1 gap-4 space-y-4 md:columns-2">
 							{images.map((img) => (
-								<div class="break-inside-avoid overflow-hidden rounded-2xl">
+								<div class="w-full break-inside-avoid overflow-hidden rounded-2xl">
 									<Image
 										src={img}
 										alt={work.data.title}
 										widths={[400, 800, 1200, 1600, 2400]}
-										sizes="100vw, 50vw"
+										sizes="(min-width: 768px) 50vw, 100vw"
+										class="h-auto w-full"
 									/>
 								</div>
 							))}
@@ -74,7 +79,7 @@ const images = loadWorkImages(work.slug);
 					</section>
 				)
 			}
-		</article>
+		</div>
 		<MoreWorks currentSlug={work.slug} />
 	</main>
 </Layout>
