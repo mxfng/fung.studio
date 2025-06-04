@@ -25,6 +25,6 @@ export default defineConfig({
 			},
 		},
 	},
-	site: "https://maxfung.net",
+	site: "https://fung.studio/",
 	integrations: [react(), sitemap()],
 });
