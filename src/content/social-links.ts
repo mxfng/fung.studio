@@ -7,8 +7,8 @@ interface SocialLink {
 const SOCIAL_LINKS: SocialLink[] = [
 	{
 		label: "Email",
-		href: "mailto:max@studiomakai.net",
-		description: "max@studiomakai.net",
+		href: "mailto:max@fung.studio",
+		description: "max@fung.studio",
 	},
 	{
 		label: "LinkedIn",
