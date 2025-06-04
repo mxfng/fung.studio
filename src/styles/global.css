@@ -141,4 +141,8 @@
 	.text-mega {
 		@apply text-2xl font-medium tracking-tight md:text-4xl xl:text-5xl;
 	}
+
+	.text-ultra {
+		@apply text-4xl font-medium tracking-tight sm:text-4xl md:text-6xl xl:text-7xl;
+	}
 }

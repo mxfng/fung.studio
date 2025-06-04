@@ -36,12 +36,12 @@ const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
 		class="bg-background fixed inset-0 z-50 translate-x-full transition-transform duration-300 ease-in-out"
 	>
 		<div class="relative flex h-full flex-col px-12 py-8">
-			<div
+			<button
 				class="bg-accent text-background absolute top-8 right-8 flex aspect-square w-16 cursor-pointer items-center justify-center rounded-full"
 				id="menu-close"
 			>
 				<X class="h-12 w-12" />
-			</div>
+			</button>
 			<div class="flex flex-1 items-center">
 				<div class="flex flex-col gap-8">
 					<NavMenuItem href="/" class={cn(currentPath === "/" && "active")} size="lg">

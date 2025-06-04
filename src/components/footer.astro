@@ -1,20 +1,24 @@
 ---
 import PaddingX from "@/components/util/padding-x.astro";
 import SocialLinks from "@/components/social-links.astro";
+import LetsConnect from "@/components/connect.astro";
+
+const currentYear = new Date().getFullYear();
 ---
 
-<footer class="py-8 text-xs">
+<footer class="text-xs">
 	<PaddingX>
+		<a href="mailto:max@fung.studio"><LetsConnect /></a>
 		<div
-			class="font-accent flex flex-col justify-between gap-4 text-center lg:flex-row lg:gap-6 lg:text-left"
+			class="font-accent flex h-14 flex-col items-center justify-between border-t text-center md:flex-row md:px-4 lg:flex-row lg:text-left"
 		>
-			<div class="flex justify-center">
+			<h5 class="hidden w-1/4 text-start md:inline-flex">
+				<a href="/">Max Fung (fung.studio)</a>
+			</h5>
+			<div class="h-full w-full flex-1">
 				<SocialLinks />
 			</div>
-			<div>
-				© {new Date().getFullYear()} Max Fung and Studio Makai LLC. All rights reserved
-			</div>
-			<div>Currently — looking for software engineering opportunities</div>
+			<h5 class="hidden w-12 text-end md:block">{currentYear}</h5>
 		</div>
 	</PaddingX>
 </footer>
