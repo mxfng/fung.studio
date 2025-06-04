@@ -1,6 +1,6 @@
-# maxfung.net (v2, 2025)
+# fung.studio
 
-Personal website showcasing works across music, design, and engineering. Built with Astro and Tailwind CSS.
+Personal website showcasing works across music, design, and engineering. Built with Astro and Tailwind CSS, with a sprinkle of React islands.
 
 I wanted to rebuild my personal site to showcase more of my creative work and serve as a de facto home base for all of my creations over the years. I decided to build this site with Astro because I preferred something higher performance and
 content-rich, and also wanted to try out a new framework without leaning so heavily on React all the time. The result is something I am very pleased with. I also wanted to leverage Bun as a package manager and script executer here, although I am not getting the full benefit yet by running this project with Vite.

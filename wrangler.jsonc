@@ -1,6 +1,6 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "mf",
+	"name": "fung.studio",
 	"compatibility_date": "2025-05-24", // Update to today's date
 	"assets": {
 		"directory": "./dist",
