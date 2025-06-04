@@ -6,7 +6,7 @@ import LetsConnect from "@/components/connect.astro";
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="text-xs">
+<footer class="text-sm">
 	<PaddingX>
 		<a href="mailto:max@fung.studio"><LetsConnect /></a>
 		<div
@@ -18,7 +18,7 @@ const currentYear = new Date().getFullYear();
 			<div class="h-full w-full flex-1">
 				<SocialLinks />
 			</div>
-			<h5 class="hidden w-12 text-end md:block">{currentYear}</h5>
+			<h5 class="hidden pl-12 text-end md:block">© {currentYear}</h5>
 		</div>
 	</PaddingX>
 </footer>
