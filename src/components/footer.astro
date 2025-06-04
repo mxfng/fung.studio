@@ -1,16 +1,18 @@
 ---
 import PaddingX from "@/components/util/padding-x.astro";
 import SocialLinks from "@/components/social-links.astro";
-import LetsConnect from "@/components/connect.astro";
+import LetsCollaborate from "@/components/collaborate.astro";
 
 const currentYear = new Date().getFullYear();
 ---
 
 <footer class="text-sm">
 	<PaddingX>
-		<a href="mailto:max@fung.studio"><LetsConnect /></a>
+		<a href="mailto:max@fung.studio" class="block">
+			<LetsCollaborate />
+		</a>
 		<div
-			class="font-accent flex h-14 flex-col items-center justify-between border-t text-center md:flex-row md:px-4 lg:flex-row lg:text-left"
+			class="font-accent flex h-14 flex-row items-center justify-between border-t text-center md:flex-row md:px-4 lg:text-left"
 		>
 			<h5 class="hidden w-1/4 text-start md:inline-flex">
 				<a href="/">Max Fung (fung.studio)</a>
@@ -18,7 +20,10 @@ const currentYear = new Date().getFullYear();
 			<div class="h-full w-full flex-1">
 				<SocialLinks />
 			</div>
-			<h5 class="hidden pl-12 text-end md:block">© {currentYear}</h5>
+			<h5 class="block pl-4 text-end md:pl-12">
+				<span class="text-muted-foreground">©</span>
+				{currentYear}
+			</h5>
 		</div>
 	</PaddingX>
 </footer>

@@ -1,0 +1,16 @@
+---
+import { CIRCLE } from "@/components/animation/path-data";
+
+interface Props {
+	class?: string;
+	strokeWidth?: number;
+}
+
+const { class: className = "w-full h-full", strokeWidth = 1 } = Astro.props;
+---
+
+<div class={className}>
+	<svg class="h-full w-full" viewBox="-1 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path stroke="var(--foreground)" stroke-width={strokeWidth} d={CIRCLE} class="fill-none"></path>
+	</svg>
+</div>

@@ -16,7 +16,7 @@ const { class: className } = Astro.props;
 				href={link.href}
 				target={link.href.startsWith("http") ? "_blank" : undefined}
 				rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-				class={cn("hover:bg-accent/10 h-full w-full", index !== 0 && "border-l")}
+				class={cn("hover:bg-accent/20 h-full w-full", index !== 0 && "border-l")}
 			>
 				<div class="link-subtle flex h-full items-center justify-center">
 					<span class="block md:hidden">{link.short}</span>

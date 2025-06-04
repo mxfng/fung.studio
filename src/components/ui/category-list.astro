@@ -25,7 +25,9 @@ const { categories, basePath, class: className = "", asLinks = true, commas = fa
 						{capitalize(category.trim())}
 					</a>
 				) : (
-					<span>{capitalize(category.trim())}</span>
+					<span class={cn("text-muted-foreground", !commas && "mr-2")}>
+						{capitalize(category.trim())}
+					</span>
 				)}
 				{commas && index < categories.length - 1 && <span class="mr-3 ml-[1px]">, </span>}
 			</span>

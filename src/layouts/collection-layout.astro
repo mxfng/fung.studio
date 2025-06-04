@@ -33,10 +33,7 @@ const containerVariants = cva("", {
 
 <Layout title={displayTitle} size={size}>
 	<div class={containerVariants({ size })}>
-		<div class="mb-8 space-y-6 border-b pb-6 md:mb-16 md:border-none md:pb-0">
-			<h1 class="text-3xl font-medium md:text-4xl">
-				{capitalize(type)}
-			</h1>
+		<div class="mb-8 space-y-6 pb-6 md:mb-16 md:pb-0">
 			{selector && <CategorySelector type={type} />}
 			{tag && category && <CategoryTag type={type} category={category} />}
 		</div>

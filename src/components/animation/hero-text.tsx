@@ -3,6 +3,19 @@
 import { motion } from "framer-motion";
 import type { HeroTextChunk } from "@/content/hero-text";
 import { cn } from "@/lib/utils";
+import { cva } from "class-variance-authority";
+
+const heroTextVariants = cva("pointer-events-none", {
+	variants: {
+		size: {
+			default: "text-mega",
+			lg: "text-ultra",
+		},
+	},
+	defaultVariants: {
+		size: "default",
+	},
+});
 
 const MOTION_SPAN_VARIANTS = {
 	hidden: { opacity: 0, y: 20, filter: "blur(8px)" },
@@ -13,9 +26,10 @@ interface HeroTextProps {
 	chunks: HeroTextChunk[];
 	delayFadeIn?: boolean;
 	className?: string;
+	size?: "default" | "lg";
 }
 
-export default function HeroText({ chunks, delayFadeIn = false, className }: HeroTextProps) {
+export default function HeroText({ chunks, delayFadeIn = false, className, size }: HeroTextProps) {
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		show: {
@@ -32,7 +46,7 @@ export default function HeroText({ chunks, delayFadeIn = false, className }: Her
 			variants={containerVariants}
 			initial="hidden"
 			animate="show"
-			className={cn("text-mega pointer-events-none", className)}
+			className={cn(heroTextVariants({ size }), className)}
 			onAnimationComplete={() => {
 				document.querySelector("h1")?.classList.remove("pointer-events-none");
 			}}
@@ -42,9 +56,9 @@ export default function HeroText({ chunks, delayFadeIn = false, className }: Her
 					key={index}
 					variants={MOTION_SPAN_VARIANTS}
 					transition={{ duration: 0.8, ease: "easeOut" }}
-					className={`${chunk.muted ? "text-muted-foreground" : ""} ${chunk.kernStart && "ml-[-0.2em]"}`}
+					className={cn(chunk.muted && "text-muted-foreground")}
 				>
-					{chunk.text}{" "}
+					{chunk.text}
 				</motion.span>
 			))}
 		</motion.h1>

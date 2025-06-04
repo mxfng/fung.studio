@@ -20,11 +20,11 @@ const logos = {
 };
 ---
 
-<Layout title="About">
+<Layout title="About" size="lg">
 	<main>
-		<div class="flex flex-col gap-16">
-			<HeroText client:load chunks={ABOUT_PAGE_HERO_TEXT} />
-			<section class="grid gap-4 md:min-h-[80vh] md:grid-cols-2">
+		<div class="flex flex-col gap-12">
+			<HeroText client:load chunks={ABOUT_PAGE_HERO_TEXT} size="lg" />
+			<section class="grid gap-4 md:h-[75vh] md:grid-cols-2">
 				<div class="h-full overflow-hidden rounded-xl">
 					<Image src={avatarImage} alt="Background" class="h-full w-full object-cover" />
 				</div>
@@ -32,53 +32,51 @@ const logos = {
 					<Image src={avatarImage2} alt="Background" class="h-full w-full object-cover" />
 				</div>
 			</section>
-			<section class="grid w-full gap-8 border-b pb-16 md:grid-cols-2 md:pb-24">
+			<section class="grid w-full gap-8 border-t pt-4 pb-12 md:pb-16 lg:grid-cols-2">
 				<div class="flex items-start">
-					<p class="pr-12 text-xl font-medium md:text-3xl">
+					<p class="text-mega pr-12">
 						My mediums include songwriting, audio production, digital art, web/mobile development,
 						and branding.
 					</p>
 				</div>
-				<div class="space-y-6 font-light md:space-y-8">
-					<div class="prose mx-auto space-y-4">
-						<p>
-							I run <a href="https://www.studiomakai.net">Studio Makai</a>, a small creative studio
-							in LA focused on projects at the intersection of sound, software, and storytelling.
-						</p>
-						<p>
-							I make music as <a href="https://www.instagram.com/tokomakai/">Toko Makai</a> and <a
-								href="https://www.instagram.com/fungkadelic/">Max Fung</a
-							>, writing and producing for myself and others. I was born into a musical family and
-							basically grew up in the studio.
-						</p>
-						<p>
-							I've worked professionally in software since 2021—mostly frontend, architecture, and
-							web platforms for startups and tech companies.
-						</p>
-						<p>
-							Over the years, I've been lucky to work with thoughtful people on meaningful projects
-							to bring creative and technical ideas to life.
-						</p>
-					</div>
+				<div class="prose space-y-4 font-light [&_p]:mx-0">
+					<p>
+						I run <a href="https://www.studiomakai.net">Studio Makai</a>, a small creative studio in
+						LA focused on projects at the intersection of sound, software, and storytelling.
+					</p>
+					<p>
+						I make music as <a href="https://www.instagram.com/tokomakai/">Toko Makai</a> and <a
+							href="https://www.instagram.com/fungkadelic/">Max Fung</a
+						>, writing and producing for myself and others. I was born into a musical family and
+						basically grew up in the studio.
+					</p>
+					<p>
+						I've worked professionally in software since 2021—mostly frontend, architecture, and web
+						platforms for startups and tech companies.
+					</p>
+					<p>
+						Over the years, I've been lucky to work with thoughtful people on meaningful projects to
+						bring creative and technical ideas to life.
+					</p>
 				</div>
 			</section>
 
 			<section
 				id="in-house-experience"
-				class="mt-12 grid w-full grid-cols-1 gap-16 border-b pb-16 md:grid-cols-2 md:pb-24"
+				class="mt-8 grid w-full grid-cols-1 gap-12 border-t pt-4 pb-12 md:grid-cols-2 md:pb-16"
 			>
 				<div class="relative h-full w-full">
 					<div class="md:sticky md:top-32">
 						<div class="grid gap-4 md:grid-cols-2 md:gap-12">
 							<div><Tag>In-House</Tag></div>
-							<h2 class="text-4xl font-medium">Work Experience</h2>
+							<h2 class="text-2xl font-medium lg:text-3xl">Work Experience</h2>
 						</div>
 					</div>
 				</div>
-				<div class="space-y-16">
+				<div class="space-y-12">
 					{
 						experiences.map((experience) => (
-							<div class="flex flex-col items-start space-y-10">
+							<div class="flex flex-col items-start space-y-8">
 								<Image
 									src={logos[experience.data.company as keyof typeof logos]}
 									alt={experience.data.company}
@@ -94,7 +92,7 @@ const logos = {
 										{experience.data.location}
 									</h5>
 								</div>
-								<div class="prose text-muted-foreground -mt-8">
+								<div class="prose text-muted-foreground -mt-6">
 									<p set:html={experience.rendered?.html} />
 								</div>
 							</div>
@@ -104,21 +102,21 @@ const logos = {
 			</section>
 			<section
 				id="freelance-experience"
-				class="mt-12 grid w-full grid-cols-1 gap-16 border-b pb-16 md:grid-cols-2 md:pb-24"
+				class="mt-8 grid w-full grid-cols-1 gap-12 border-t pt-4 pb-12 md:grid-cols-2 md:pb-16"
 			>
 				<div class="relative h-full w-full">
 					<div class="md:sticky md:top-32">
 						<div class="grid gap-4 md:grid-cols-2 md:gap-12">
 							<div><Tag>Freelance</Tag></div>
-							<h2 class="text-4xl font-medium">Independent Work</h2>
+							<h2 class="pr-4 text-2xl font-medium lg:text-3xl">Independent Work</h2>
 						</div>
 					</div>
 				</div>
-				<div class="space-y-16">
-					<div class="flex flex-col items-start space-y-10">
-						<div class="prose text-muted-foreground -mt-8">
+				<div class="space-y-12">
+					<div class="flex flex-col items-start space-y-8">
+						<div class="prose text-muted-foreground -mt-6">
 							<p>
-								<span class="text-foreground">Songwriting and music production.</span> I’ve created original
+								<span class="text-foreground">Songwriting and music production.</span> I've created original
 								music for major labels, independent artists, and licensing firms across film and television.
 								My work spans lyrics, topline, and full production, with a genre-spanning toolkit shaped
 								by over a decade of experience in pop, electronic, R&B, funk, soul, and hip-hop. Songs
@@ -126,34 +124,29 @@ const logos = {
 								been licensed for use in popular media.
 							</p>
 							<p>
-								<span class="text-foreground">Web/mobile development.</span> I’ve partnered with startups,
+								<span class="text-foreground">Web/mobile development.</span> I've partnered with startups,
 								agencies, and enterprise teams to build websites and apps—from early MVPs to production
 								systems. My background in-house gives me an edge in advising on design systems, software
 								architecture, and cultivating strong engineering practices. With nearly a decade of programming
-								experience, I help teams launch fast. Whether it’s laying foundational code, crafting
+								experience, I help teams launch fast. Whether it's laying foundational code, crafting
 								polished marketing sites, or scaling early-stage engineering efforts.
 							</p>
 							<p>
-								<span class="text-foreground">Graphic design and branding.</span> I’ve delivered visual
+								<span class="text-foreground">Graphic design and branding.</span> I've delivered visual
 								identities, logos, and marketing collateral for nonprofits, universities, and small businesses.
 								My work balances art direction with strategic clarity to help brands express themselves
 								meaningfully and consistently.
 							</p>
-							<div class="prose">
-								<p>
-									<a href="mailto:max@fung.studio"> Let's collaborate. </a>
-								</p>
-							</div>
 						</div>
 					</div>
 				</div>
 			</section>
-			<section class="mt-12 space-y-8">
+			<section class="mt-8 space-y-6">
 				<h1 class="text-mega">
 					Thanks for stopping by. If you made it this far, please do not hesitate to reach out. I'm
 					always down to chat.
 				</h1>
-				<p class="w-full text-right">— Max</p>
+				<p class="w-full pr-12 text-right">— Max</p>
 			</section>
 		</div>
 	</main>

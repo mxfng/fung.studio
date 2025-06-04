@@ -42,4 +42,16 @@ export const SQUARE =
 export const CIRCLE =
 	"M.47,11.19C.47,5.67,4.94,1.19,10.46,1.19s9.99,4.47,9.99,9.99-4.47,9.99-9.99,9.99S.47,16.7.47,11.19ZM10.3,1.19v19.7M10.3,11.14l7.08,7.08M10.3,11.14l-6.75,6.85";
 
-export const COLORS = ["#ffffff", "#ffffff", "#ff5400", "#ff0054", "#9e0059", "#ffffff"];
+const getCssVar = (name: string) => {
+	if (typeof window === "undefined") return "oklch(0.25 0.005 85)"; // Fallback for SSR
+	return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+};
+
+export const COLORS = [
+	getCssVar("--foreground"),
+	getCssVar("--foreground"),
+	"oklch(0.85 0.15 80)",
+	"oklch(0.65 0.2 50)",
+	"oklch(0.55 0.3 0)",
+	getCssVar("--foreground"),
+];

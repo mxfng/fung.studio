@@ -1,15 +1,12 @@
 ---
+import Triangle from "./triangle.astro";
+import Circle from "./circle.astro";
+import Square from "./square.astro";
+import ArrowUpRight from "lucide-static/icons/arrow-up-right.svg";
 import Harmony from "./animation/harmony";
-import Donate from "./donate.astro";
-import TextTrail from "./animation/text-trail";
-import HeroText from "./animation/hero-text";
-import HarmonyIcons from "./harmony-icons.astro";
-import { LANDING_PAGE_HERO_TEXT } from "@/content/hero-text";
 ---
 
-<div
-	class="relative mx-auto -mt-8 flex min-h-[62vh] w-full flex-col items-center justify-center gap-6 overflow-visible py-8 md:mt-0 md:mb-20 md:gap-8 md:px-6 lg:px-8 xl:gap-12"
->
+<div class="relative mb-28 min-h-[30vh]">
 	<div
 		class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center overflow-visible"
 	>
@@ -17,24 +14,51 @@ import { LANDING_PAGE_HERO_TEXT } from "@/content/hero-text";
 			<Harmony client:load />
 		</div>
 	</div>
-	<div class="animate-fade-in absolute inset-0 z-10 p-3 md:p-6 lg:p-8" style="--delay: 6.5s">
-		<TextTrail client:load />
-	</div>
-	<div
-		class="animate-fade-in relative mx-auto flex max-w-screen-2xl flex-col items-center"
-		style="--delay: 5.5s"
-	>
-		<div class="mb-6 h-24 w-full md:mb-8 md:h-32 lg:h-48">
-			<HarmonyIcons />
+	<div class="animate-fade-in space-y-2" style="--delay: 5.5s">
+		<div class="border-b py-2">
+			<div class="grid grid-cols-3">
+				<div class="flex items-center">
+					<Triangle class="w-1/2" strokeWidth={1.5} />
+				</div>
+				<div class="flex items-center">
+					<Circle class="w-1/2" strokeWidth={1.5} />
+				</div>
+				<div class="flex items-center">
+					<Square class="w-1/2" strokeWidth={1.5} />
+				</div>
+			</div>
 		</div>
-		<HeroText client:load chunks={LANDING_PAGE_HERO_TEXT} className="text-center" delayFadeIn />
-	</div>
-	<div
-		class="animate-fade-in relative z-20"
-		style="--delay: 6.2s"
-		onanimationend="this.classList.remove('pointer-events-none')"
-	>
-		<Donate />
+		<div class="text-muted-foreground grid gap-2 text-xs font-light md:grid-cols-3 xl:text-sm">
+			<div class="max-w-3/4">
+				Welcome. I'm a Musician, Software Developer, and Designer living in Los Angeles, California.
+			</div>
+			<div class="max-w-3/4">
+				This is my archive of work thoughts, and ideas. Shared here to inspire you.
+			</div>
+			<div class="flex max-w-3/4 flex-col">
+				<a
+					class="link-subtle inline-flex items-center gap-1"
+					href="https://www.streetsforall.org/donate"
+				>
+					Streets for All
+					<ArrowUpRight class="h-4 w-4" />
+				</a>
+				<a
+					class="link-subtle inline-flex items-center gap-1"
+					href="https://www.nature.org/en-us/membership-and-giving/donate-to-our-mission/"
+				>
+					Wildlife conservation
+					<ArrowUpRight class="h-4 w-4" />
+				</a>
+				<a
+					class="link-subtle inline-flex items-center gap-1"
+					href="https://pcrf1.app.neoncrm.com/forms/udhiyah-campaign-2025"
+				>
+					Support Palestinian children
+					<ArrowUpRight class="h-4 w-4" />
+				</a>
+			</div>
+		</div>
 	</div>
 </div>
 

@@ -14,7 +14,7 @@ const works = await getWorks();
 const formattedWorks = formatCollection<"works">(works, {
 	sortBy: "date",
 	sortOrder: "desc",
-	maxItems: 4,
+	maxItems: 8,
 });
 
 const latestWorks = formattedWorks;
@@ -23,26 +23,22 @@ const writings = await getWritings();
 const latestWritings = formatCollection<"writing">(writings, {
 	sortBy: "date",
 	sortOrder: "desc",
-	maxItems: 6,
+	maxItems: 8,
 });
 ---
 
 <Layout size="lg">
 	<Landing />
 	<div class="w-full space-y-28">
-		<div class="mx-auto max-w-screen-2xl space-y-10">
-			<div class="flex flex-row items-baseline justify-between">
-				<h3>Latest works</h3>
-				<a href="/works" class="link-subtle-foreground text-sm">View all</a>
-			</div>
-			<WorksGrid works={latestWorks} maxColumns={2} />
+		<div class="space-y-10">
+			<WorksGrid works={latestWorks} size="lg" />
 			<div class="mx-auto w-fit">
 				<a href="/works">
 					<Button size="lg"> View all </Button>
 				</a>
 			</div>
 		</div>
-		<div class="mx-auto max-w-screen-2xl space-y-10">
+		<div class="space-y-10">
 			<div class="flex flex-row items-baseline justify-between">
 				<h3>Latest writing</h3>
 				<a href="/writing" class="link-subtle-foreground text-sm">View all</a>
@@ -54,7 +50,7 @@ const latestWritings = formatCollection<"writing">(writings, {
 				</a>
 			</div>
 		</div>
-		<div class="mx-auto max-w-screen-2xl space-y-10">
+		<div class="mx-auto space-y-10">
 			<Wrapper class="py-10">
 				<Section label="Manifesto" align="center">
 					<Manifesto />

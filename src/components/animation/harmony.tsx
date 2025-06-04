@@ -30,7 +30,7 @@ export default function Harmony() {
 							transition={{ duration: 1.5, delay: 2, ease: "easeOut" }}
 							transform="translate(-23.8 0.8)"
 						>
-							<motion.path stroke="#ffffff" d={TRIANGLE} className="fill-none" />
+							<motion.path stroke="var(--muted-foreground)" d={TRIANGLE} className="fill-none" />
 						</motion.g>
 						{(["outline", "center", "left", "right"] as const).map((type) => {
 							const paths = PATHS[type];
@@ -53,7 +53,7 @@ export default function Harmony() {
 							transition={{ duration: 1.5, delay: 3, ease: "easeOut" }}
 							transform="translate(27.5 0.8)"
 						>
-							<motion.path stroke="#ffffff" d={SQUARE} className="fill-none" />
+							<motion.path stroke="var(--muted-foreground)" d={SQUARE} className="fill-none" />
 						</motion.g>
 					</svg>
 				</div>

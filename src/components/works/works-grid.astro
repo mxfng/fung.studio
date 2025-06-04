@@ -6,15 +6,16 @@ import Grid from "@/components/ui/grid.astro";
 interface Props {
 	works: CollectionEntry<"works">[];
 	maxColumns?: number;
+	size?: "default" | "lg";
 }
 
-const { works, maxColumns = 3 } = Astro.props;
+const { works, maxColumns = 4, size = "default" } = Astro.props;
 
 const sortedWorks = works?.length
 	? [...works].sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
 	: [];
 ---
 
-<Grid hasItems={works.length > 0} emptyMessage="" maxColumns={maxColumns}>
-	{sortedWorks.map((work) => <WorkCard work={work} />)}
+<Grid hasItems={works.length > 0} emptyMessage="" maxColumns={maxColumns} size={size}>
+	{sortedWorks.map((work, index) => <WorkCard work={work} index={index + 1} />)}
 </Grid>
