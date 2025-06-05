@@ -2,11 +2,38 @@
 
 import { motion, useTransform } from "motion/react";
 import { useHarmony } from "./use-harmony";
-import { SQUARE, TRIANGLE, PATHS, COLORS } from "./path-data";
+import { SQUARE, TRIANGLE, PATHS } from "./path-data";
 import { useFlubber } from "./morph/use-flubber";
+import { useEffect, useState } from "react";
+
+const getCssVar = (name: string) => {
+	return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+};
+
+// Default colors for SSR
+const DEFAULT_COLORS = [
+	"oklch(0.25 0.005 85)",
+	"oklch(0.25 0.005 85)",
+	"oklch(0.85 0.15 80)",
+	"oklch(0.65 0.2 50)",
+	"oklch(0.55 0.3 0)",
+	"oklch(0.25 0.005 85)",
+];
 
 export default function Harmony() {
 	const { progress } = useHarmony();
+	const [colors, setColors] = useState<string[]>(DEFAULT_COLORS);
+
+	useEffect(() => {
+		setColors([
+			getCssVar("--foreground"),
+			getCssVar("--foreground"),
+			"oklch(0.85 0.15 80)",
+			"oklch(0.65 0.2 50)",
+			"oklch(0.55 0.3 0)",
+			getCssVar("--foreground"),
+		]);
+	}, []);
 
 	return (
 		<motion.div
@@ -30,19 +57,14 @@ export default function Harmony() {
 							transition={{ duration: 1.5, delay: 2, ease: "easeOut" }}
 							transform="translate(-23.8 0.8)"
 						>
-							<motion.path
-								stroke="var(--foreground)"
-								d={TRIANGLE}
-								className="fill-none"
-								suppressHydrationWarning
-							/>
+							<motion.path stroke="var(--foreground)" d={TRIANGLE} className="fill-none" />
 						</motion.g>
 						{(["outline", "center", "left", "right"] as const).map((type) => {
 							const paths = PATHS[type];
 							const stroke = useTransform(
 								progress,
 								paths.map((_, i) => i),
-								COLORS,
+								colors,
 							);
 							const d = useFlubber(progress, paths);
 
