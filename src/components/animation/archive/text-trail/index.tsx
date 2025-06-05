@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 
-// Configurable constants
 const STRINGS = [
 	"Max Fung",
 	"Musician",

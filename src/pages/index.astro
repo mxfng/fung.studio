@@ -4,11 +4,12 @@ import { getWorks, getWritings } from "@/lib/get-collection";
 import { formatCollection } from "@/lib/format-collection";
 import Layout from "@/layouts/layout.astro";
 import Landing from "@/components/landing.astro";
-import WritingGrid from "@/components/writing/writing-grid.astro";
+
 import Wrapper from "@/components/ui/wrapper.astro";
 import Section from "@/components/ui/section.astro";
 import Manifesto from "../components/manifesto.astro";
 import Button from "@/components/ui/button.astro";
+import WritingTable from "@/components/writing/writing-table.astro";
 
 const works = await getWorks();
 const formattedWorks = formatCollection<"works">(works, {
@@ -27,35 +28,34 @@ const latestWritings = formatCollection<"writing">(writings, {
 });
 ---
 
-<Layout size="lg">
+<Layout>
 	<Landing />
-	<div class="w-full space-y-28">
-		<div class="space-y-10">
-			<WorksGrid works={latestWorks} size="lg" />
+	<div class="w-full space-y-12">
+		<section class="space-y-10 border-b pb-12 md:pb-16">
+			<WorksGrid works={latestWorks} />
 			<div class="mx-auto w-fit">
 				<a href="/works">
 					<Button size="lg"> View all </Button>
 				</a>
 			</div>
-		</div>
-		<div class="space-y-10">
+		</section>
+		<section class="space-y-10 border-b pb-12 md:pb-16">
 			<div class="flex flex-row items-baseline justify-between">
-				<h3>Latest writing</h3>
-				<a href="/writing" class="link-subtle-foreground text-sm">View all</a>
+				<h2 class="mb-8 text-2xl">Latest writing</h2>
 			</div>
-			<WritingGrid writings={latestWritings} />
+			<WritingTable writings={latestWritings} />
 			<div class="mx-auto w-fit">
 				<a href="/writing">
 					<Button size="lg"> View all </Button>
 				</a>
 			</div>
-		</div>
-		<div class="mx-auto space-y-10">
-			<Wrapper class="py-10">
-				<Section label="Manifesto" align="center">
+		</section>
+		<section class="mx-auto space-y-10 pb-12 md:pb-16">
+			<Wrapper class="py-12">
+				<Section label="Manifesto" align="center" size="lg">
 					<Manifesto />
 				</Section>
 			</Wrapper>
-		</div>
+		</section>
 	</div>
 </Layout>

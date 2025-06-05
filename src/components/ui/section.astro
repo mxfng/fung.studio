@@ -4,14 +4,15 @@ import { cn } from "@/lib/utils";
 interface Props {
 	label: string;
 	align?: "left" | "center";
+	size?: "default" | "lg";
 }
 
-const { label, align = "left" } = Astro.props;
+const { label, align = "left", size = "default" } = Astro.props;
 ---
 
 <div class={cn("flex flex-col gap-0.5", align === "center" && "items-center")}>
 	<p class="font-accent text-muted-foreground text-xs">{label}</p>
-	<div class="max-w-[55ch]">
+	<div class={cn(size === "default" && "max-w-[55ch]")}>
 		<slot />
 	</div>
 </div>

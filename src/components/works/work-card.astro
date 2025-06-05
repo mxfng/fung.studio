@@ -19,9 +19,9 @@ const image = heroImage || firstImage;
 <div class="group space-y-4">
 	<a href={`/works/${work.slug}`} class="block space-y-4">
 		<div class="border-t pt-4">
-			<h1 class="text-lg">
+			<div>
 				{work.data.title}
-			</h1>
+			</div>
 			<div class="inline-flex w-full flex-row gap-4 text-sm">
 				<time datetime={work.data.date.toISOString()} class="font-accent text-sm whitespace-nowrap">
 					{
@@ -38,7 +38,7 @@ const image = heroImage || firstImage;
 						asLinks={false}
 					/>
 				</div>
-				<div class="text-muted-foreground">{index}</div>
+				<div class="text-muted-foreground font-accent">{index}</div>
 			</div>
 		</div>
 		<div

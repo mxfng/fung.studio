@@ -1,4 +1,5 @@
 ---
+import { EMAIL } from "@/content/email";
 import PaddingX from "@/components/util/padding-x.astro";
 import SocialLinks from "@/components/social-links.astro";
 import LetsCollaborate from "@/components/collaborate.astro";
@@ -8,7 +9,7 @@ const currentYear = new Date().getFullYear();
 
 <footer class="text-sm">
 	<PaddingX>
-		<a href="mailto:max@fung.studio" class="block">
+		<a href=`mailto:${EMAIL}` class="block">
 			<LetsCollaborate />
 		</a>
 		<div

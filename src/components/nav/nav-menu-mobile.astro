@@ -5,6 +5,7 @@ import Button from "../ui/button.astro";
 import X from "lucide-static/icons/x.svg";
 import Equal from "lucide-static/icons/equal.svg";
 import SocialLinks from "../social-links.astro";
+import ModeToggle from "@/components/ui/mode-toggle.astro";
 
 const currentPath = Astro.url.pathname;
 
@@ -37,12 +38,15 @@ const isRouteActive = (bucket: keyof typeof routeBuckets): boolean => {
 		class="bg-background fixed inset-0 z-50 translate-x-full transition-transform duration-300 ease-in-out"
 	>
 		<div class="relative flex h-full flex-col pt-8">
-			<button
-				class="bg-accent text-background absolute top-8 right-8 flex aspect-square w-16 cursor-pointer items-center justify-center rounded-full"
-				id="menu-close"
-			>
-				<X class="h-12 w-12" />
-			</button>
+			<div class="absolute top-8 right-8 flex items-center gap-4">
+				<ModeToggle />
+				<button
+					class="bg-accent text-background flex aspect-square w-16 cursor-pointer items-center justify-center rounded-full"
+					id="menu-close"
+				>
+					<X class="h-12 w-12" />
+				</button>
+			</div>
 			<div class="flex flex-1 items-center px-8">
 				<div class="flex flex-col gap-8">
 					<NavMenuItem href="/" class={cn(currentPath === "/" && "active")} size="lg">

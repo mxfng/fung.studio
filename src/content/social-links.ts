@@ -1,3 +1,5 @@
+import { EMAIL } from "./email";
+
 interface SocialLink {
 	label: string;
 	short: string;
@@ -7,28 +9,28 @@ interface SocialLink {
 
 const SOCIAL_LINKS: SocialLink[] = [
 	{
-		label: "Email",
-		short: "EM",
-		href: "mailto:max@fung.studio",
-		description: "max@fung.studio",
-	},
-	{
-		label: "LinkedIn",
-		short: "LI",
-		href: "https://www.linkedin.com/in/maxfung/",
-		description: "in/maxfung",
-	},
-	{
-		label: "Instagram",
-		short: "IG",
-		href: "https://www.instagram.com/fungkadelic/",
-		description: "@fungkadelic",
-	},
-	{
+		href: "https://github.com/mxfng",
 		label: "GitHub",
 		short: "GH",
-		href: "https://www.github.com/mxfng",
 		description: "mxfng",
+	},
+	{
+		href: "https://twitter.com/mxfng",
+		label: "Twitter",
+		short: "TW",
+		description: "@mxfng",
+	},
+	{
+		href: "https://linkedin.com/in/mxfng",
+		label: "LinkedIn",
+		short: "LI",
+		description: "mxfng",
+	},
+	{
+		href: `mailto:${EMAIL}`,
+		label: "Email",
+		short: "EM",
+		description: EMAIL,
 	},
 ] as const;
 

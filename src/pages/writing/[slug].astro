@@ -23,46 +23,52 @@ const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
 ---
 
 <Layout title={writing.data.title}>
-	<div class="flex flex-col gap-12 px-4 pt-8">
-		<header class="mx-auto flex max-w-screen-sm flex-col items-center gap-6 text-center">
-			<WritingSummary date={writing.data.date} categories={writing.data.categories} />
-			<h1 class="text-4xl font-medium md:text-5xl">
-				{writing.data.title}
-			</h1>
-		</header>
-		<article class="mx-auto w-full max-w-screen-lg pt-8">
-			<div class="prose">
-				<Content />
-			</div>
-		</article>
-
-		<Wrapper>
-			<div class="mx-auto max-w-screen-sm">
-				<WritingFooter />
-			</div>
-		</Wrapper>
-
+	<main class="w-full space-y-12">
+		<section class="space-y-6 border-b pb-8 md:pb-12">
+			<header class="mx-auto flex max-w-screen-sm flex-col items-center gap-6 text-center">
+				<WritingSummary date={writing.data.date} categories={writing.data.categories} />
+				<h1 class="text-4xl font-medium md:text-5xl">
+					{writing.data.title}
+				</h1>
+			</header>
+		</section>
+		<section class="space-y-8 border-b pb-8 md:pb-12">
+			<article class="mx-auto w-full max-w-screen-lg">
+				<div class="prose">
+					<Content />
+				</div>
+			</article>
+		</section>
+		<section class="space-y-8 border-b pb-8 md:pb-12">
+			<Wrapper>
+				<div class="mx-auto max-w-screen-sm">
+					<WritingFooter />
+				</div>
+			</Wrapper>
+		</section>
 		{
 			(prevEntry || nextEntry) && (
-				<PrevNext
-					prev={
-						prevEntry
-							? {
-									label: prevEntry.title,
-									href: `/writing/${prevEntry.slug}`,
-								}
-							: undefined
-					}
-					next={
-						nextEntry
-							? {
-									label: nextEntry.title,
-									href: `/writing/${nextEntry.slug}`,
-								}
-							: undefined
-					}
-				/>
+				<section class="space-y-8 pb-8 md:pb-12">
+					<PrevNext
+						prev={
+							prevEntry
+								? {
+										label: prevEntry.title,
+										href: `/writing/${prevEntry.slug}`,
+									}
+								: undefined
+						}
+						next={
+							nextEntry
+								? {
+										label: nextEntry.title,
+										href: `/writing/${nextEntry.slug}`,
+									}
+								: undefined
+						}
+					/>
+				</section>
 			)
 		}
-	</div>
+	</main>
 </Layout>

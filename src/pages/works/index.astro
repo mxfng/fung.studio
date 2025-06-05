@@ -2,7 +2,7 @@
 import WorksGrid from "@/components/works/works-grid.astro";
 import { getWorks } from "@/lib/get-collection";
 import { formatCollection } from "@/lib/format-collection";
-import CollectionLayout from "@/layouts/collection-layout.astro";
+import Layout from "@/layouts/layout.astro";
 
 const works = await getWorks();
 const filteredWorks = formatCollection<"works">(works, {
@@ -11,6 +11,8 @@ const filteredWorks = formatCollection<"works">(works, {
 });
 ---
 
-<CollectionLayout type="works" size="lg">
-	<WorksGrid works={filteredWorks} />
-</CollectionLayout>
+<Layout title="Works">
+	<div class="pb-16">
+		<WorksGrid works={filteredWorks} />
+	</div>
+</Layout>

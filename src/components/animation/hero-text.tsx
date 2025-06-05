@@ -24,19 +24,18 @@ const MOTION_SPAN_VARIANTS = {
 
 interface HeroTextProps {
 	chunks: HeroTextChunk[];
-	delayFadeIn?: boolean;
 	className?: string;
 	size?: "default" | "lg";
+	animate?: boolean;
 }
 
-export default function HeroText({ chunks, delayFadeIn = false, className, size }: HeroTextProps) {
+export default function HeroText({ chunks, className, size, animate = true }: HeroTextProps) {
 	const containerVariants = {
 		hidden: { opacity: 0 },
 		show: {
 			opacity: 1,
 			transition: {
 				staggerChildren: 0.2,
-				delayChildren: delayFadeIn ? 3.2 : 0,
 			},
 		},
 	};
@@ -44,7 +43,7 @@ export default function HeroText({ chunks, delayFadeIn = false, className, size 
 	return (
 		<motion.h1
 			variants={containerVariants}
-			initial="hidden"
+			initial={animate ? "hidden" : "show"}
 			animate="show"
 			className={cn(heroTextVariants({ size }), className)}
 			onAnimationComplete={() => {
@@ -57,6 +56,7 @@ export default function HeroText({ chunks, delayFadeIn = false, className, size 
 					variants={MOTION_SPAN_VARIANTS}
 					transition={{ duration: 0.8, ease: "easeOut" }}
 					className={cn(chunk.muted && "text-muted-foreground")}
+					suppressHydrationWarning
 				>
 					{chunk.text}
 				</motion.span>

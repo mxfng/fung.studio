@@ -1,0 +1,41 @@
+<button
+	class="theme-toggle font-accent text-muted-foreground hover:text-foreground flex h-full cursor-pointer items-center justify-center text-xs transition-colors"
+	aria-label="Toggle theme"
+>
+	<div class="flex flex-col px-2">
+		<span class="light-text">Light</span>
+		<span class="dark-text">Dark</span>
+	</div>
+</button>
+
+<script>
+	// Get all theme toggles
+	const toggles = document.querySelectorAll(".theme-toggle");
+
+	const updateThemeDisplay = (toggle: Element) => {
+		const darkText = toggle.querySelector(".dark-text") as HTMLElement;
+		const lightText = toggle.querySelector(".light-text") as HTMLElement;
+		const isDark = document.documentElement.classList.contains("dark");
+
+		if (darkText && lightText) {
+			darkText.style.color = isDark ? "var(--foreground)" : "var(--muted-foreground)";
+			lightText.style.color = isDark ? "var(--muted-foreground)" : "var(--foreground)";
+		}
+	};
+
+	// Initialize each toggle
+	toggles.forEach((toggle) => {
+		// Initial state
+		updateThemeDisplay(toggle);
+
+		// Add click handler
+		toggle.addEventListener("click", () => {
+			const isDark = document.documentElement.classList.contains("dark");
+			document.documentElement.classList[isDark ? "remove" : "add"]("dark");
+			localStorage.setItem("theme", isDark ? "light" : "dark");
+
+			// Update all toggles
+			toggles.forEach((t) => updateThemeDisplay(t));
+		});
+	});
+</script>

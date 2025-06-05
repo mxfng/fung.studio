@@ -1,7 +1,7 @@
 ---
 import { CATEGORY_MAP, type CategoryCollectionType } from "@/content/categories";
 import { capitalize, getCategoryPath, normalizePath } from "@/lib/utils";
-import CategorySelectorLink from "./category-selector-link.astro";
+import LinksGrid from "./links-grid.astro";
 
 interface Props {
 	type: CategoryCollectionType;
@@ -17,10 +17,47 @@ const categories = Object.values(CATEGORY_MAP[type]);
 const isActive = (category: string) => {
 	return normalizePath(currentPath).includes(category.toLowerCase());
 };
+
+const links = [
+	{
+		href: allPath,
+		label: "All",
+		short: "All",
+		active: allIsActive,
+	},
+	...categories.map((category) => ({
+		href: getCategoryPath(category, `/${type}`),
+		label: capitalize(category),
+		active: isActive(category),
+	})),
+];
 ---
 
 <div class="relative -mx-4 max-w-dvw overflow-x-hidden px-4">
 	<!-- Gradient edges -->
+	<div
+		class="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r to-transparent"
+	>
+	</div>
+	<div
+		class="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l to-transparent"
+	>
+	</div>
+
+	<!-- Scroll container -->
+	<div
+		class="scrollbar-none hide-scrollbar -mx-4 touch-auto overflow-x-auto overscroll-contain px-4"
+	>
+		<div class="h-12">
+			<LinksGrid links={links} class={`min-w-[48rem] grid-cols-${links.length}`} />
+		</div>
+	</div>
+</div>
+
+<!-- 
+
+<div class="relative -mx-4 max-w-dvw overflow-x-hidden px-4">
+
 	<div
 		class="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-5 bg-gradient-to-r to-transparent"
 	>
@@ -30,7 +67,7 @@ const isActive = (category: string) => {
 	>
 	</div>
 
-	<!-- Scroll container -->
+
 	<div
 		class="scrollbar-none hide-scrollbar -mx-4 touch-auto overflow-x-auto overscroll-contain px-4"
 	>
@@ -51,5 +88,4 @@ const isActive = (category: string) => {
 				))
 			}
 		</ul>
-	</div>
-</div>
+	</div> -->

@@ -1,27 +1,13 @@
 ---
 import { cn } from "@/lib/utils";
-import { cva } from "class-variance-authority";
-
-const gridVariants = cva("grid gap-x-4 gap-y-12", {
-	variants: {
-		size: {
-			default: "",
-			lg: "",
-		},
-	},
-	defaultVariants: {
-		size: "default",
-	},
-});
 
 interface Props {
 	hasItems: boolean;
 	emptyMessage?: string;
-	maxColumns?: number; // Up to 4 columns
-	size?: "default" | "lg";
+	maxColumns?: number;
 }
 
-const { hasItems, emptyMessage = "", maxColumns = 3, size } = Astro.props;
+const { hasItems, emptyMessage = "", maxColumns = 3 } = Astro.props;
 ---
 
 {
@@ -29,20 +15,11 @@ const { hasItems, emptyMessage = "", maxColumns = 3, size } = Astro.props;
 		<div class="text-muted-foreground text-center">{emptyMessage}</div>
 	) : (
 		<div
-			class={cn(
-				gridVariants({ size }),
-				size === "lg"
-					? [
-							maxColumns >= 2 && "md:grid-cols-2",
-							maxColumns >= 3 && "xl:grid-cols-3",
-							maxColumns >= 4 && "2xl:grid-cols-4",
-						]
-					: [
-							maxColumns >= 2 && "sm:grid-cols-2",
-							maxColumns >= 3 && "md:grid-cols-3",
-							maxColumns >= 4 && "xl:grid-cols-4",
-						],
-			)}
+			class={cn("grid gap-x-4 gap-y-12", [
+				maxColumns >= 2 && "md:grid-cols-2",
+				maxColumns >= 3 && "xl:grid-cols-3",
+				maxColumns >= 4 && "2xl:grid-cols-4",
+			])}
 		>
 			<div class="contents">
 				<slot />

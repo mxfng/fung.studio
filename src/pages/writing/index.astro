@@ -1,8 +1,11 @@
 ---
-import CollectionLayout from "@/layouts/collection-layout.astro";
+import WritingTable from "@/components/writing/writing-table.astro";
 import { formatCollection } from "@/lib/format-collection";
 import { getWritings } from "@/lib/get-collection";
-import WritingGrid from "@/components/writing/writing-grid.astro";
+import HeroText from "@/components/animation/hero-text";
+import { WRITING_PAGE_HERO_TEXT } from "@/content/hero-text";
+import Layout from "@/layouts/layout.astro";
+import CategorySelector from "@/components/ui/category-selector.astro";
 
 const writings = await getWritings();
 const filteredWritings = formatCollection<"writing">(writings, {
@@ -11,6 +14,18 @@ const filteredWritings = formatCollection<"writing">(writings, {
 });
 ---
 
-<CollectionLayout type="writing" selector>
-	<WritingGrid writings={filteredWritings} />
-</CollectionLayout>
+<Layout>
+	<main class="w-full space-y-12">
+		<section>
+			<HeroText client:load chunks={WRITING_PAGE_HERO_TEXT} size="lg" />
+		</section>
+		<div class="space-y-12">
+			<section class="border-t border-b">
+				<div><CategorySelector type="writing" /></div>
+			</section>
+			<section class="space-y-10 pb-12 md:pb-16">
+				<WritingTable writings={filteredWritings} />
+			</section>
+		</div>
+	</main>
+</Layout>

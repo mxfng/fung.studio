@@ -3,11 +3,11 @@ import { cn } from "@/lib/utils";
 import { cva } from "class-variance-authority";
 
 const navMenuItemVariants = cva(
-	"link-subtle relative before:absolute before:left-2 before:top-1/2 before:h-0.5 before:-translate-y-1/2 before:bg-muted-foreground before:opacity-0 before:transition-all before:duration-300 before:ease-out hover:before:opacity-100 before:origin-left before:scale-x-0 hover:before:scale-x-100",
+	"link-subtle relative before:absolute before:left-2 before:top-1/2 before:h-0.5 before:-translate-y-1/2 before:bg-foreground/80 before:opacity-0 before:transition-all before:duration-300 before:ease-out hover:before:opacity-100 before:origin-left before:scale-x-0 hover:before:scale-x-100",
 	{
 		variants: {
 			size: {
-				default: "md:text-lg pl-10 before:w-4 md:before:w-6",
+				default: "pl-10 before:w-4 md:before:w-6",
 				lg: "text-4xl pl-16 before:w-12 before:h-1",
 			},
 		},

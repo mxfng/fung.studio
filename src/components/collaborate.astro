@@ -1,30 +1,6 @@
 ---
-import ArrowRight from "lucide-static/icons/arrow-right.svg";
+import { EMAIL } from "@/content/email";
+import CTASection from "@/components/ui/cta-section.astro";
 ---
 
-<div class="group flex cursor-pointer flex-row items-center justify-between border-t py-12">
-	<div class="relative w-full overflow-hidden py-4">
-		<h1
-			class="text-ultra transition-all duration-300 ease-in-out md:group-hover:-translate-y-[200%]"
-		>
-			Let's collaborate
-		</h1>
-		<h1
-			class="text-ultra absolute top-4 translate-y-[200%] transition-all duration-300 ease-in-out md:group-hover:translate-y-0"
-		>
-			max@fung.studio
-		</h1>
-	</div>
-	<div
-		class="bg-accent text-background md:group-hover:bg-primary flex h-18 w-32 items-center justify-center overflow-hidden rounded-full"
-	>
-		<div class="relative flex w-full items-center justify-center">
-			<ArrowRight
-				class="h-12 w-12 transition-all duration-300 ease-in-out md:group-hover:-translate-x-[200%]"
-			/>
-			<ArrowRight
-				class="absolute h-12 w-12 translate-x-[200%] transition-all duration-300 ease-in-out md:group-hover:translate-x-0"
-			/>
-		</div>
-	</div>
-</div>
+<CTASection primaryText="Let's collaborate" secondaryText={EMAIL} size="lg" class="border-t" />

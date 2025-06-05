@@ -2,10 +2,10 @@
 import { Image } from "astro:assets";
 import { getWorks } from "@/lib/get-collection";
 import { loadWorkImages } from "@/lib/load-work-images";
-import CategoryList from "@/components/ui/category-list.astro";
 import Layout from "@/layouts/layout.astro";
 import MoreWorks from "@/components/works/more-works.astro";
 import Section from "@/components/ui/section.astro";
+import { capitalize } from "@/lib/utils";
 
 export async function getStaticPaths() {
 	const works = await getWorks();
@@ -18,68 +18,61 @@ export async function getStaticPaths() {
 const { work } = Astro.props;
 const { Content } = await work.render();
 const images = loadWorkImages(work.slug);
+const categoriesAsSentence = work.data.categories.map(capitalize).join(", ");
 ---
 
-<Layout title={work.data.title} size="lg">
-	<main class="flex flex-1 flex-col gap-16">
-		<div class="space-y-16 md:space-y-24">
-			<header class="mx-auto">
-				<h1 class="text-center text-4xl break-words md:text-6xl xl:text-8xl">
+<Layout title={work.data.title}>
+	<main class="w-full space-y-12">
+		<section class="space-y-6 border-b pb-8 md:pb-12">
+			<header>
+				<h1 class="text-mega break-words">
 					{work.data.title}
 				</h1>
 			</header>
-			<section class="mx-auto max-w-screen-2xl">
-				<div class="mx-auto mb-24 flex w-full flex-col gap-12 xl:flex-row">
-					<header
-						class="mx-auto flex w-full max-w-3xl justify-between gap-16 px-4 xl:mx-0 xl:w-1/4 xl:flex-col xl:justify-start"
-					>
-						<Section label="Categories">
-							<CategoryList
-								categories={work.data.categories}
-								basePath="/works"
-								class="text-xl xl:text-3xl"
-								asLinks={false}
-								commas
-							/>
-						</Section>
-						<Section label="Date">
-							{
-								work.data.date.toLocaleDateString("en-US", {
-									timeZone: "America/Los_Angeles",
-									year: "numeric",
-									month: "long",
-									day: "numeric",
-								})
-							}
-						</Section>
-					</header>
-					<article
-						class="prose mx-auto -mt-5 max-w-none md:max-w-2/3 [&_h1]:max-w-none [&_h2]:max-w-none [&_h3]:max-w-none [&_h4]:max-w-none [&_hr]:max-w-none [&_ol]:max-w-none [&_p]:max-w-none [&_ul]:max-w-none"
-					>
-						<Content />
-					</article>
-				</div>
-			</section>
-			{
-				images.length > 0 && (
-					<section class="mx-auto">
-						<div class="columns-1 gap-4 space-y-4 md:columns-2 lg:columns-3 2xl:columns-4">
-							{images.map((img) => (
-								<div class="w-full break-inside-avoid overflow-hidden rounded-2xl">
-									<Image
-										src={img}
-										alt={work.data.title}
-										widths={[400, 800, 1200, 1600, 2400]}
-										sizes="(min-width: 768px) 50vw, 100vw"
-										class="h-auto w-full"
-									/>
-								</div>
-							))}
-						</div>
-					</section>
-				)
-			}
-		</div>
-		<MoreWorks currentSlug={work.slug} />
+		</section>
+		<section class="grid w-full gap-8 xl:grid-cols-2">
+			<header class="grid w-full grid-cols-2 gap-8">
+				<Section label="Categories">
+					{categoriesAsSentence}
+				</Section>
+				<Section label="Date">
+					{
+						work.data.date.toLocaleDateString("en-US", {
+							timeZone: "America/Los_Angeles",
+							year: "numeric",
+							month: "long",
+							day: "numeric",
+						})
+					}
+				</Section>
+			</header>
+			<article
+				class="prose [&_p]:text-muted-foreground w-full max-w-screen-lg [&_h1]:mx-0 [&_h1]:max-w-none [&_h2]:mx-0 [&_h2]:max-w-none [&_h3]:mx-0 [&_h3]:max-w-none [&_h4]:mx-0 [&_h4]:max-w-none [&_hr]:mx-0 [&_hr]:max-w-none [&_ol]:mx-0 [&_ol]:max-w-none [&_p]:mx-0 [&_p]:max-w-none [&_ul]:mx-0 [&_ul]:max-w-none"
+			>
+				<Content />
+			</article>
+		</section>
+		{
+			images.length > 0 && (
+				<section class="space-y-10 border-b pb-12 md:pb-16">
+					<div class="columns-1 gap-4 space-y-4 md:columns-2 lg:columns-3 2xl:columns-4">
+						{images.map((img) => (
+							<div class="w-full break-inside-avoid overflow-hidden rounded">
+								<Image
+									src={img}
+									alt={work.data.title}
+									widths={[400, 800, 1200, 1600, 2400]}
+									sizes="(min-width: 768px) 50vw, 100vw"
+									class="h-auto w-full"
+								/>
+							</div>
+						))}
+					</div>
+				</section>
+			)
+		}
+		<section class="space-y-10 pb-12 md:pb-16">
+			<MoreWorks currentSlug={work.slug} />
+		</section>
 	</main>
 </Layout>

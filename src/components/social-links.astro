@@ -1,6 +1,6 @@
 ---
-import { cn } from "@/lib/utils";
 import SOCIAL_LINKS from "@/content/social-links";
+import LinksGrid from "@/components/ui/links-grid.astro";
 
 interface Props {
 	class?: string;
@@ -9,20 +9,4 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class={cn("grid h-full grid-cols-4 flex-1 items-center", className)}>
-	{
-		SOCIAL_LINKS.map((link, index) => (
-			<a
-				href={link.href}
-				target={link.href.startsWith("http") ? "_blank" : undefined}
-				rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
-				class={cn("hover:bg-accent/20 h-full w-full", index !== 0 && "border-l")}
-			>
-				<div class="link-subtle flex h-full items-center justify-center">
-					<span class="block md:hidden">{link.short}</span>
-					<span class="hidden md:block">{link.label}</span>
-				</div>
-			</a>
-		))
-	}
-</div>
+<LinksGrid links={SOCIAL_LINKS} class={className} />
