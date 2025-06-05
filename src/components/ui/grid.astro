@@ -17,8 +17,8 @@ const { hasItems, emptyMessage = "", maxColumns = 3 } = Astro.props;
 		<div
 			class={cn("grid gap-x-4 gap-y-12", [
 				maxColumns >= 2 && "md:grid-cols-2",
-				maxColumns >= 3 && "xl:grid-cols-3",
-				maxColumns >= 4 && "2xl:grid-cols-4",
+				maxColumns >= 3 && "lg:grid-cols-3",
+				maxColumns >= 4 && "xl:grid-cols-4",
 			])}
 		>
 			<div class="contents">
