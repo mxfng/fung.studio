@@ -6,12 +6,7 @@ import { SQUARE, TRIANGLE, PATHS } from "./path-data";
 import { useFlubber } from "./morph/use-flubber";
 import { useEffect, useState } from "react";
 
-const getCssVar = (name: string) => {
-	return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-};
-
-// Default colors for SSR
-const DEFAULT_COLORS = [
+const LIGHT_COLORS = [
 	"oklch(0.25 0.005 85)",
 	"oklch(0.25 0.005 85)",
 	"oklch(0.85 0.15 80)",
@@ -20,19 +15,38 @@ const DEFAULT_COLORS = [
 	"oklch(0.25 0.005 85)",
 ];
 
+const DARK_COLORS = [
+	"oklch(0.99 0 0)",
+	"oklch(0.99 0 0)",
+	"oklch(0.85 0.15 80)",
+	"oklch(0.65 0.2 50)",
+	"oklch(0.55 0.3 0)",
+	"oklch(0.99 0 0)",
+];
+
 export default function Harmony() {
 	const { progress } = useHarmony();
-	const [colors, setColors] = useState<string[]>(DEFAULT_COLORS);
+	const [colors, setColors] = useState<string[]>(LIGHT_COLORS);
 
 	useEffect(() => {
-		setColors([
-			getCssVar("--foreground"),
-			getCssVar("--foreground"),
-			"oklch(0.85 0.15 80)",
-			"oklch(0.65 0.2 50)",
-			"oklch(0.55 0.3 0)",
-			getCssVar("--foreground"),
-		]);
+		const isDark = document.documentElement.classList.contains("dark");
+		setColors(isDark ? DARK_COLORS : LIGHT_COLORS);
+
+		const observer = new MutationObserver((mutations) => {
+			mutations.forEach((mutation) => {
+				if (mutation.attributeName === "class") {
+					const isDark = document.documentElement.classList.contains("dark");
+					setColors(isDark ? DARK_COLORS : LIGHT_COLORS);
+				}
+			});
+		});
+
+		observer.observe(document.documentElement, {
+			attributes: true,
+			attributeFilter: ["class"],
+		});
+
+		return () => observer.disconnect();
 	}, []);
 
 	return (
