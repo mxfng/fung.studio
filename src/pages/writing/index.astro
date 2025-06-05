@@ -6,6 +6,7 @@ import HeroText from "@/components/animation/hero-text";
 import { WRITING_PAGE_HERO_TEXT } from "@/content/hero-text";
 import Layout from "@/layouts/layout.astro";
 import CategorySelector from "@/components/ui/category-selector.astro";
+import ArrowRight from "lucide-static/icons/arrow-right.svg";
 
 const writings = await getWritings();
 const filteredWritings = formatCollection<"writing">(writings, {
@@ -20,12 +21,37 @@ const filteredWritings = formatCollection<"writing">(writings, {
 			<HeroText client:load chunks={WRITING_PAGE_HERO_TEXT} size="lg" />
 		</section>
 		<div class="space-y-12">
-			<section class="border-t border-b">
-				<div><CategorySelector type="writing" /></div>
-			</section>
+			<div class="relative">
+				<CategorySelector type="writing" />
+				<div
+					id="scroll-hint"
+					class="pointer-events-none absolute right-0 -bottom-2 z-20 flex translate-y-full items-center gap-1 opacity-100 transition-opacity duration-300 md:hidden"
+				>
+					<span class="text-muted-foreground/30 text-xs">Scroll for more</span>
+					<ArrowRight class="text-muted-foreground/30 h-3 w-3" />
+				</div>
+			</div>
 			<section class="space-y-10 pb-12 md:pb-16">
 				<WritingTable writings={filteredWritings} />
 			</section>
 		</div>
 	</main>
 </Layout>
+
+<script>
+	// Hide scroll hint if scrolled at all
+	const container = document.querySelector(".scrollbar-none");
+	const hint = document.getElementById("scroll-hint");
+
+	if (container && hint) {
+		const checkScroll = () => {
+			if (container.scrollLeft > 0) {
+				hint.style.opacity = "0";
+				container.removeEventListener("scroll", checkScroll);
+			}
+		};
+
+		container.addEventListener("scroll", checkScroll);
+		checkScroll();
+	}
+</script>

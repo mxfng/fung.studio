@@ -1,15 +1,22 @@
 ---
 import Section from "../ui/section.astro";
+import { ABOUT_FOOTER_CONTENT } from "@/content/about";
+
+const parts = ABOUT_FOOTER_CONTENT.text.split(/(Toko Makai|Max Fung|Studio Makai)/);
 ---
 
 <Section label="About Max Fung" align="center">
 	<div class="prose">
 		<p class="text-s2 mb-0 text-center leading-normal">
-			Making music as <a href="https://www.instagram.com/tokomakai/">Toko Makai</a>
-			and <a href="https://www.instagram.com/fungkadelic/">Max Fung</a>. Coding professionally since
-			2021. Working with startups as <a href="https://www.studiomakai.net">Studio Makai</a>. A
-			lifelong musician, artist, tinkerer, and designer. Fortunate to work with thoughtful people on
-			meaningful projects to bring creative and technical ideas to life.
+			{
+				parts.map((part) => {
+					const link = ABOUT_FOOTER_CONTENT.links.find((link) => link.displayName === part);
+					if (link) {
+						return <a href={link.url}>{part}</a>;
+					}
+					return part;
+				})
+			}
 		</p>
 	</div>
 </Section>

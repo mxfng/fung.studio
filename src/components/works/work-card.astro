@@ -1,8 +1,8 @@
 ---
-import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import CategoryList from "@/components/ui/category-list.astro";
 import { loadFirstWorkImage, loadWorkHeroImage } from "@/lib/load-work-images";
+import WorkHeroImage from "./work-hero-image.astro";
 
 interface Props {
 	work: CollectionEntry<"works">;
@@ -16,46 +16,29 @@ const heroImage = loadWorkHeroImage(work.slug);
 const image = heroImage || firstImage;
 ---
 
-<div class="group space-y-4">
-	<a href={`/works/${work.slug}`} class="block space-y-4">
-		<div class="border-t pt-4">
-			<div>
-				{work.data.title}
-			</div>
-			<div class="inline-flex w-full flex-row gap-4 text-sm">
-				<time datetime={work.data.date.toISOString()} class="font-accent text-sm whitespace-nowrap">
-					{
-						work.data.date.toLocaleDateString("en-US", {
-							year: "numeric",
-						})
-					}
-				</time>
-				<div class="flex-1">
-					<CategoryList
-						categories={work.data.categories}
-						basePath="/works"
-						class="text-muted-foreground font-accent text-sm"
-						asLinks={false}
-					/>
-				</div>
-				<div class="text-muted-foreground font-accent">{index}</div>
-			</div>
+<a href={`/works/${work.slug}`} class="group block space-y-4">
+	<div class="border-t pt-4">
+		<div>
+			{work.data.title}
 		</div>
-		<div
-			class="bg-secondary group-hover:bg-foreground/20 flex aspect-[7/8] items-start justify-center rounded p-6 pb-12 transition-colors duration-300"
-		>
-			{
-				image && (
-					<div class="bg-background relative aspect-square w-full overflow-hidden">
-						<Image
-							src={image}
-							alt={work.data.title}
-							loading="lazy"
-							class="absolute inset-0 h-full w-full object-cover"
-						/>
-					</div>
-				)
-			}
+		<div class="inline-flex w-full flex-row gap-4 text-sm">
+			<time datetime={work.data.date.toISOString()} class="font-accent text-sm whitespace-nowrap">
+				{
+					work.data.date.toLocaleDateString("en-US", {
+						year: "numeric",
+					})
+				}
+			</time>
+			<div class="flex-1">
+				<CategoryList
+					categories={work.data.categories}
+					basePath="/works"
+					class="text-muted-foreground font-accent text-sm"
+					asLinks={false}
+				/>
+			</div>
+			<div class="text-muted-foreground font-accent">{index}</div>
 		</div>
-	</a>
-</div>
+	</div>
+	{image && <WorkHeroImage imageProps={image} alt={work.data.title} />}
+</a>

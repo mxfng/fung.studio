@@ -1,11 +1,12 @@
 ---
 import { Image } from "astro:assets";
 import { getWorks } from "@/lib/get-collection";
-import { loadWorkImages } from "@/lib/load-work-images";
+import { loadWorkHeroImage, loadWorkImages } from "@/lib/load-work-images";
 import Layout from "@/layouts/layout.astro";
 import MoreWorks from "@/components/works/more-works.astro";
 import Section from "@/components/ui/section.astro";
 import { capitalize } from "@/lib/utils";
+import WorkHeroImage from "@/components/works/work-hero-image.astro";
 
 export async function getStaticPaths() {
 	const works = await getWorks();
@@ -19,6 +20,7 @@ const { work } = Astro.props;
 const { Content } = await work.render();
 const images = loadWorkImages(work.slug);
 const categoriesAsSentence = work.data.categories.map(capitalize).join(", ");
+const heroImage = loadWorkHeroImage(work.slug);
 ---
 
 <Layout title={work.data.title}>
@@ -30,24 +32,37 @@ const categoriesAsSentence = work.data.categories.map(capitalize).join(", ");
 				</h1>
 			</header>
 		</section>
-		<section class="grid w-full gap-8 xl:grid-cols-2">
-			<header class="grid w-full grid-cols-2 gap-8">
-				<Section label="Categories">
-					{categoriesAsSentence}
-				</Section>
-				<Section label="Date">
-					{
-						work.data.date.toLocaleDateString("en-US", {
-							timeZone: "America/Los_Angeles",
-							year: "numeric",
-							month: "long",
-							day: "numeric",
-						})
-					}
-				</Section>
+		<section class="bg-accent grid w-full gap-8 rounded p-6 xl:grid-cols-2">
+			<header class="flex h-full flex-col gap-8 xl:gap-12">
+				<div class="grid w-full grid-cols-2 gap-8">
+					<Section label="Categories">
+						{categoriesAsSentence}
+					</Section>
+					<Section label="Date">
+						{
+							work.data.date.toLocaleDateString("en-US", {
+								timeZone: "America/Los_Angeles",
+								year: "numeric",
+								month: "long",
+								day: "numeric",
+							})
+						}
+					</Section>
+				</div>
+				<div class="hidden flex-1 xl:relative xl:block">
+					<div class="flex h-full items-start justify-start">
+						<div class="sticky top-32 h-fit w-full max-w-[380px]">
+							{
+								heroImage && (
+									<WorkHeroImage imageProps={heroImage} alt={work.data.title} class="border" />
+								)
+							}
+						</div>
+					</div>
+				</div>
 			</header>
 			<article
-				class="prose [&_p]:text-muted-foreground w-full max-w-screen-lg [&_h1]:mx-0 [&_h1]:max-w-none [&_h2]:mx-0 [&_h2]:max-w-none [&_h3]:mx-0 [&_h3]:max-w-none [&_h4]:mx-0 [&_h4]:max-w-none [&_hr]:mx-0 [&_hr]:max-w-none [&_ol]:mx-0 [&_ol]:max-w-none [&_p]:mx-0 [&_p]:max-w-none [&_ul]:mx-0 [&_ul]:max-w-none"
+				class="prose [&_p]:text-muted-foreground w-full max-w-screen-lg pr-6 [&_h1]:mx-0 [&_h1]:max-w-none [&_h2]:mx-0 [&_h2]:max-w-none [&_h3]:mx-0 [&_h3]:max-w-none [&_h4]:mx-0 [&_h4]:max-w-none [&_hr]:mx-0 [&_hr]:max-w-none [&_ol]:mx-0 [&_ol]:max-w-none [&_p]:mx-0 [&_p]:max-w-none [&_ul]:mx-0 [&_ul]:max-w-none"
 			>
 				<Content />
 			</article>

@@ -29,12 +29,10 @@ const filteredWritings = formatCollection<"writing">(writings, {
 			<HeroText client:load chunks={WRITING_PAGE_HERO_TEXT} size="lg" animate={false} />
 		</section>
 		<div class="space-y-12">
-			<section class="border-t border-b">
-				<div><CategorySelector type="writing" /></div>
-			</section>
+			<CategorySelector type="writing" />
 			{
 				filteredWritings.length > 0 ? (
-					<section class="space-y-10 border-b pb-12 md:pb-16">
+					<section class="space-y-10 pb-12 md:pb-16">
 						<WritingTable writings={filteredWritings} />
 					</section>
 				) : (

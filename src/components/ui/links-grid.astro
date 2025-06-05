@@ -1,13 +1,9 @@
 ---
+import type { URLMetadata } from "@/content/urls";
 import { cn } from "@/lib/utils";
 
 interface Props {
-	links: {
-		href: string;
-		label: string;
-		short?: string;
-		active?: boolean;
-	}[];
+	links: (URLMetadata & { active?: boolean })[];
 	class?: string;
 }
 
@@ -15,27 +11,42 @@ const { links, class: className } = Astro.props;
 ---
 
 <div
-	class={cn(`grid h-full items-center gap-px`, className)}
+	class={cn(`grid h-full items-center`, className)}
 	style={`grid-template-columns: repeat(${links.length}, minmax(0, 1fr));`}
 >
 	{
-		links.map((link, index) => (
+		links.map((link) => (
 			<a
-				href={link.href}
-				target={link.href.startsWith("http") ? "_blank" : undefined}
-				rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+				href={link.url}
+				target={link.url.startsWith("http") ? "_blank" : undefined}
+				rel={link.url.startsWith("http") ? "noopener noreferrer" : undefined}
 				class={cn(
-					"hover:bg-accent/20 h-full w-full",
-					index !== 0 && "border-l",
+					"hover:bg-accent/20 h-full w-full border-l [&:first-child]:border-l-0",
 					link.active &&
 						"bg-secondary hover:bg-secondary text-secondary-foreground hover:text-secondary-foreground",
 				)}
+				data-active={link.active}
 			>
 				<div class="link-subtle flex h-full items-center justify-center px-2 text-xs md:px-4 md:text-sm">
 					{link.short && <span class="block md:hidden">{link.short}</span>}
-					<span class={cn(link.short && "hidden md:block")}>{link.label}</span>
+					<span class={cn(link.short && "hidden md:block")}>{link.site}</span>
 				</div>
 			</a>
 		))
 	}
 </div>
+
+<script>
+	const activeLink = document.querySelector('[data-active="true"]') as HTMLElement;
+	if (activeLink) {
+		const scrollContainer = activeLink.closest(".scrollbar-none") as HTMLElement;
+		if (scrollContainer) {
+			const containerWidth = scrollContainer.clientWidth;
+			const linkLeft = activeLink.offsetLeft;
+			const linkWidth = activeLink.offsetWidth;
+			const scrollLeft = linkLeft - containerWidth / 2 + linkWidth / 2;
+
+			scrollContainer.scrollLeft = scrollLeft;
+		}
+	}
+</script>
