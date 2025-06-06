@@ -1,0 +1,16 @@
+---
+import ActionButton from "./action-button.astro";
+import ArrowLeft from "lucide-static/icons/arrow-left.svg";
+import ArrowRight from "lucide-static/icons/arrow-right.svg";
+
+interface Props {
+	size?: "default" | "lg";
+	direction?: "left" | "right";
+	class?: string;
+}
+
+const { size = "default", direction = "right", class: className } = Astro.props;
+const Icon = direction === "left" ? ArrowLeft : ArrowRight;
+---
+
+<ActionButton size={size} class={className} Icon={Icon} />

@@ -1,0 +1,13 @@
+---
+import ActionButton from "./action-button.astro";
+import Minus from "lucide-static/icons/minus.svg";
+
+interface Props {
+	size?: "default" | "lg";
+	class?: string;
+}
+
+const { size = "default", class: className } = Astro.props;
+---
+
+<ActionButton size={size} class={className} Icon={Minus} />

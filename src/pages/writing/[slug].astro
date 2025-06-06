@@ -9,17 +9,17 @@ import Wrapper from "@/components/ui/wrapper.astro";
 
 export async function getStaticPaths() {
 	const writings = await getWritings();
-	return writings.map((writing) => ({
-		params: { slug: writing.slug },
-		props: { writing },
-	}));
+	return writings.map((writing) => {
+		const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
+		return {
+			params: { slug: writing.slug },
+			props: { writing, prevEntry, nextEntry },
+		};
+	});
 }
 
-const { writing } = Astro.props;
+const { writing, prevEntry, nextEntry } = Astro.props;
 const { Content } = await writing.render();
-
-const writings = await getWritings();
-const { prevEntry, nextEntry } = getPrevNext(writings, writing.slug);
 ---
 
 <Layout title={writing.data.title}>

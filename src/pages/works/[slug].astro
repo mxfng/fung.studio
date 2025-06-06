@@ -7,16 +7,22 @@ import MoreWorks from "@/components/works/more-works.astro";
 import Section from "@/components/ui/section.astro";
 import { capitalize } from "@/lib/utils";
 import WorkHeroImage from "@/components/works/work-hero-image.astro";
+import { getPrevNext } from "@/lib/get-prev-next";
+import PrevNext from "@/components/ui/prev-next.astro";
+import ActionButtonMinus from "@/components/ui/action-button-minus.astro";
 
 export async function getStaticPaths() {
 	const works = await getWorks();
-	return works.map((work) => ({
-		params: { slug: work.slug },
-		props: { work },
-	}));
+	return works.map((work) => {
+		const { prevEntry, nextEntry } = getPrevNext(works, work.slug);
+		return {
+			params: { slug: work.slug },
+			props: { work, prevEntry, nextEntry },
+		};
+	});
 }
 
-const { work } = Astro.props;
+const { work, prevEntry, nextEntry } = Astro.props;
 const { Content } = await work.render();
 const images = loadWorkImages(work.slug);
 const categoriesAsSentence = work.data.categories.map(capitalize).join(", ");
@@ -26,14 +32,19 @@ const heroImage = loadWorkHeroImage(work.slug);
 <Layout title={work.data.title}>
 	<main class="w-full space-y-12">
 		<section class="space-y-6 border-b pb-8 md:pb-12">
-			<header>
+			<header class="flex items-center justify-between">
 				<h1 class="text-mega break-words">
 					{work.data.title}
 				</h1>
+				<div class="flex gap-4">
+					<a href="/works" class="group">
+						<ActionButtonMinus />
+					</a>
+				</div>
 			</header>
 		</section>
-		<section class="bg-accent grid w-full gap-8 rounded p-6 xl:grid-cols-2">
-			<header class="flex h-full flex-col gap-8 xl:gap-12">
+		<section class="bg-accent grid w-full gap-8 rounded p-6 md:grid-cols-2">
+			<header class="flex h-full flex-col gap-8 md:gap-12">
 				<div class="grid w-full grid-cols-2 gap-8">
 					<Section label="Categories">
 						{categoriesAsSentence}
@@ -49,7 +60,7 @@ const heroImage = loadWorkHeroImage(work.slug);
 						}
 					</Section>
 				</div>
-				<div class="hidden flex-1 xl:relative xl:block">
+				<div class="hidden flex-1 md:relative md:block">
 					<div class="flex h-full items-start justify-start">
 						<div class="sticky top-32 h-fit w-full max-w-[380px]">
 							{
@@ -86,8 +97,22 @@ const heroImage = loadWorkHeroImage(work.slug);
 				</section>
 			)
 		}
-		<section class="space-y-10 pb-12 md:pb-16">
+		<section class="space-y-10 border-b pb-12 md:pb-16">
 			<MoreWorks currentSlug={work.slug} />
 		</section>
+		{
+			(prevEntry || nextEntry) && (
+				<section class="space-y-8 pb-8 md:pb-12">
+					<PrevNext
+						prev={
+							prevEntry ? { label: prevEntry.title, href: `/works/${prevEntry.slug}` } : undefined
+						}
+						next={
+							nextEntry ? { label: nextEntry.title, href: `/works/${nextEntry.slug}` } : undefined
+						}
+					/>
+				</section>
+			)
+		}
 	</main>
 </Layout>

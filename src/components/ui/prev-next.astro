@@ -1,5 +1,5 @@
 ---
-import ActionButton from "@/components/ui/action-button.astro";
+import ActionButtonArrow from "./action-button-arrow.astro";
 
 interface Props {
 	prev?: {
@@ -22,7 +22,7 @@ const { prev, next } = Astro.props;
 				href={prev.href}
 				class="group hover:bg-muted/50 flex items-center gap-4 rounded-lg border p-4 transition-colors md:border-none"
 			>
-				<ActionButton direction="left" />
+				<ActionButtonArrow direction="left" />
 				<div class="flex flex-col">
 					<span class="text-muted-foreground text-sm">Previous</span>
 					<span class="line-clamp-1 text-base font-medium">{prev.label}</span>
@@ -43,7 +43,7 @@ const { prev, next } = Astro.props;
 					<span class="text-muted-foreground text-sm">Next</span>
 					<span class="line-clamp-1 text-base font-medium">{next.label}</span>
 				</div>
-				<ActionButton />
+				<ActionButtonArrow />
 			</a>
 		) : (
 			<div class="hidden md:block" />
