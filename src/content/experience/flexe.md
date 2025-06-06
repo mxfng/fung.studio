@@ -3,7 +3,7 @@ company: "Flexe"
 position: "Software Engineer"
 startDate: "2022-01-01T00:00:00-08:00"
 endDate: "2024-01-01T00:00:00-08:00"
-location: "Seattle, Washington"
+location: "Seattle, Washington (Remote)"
 logo: "/assets/experience/flexe.png"
 ---
 

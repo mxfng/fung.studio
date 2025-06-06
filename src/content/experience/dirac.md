@@ -3,7 +3,7 @@ company: "Dirac"
 position: "Lead Software Engineer"
 startDate: "2024-01-01T00:00:00-08:00"
 endDate: "2025-01-01T00:00:00-08:00"
-location: "Los Angeles, California"
+location: "New York, New York (Remote)"
 logo: "/assets/experience/dirac.png"
 ---
 
