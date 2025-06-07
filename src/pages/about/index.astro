@@ -5,19 +5,29 @@ import avatarImage2 from "@/assets/images/avatar2.jpg";
 import diracLogo from "@/assets/experience/dirac.png";
 import flexeLogo from "@/assets/experience/flexe.png";
 import boeingLogo from "@/assets/experience/boeing.png";
+import studioMakaiLogo from "@/assets/experience/studio-makai.png";
 import Layout from "@/layouts/layout.astro";
 import { ABOUT_PAGE_HERO_TEXT } from "@/content/hero-text";
 import HeroText from "@/components/animation/hero-text";
 import { getExperiences } from "@/lib/get-collection";
 import Tag from "@/components/ui/tag.astro";
 
-const experiences = await getExperiences();
+const experiences = (await getExperiences()).sort((a, b) => {
+	const startDateCompare = b.data.startDate.getTime() - a.data.startDate.getTime();
+	if (startDateCompare !== 0) return startDateCompare;
+
+	if (!a.data.endDate) return -1;
+	if (!b.data.endDate) return 1;
+
+	return b.data.endDate.getTime() - a.data.endDate.getTime();
+});
 
 const logos = {
 	Dirac: diracLogo,
 	Flexe: flexeLogo,
 	Boeing: boeingLogo,
-};
+	"Studio Makai": studioMakaiLogo,
+} as const;
 ---
 
 <Layout title="About">
@@ -41,7 +51,7 @@ const logos = {
 				</div>
 				<div class="prose space-y-4 font-light [&_p]:mx-0">
 					<p>
-						I’m primarily an independent developer and designer, working with brands, professionals,
+						I'm primarily an independent developer and designer, working with brands, professionals,
 						and creative collaborators to build purposeful, lasting products on the web and beyond.
 						Culture, technology, discipline, curiosity, and humor are driving values that influence
 						the work I do every day.
