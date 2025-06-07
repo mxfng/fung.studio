@@ -6,11 +6,6 @@ export interface URLMetadata {
 }
 
 export const URLS: Record<string, URLMetadata> = {
-	STUDIO_MAKAI: {
-		url: "https://www.studiomakai.net",
-		site: "Studio Makai",
-		short: "SM",
-	},
 	TOKO_MAKAI: {
 		url: "https://www.instagram.com/tokomakai/",
 		site: "Instagram",
