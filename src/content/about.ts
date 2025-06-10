@@ -6,7 +6,7 @@ export const ABOUT_FOOTER_CONTENT: {
 } = {
 	text: "Making music as Toko Makai and Max Fung. Coding professionally since 2021. A lifelong musician, artist, tinkerer, and designer. Fortunate to work with thoughtful people on meaningful projects to bring creative and technical ideas to life.",
 	links: [
-		{ ...URLS.TOKO_MAKAI, displayName: "Toko Makai" },
-		{ ...URLS.MAX_FUNG, displayName: "Max Fung" },
+		{ ...URLS.INSTAGRAM_TOKO_MAKAI, displayName: "Toko Makai" },
+		{ ...URLS.INSTAGRAM_MAX_FUNG, displayName: "Max Fung" },
 	],
 };

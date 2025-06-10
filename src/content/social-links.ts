@@ -3,7 +3,7 @@ import { URLS } from "./urls";
 import type { URLMetadata } from "./urls";
 
 const SOCIAL_LINKS: URLMetadata[] = [
-	URLS.MAX_FUNG,
+	URLS.INSTAGRAM_MAX_FUNG,
 	URLS.GITHUB,
 	URLS.LINKEDIN,
 	{
