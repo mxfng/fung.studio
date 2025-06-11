@@ -1,6 +1,6 @@
 ---
 title: "iOS 26 Beta is Bad"
-categories: ["technology"]
+categories: ["technology", "design"]
 date: "2025-06-11T11:11:00-07:00"
 ---
 
