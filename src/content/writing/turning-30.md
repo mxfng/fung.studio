@@ -1,9 +1,8 @@
 ---
-
 title: "On Turning 30"
 categories: ["philosophy"]
 date: "2025-09-29T20:08:00-07:00"
---
+---
 
 Tomorrow is my golden birthday. A golden birthday is the once-in-a-lifetime overlap where the number of one's age matches the number of the day. For me, it's the 30th on the 30th. Tonight marks the final note of my own personal roaring twenties, the first page for whatever comes next.
 
