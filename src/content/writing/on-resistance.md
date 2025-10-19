@@ -1,7 +1,7 @@
 ---
 title: "On Resistance"
-categories: ["politics"]
-date: "2025-10-18T16:20:00-07:00"
+categories: ["other"]
+date: "2025-10-18T18:23:00-07:00"
 ---
 
 Today, I've been reflecting on what protest actually means in America, and ultimately what it means for me. There is a sanitized version of protest that exists in civics textbooks, but what about the real and messy practice of resistance in action? What does protest look like when it's effective? What tools have truly shifted power? And where does protest fit into the broader American story?
