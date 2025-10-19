@@ -102,10 +102,10 @@ It’s important to acknowledge, though, that when collective action threatens c
 
 ## Protest Isn't Meant to Be Comfortable
 
-I don’t know if protest works the way it used to. It’s hard not to ignore how many movements in recent memory have collided with power and left only faint dents. But the kind of protest that matters isn’t meant to be comfortable. It won’t look polite. It won’t be convenient. It will be controversial precisely because that’s the point. Real resistance isn’t designed to make people feel good about showing up—it’s meant to make power flinch.
+I don’t know if protest works the way it used to. It’s hard not to ignore how many movements in recent memory have collided with power and left only faint dents. But the kind of protest that matters isn’t meant to be comfortable. It will be controversial precisely because that’s the point. Real resistance is meant to make power flinch.
 
 But outrage alone doesn’t win anything. Disruption without direction is just noise. If protest is to have teeth, it has to be organized—rooted in unions, tenants’ groups, mutual aid networks, and durable coalitions that can turn a march into leverage. Pressure needs to be aimed upward: at boardrooms, supply chains, investor meetings, and the policy levers that keep the wealthy insulated. Collective power is what makes disruption dangerous to those who benefit from the status quo.
 
-But we have to be willing to make people uncomfortable—and be uncomfortable ourselves—while standing together in a way that power can’t ignore or easily swat away. That’s how movements win. Not through politeness. Not through permission. Through persistence and coordination.
+But we have to be willing to make people uncomfortable—and be uncomfortable ourselves—while standing together in a way that power can’t ignore or easily swat away. That’s how movements win. Through persistence and coordination.
 
 If the sign is busted, we walk anyway. Martin Luther King Jr. wasn’t afraid to block a bridge, and neither should we be afraid to act with purpose. Progress has never belonged to those who waited at the curb. It’s always been taken by those who stepped into the street together.
