@@ -16,12 +16,14 @@ As I step into my thirties, I want to carry this happiness I feel in my soul wit
 
 I want to keep wandering the world, so I can walk all the boulevards, see all the oceans, taste all the cuisines, walk through the forests, meet all the people, smell all the wonderful smells this world has to offer.
 
+## Brief Letters to Myself
+
 If I could write a letter to myself turning 20, I might say something like this:
 
-What you focus on is everything you are and everything you will become. You are in control of that focus, and it's the greatest power you will be given. There is no price on time, and you will not get any back. Look at each passing minute as an investment, and try to invest in others nearly as much as you invest in yourself. Love each day, love the music, the beaches, the waves, the sunsets, the ladies, the boys, and all the ups and downs that lie ahead. Be true to yourself. Don't just emulate, incorporate. You've always been good enough, full stop.
+> What you focus on is everything you are and everything you will become. You are in control of that focus, and it's the greatest power you will be given. There is no price on time, and you will not get any back. Look at each passing minute as an investment, and try to invest in others nearly as much as you invest in yourself. Love each day, love the music, the beaches, the waves, the sunsets, the ladies, the boys, and all the ups and downs that lie ahead. Be true to yourself. Don't just emulate, incorporate. You've always been good enough, full stop.
 
 As to my 40-year-old self, ten years from now:
 
-Just because you're ten years further from the moment I wrote this means very little in the grand shceme of life and the universe. What's most important is that you have kept your soul, your dignity, your love for life, exploration, and adventure. Don't stop loving music, coding, surfing, snowboarding, traveling, and connecting with friends just because you've taken on some new responsibilities. I hope you're finding time for the things you love so you can share them with the people that matter to you the most. Age is truly but a number, and staying young at heart has always mattered to me, even as a child. I wish for you that it only gets better from here on out.
+> Just because you're ten years further from the moment I wrote this means very little in the grand shceme of life and the universe. What's most important is that you have kept your soul, your dignity, your love for life, exploration, and adventure. Don't stop loving music, coding, surfing, snowboarding, traveling, and connecting with friends just because you've taken on some new responsibilities. I hope you're finding time for the things you love so you can share them with the people that matter to you the most. Age is truly but a number, and staying young at heart has always mattered to me, even as a child. I wish for you that it only gets better from here on out.
 
 I don't want to dwell on this too much because midnight approaches, and life will continue to go on as it has. But for this moment, I'm thankful. Thankful for every breath, every chance, every person who's been a part of the ride.
