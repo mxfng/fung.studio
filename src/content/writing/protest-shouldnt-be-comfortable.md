@@ -88,8 +88,24 @@ For all the weight of these questions, I keep holding on to a truth that history
 
 Protest takes many forms. Not everyone can march, and not every march looks the same. Some movements are loud; others work quietly and patiently to erode the walls around them. But protest, in its many imperfect, unruly, and uncomfortable shapes, remains an essential part of democracy. It's how ordinary people remind power that it isn't inevitable.
 
+## Protesting Smarter, Not Louder
+
+This isn’t a call to block streets for the sake of it. The most effective movements in history chose their targets strategically. The Montgomery bus boycott choked off revenue at the heart of the transit system. Sit-ins during the civil rights movement were about confronting segregation directly at its public and economic choke points.
+
+Power lives in boardrooms, capitol buildings, corporate headquarters, financial districts, and logistics networks. Discomfort aimed upward forces the system to respond. Discomfort aimed sideways just lands on the people already struggling to get to work.
+
+The built environment across the United States is not tailored for civic engagement. Cars, commerce, and private property are the rule of the land here. Public squares are few and far between, civic centers are fenced and surveilled, and corporate power is hidden behind thick landscaping, private security, and layers of legal insulation. The wealthiest and most powerful deliberately move in spaces the common folk can't easily reach. It's an architecture of control and protection of capital.
+
+I feel uneasy coming to this realization; protest in its current, most popular form is largely ineffective at exerting pressure on the elites. But history may offer us some clues in how to do it more effectively. Economic disruption, like boycotts, labor strikes, and port blockades hit power where it actually hurts. And the ways to hurt power is generally, through our capitalist framework, through capital loss. Occupying symbolic and strategic spaces, from bridges to banks, exposes what's usually hidden. Building networks of mutual aid and local solidarity can make movements harder to disperse. Protest doesn't have to be a freeway standoff, it just has to aim its weight where it counts.
+
+It’s important to acknowledge, though, that when collective action threatens corporate revenue, the state and its instruments of force show up fast—police, private security, injunctions, sometimes worse. That reality doesn’t make this kind of action impossible. It means it must be more organized, more deliberate, and rooted in strategy. There are countless tactics and tradeoffs to consider when we choose to pressure power without needlessly harming the people movements aim to protect. That’s a conversation for another essay.
+
 ## Protest Isn't Meant to Be Comfortable
 
-I don’t know if protest works the way it used to. It’s hard not to notice how many movements in recent memory have collided with power and left only faint dents. But I do know the useful form isn’t meant to be comfortable. It won’t look polite. It won’t be convenient. It will be controversial precisely because that’s the point. Real resistance isn’t designed to make people feel good about showing up—it’s meant to make power flinch.
+I don’t know if protest works the way it used to. It’s hard not to ignore how many movements in recent memory have collided with power and left only faint dents. But the kind of protest that matters isn’t meant to be comfortable. It won’t look polite. It won’t be convenient. It will be controversial precisely because that’s the point. Real resistance isn’t designed to make people feel good about showing up—it’s meant to make power flinch.
 
-When we protest, we can’t wait for permission. If the sign is busted, we walk anyway. Martin Luther King Jr. wasn’t afraid to block a bridge, and neither should we. Progress has never belonged to those who wait at the curb.
+But outrage alone doesn’t win anything. Disruption without direction is just noise. If protest is to have teeth, it has to be organized—rooted in unions, tenants’ groups, mutual aid networks, and durable coalitions that can turn a march into leverage. Pressure needs to be aimed upward: at boardrooms, supply chains, investor meetings, and the policy levers that keep the wealthy insulated. Collective power is what makes disruption dangerous to those who benefit from the status quo.
+
+But we have to be willing to make people uncomfortable—and be uncomfortable ourselves—while standing together in a way that power can’t ignore or easily swat away. That’s how movements win. Not through politeness. Not through permission. Through persistence and coordination.
+
+If the sign is busted, we walk anyway. Martin Luther King Jr. wasn’t afraid to block a bridge, and neither should we be afraid to act with purpose. Progress has never belonged to those who waited at the curb. It’s always been taken by those who stepped into the street together.
