@@ -70,7 +70,7 @@ The whole thing felt messy, shallow, unorganized—a mishmash of privileged whit
 
 The entire point of protest is to be uncomfortable, especially to those in power. But here, in car-dominated America, our protests are herded to the curb. We’re delegated to the sidewalks. It’s acceptable to block people on foot, but we draw the line at people in cars, as if the right to uninterrupted traffic outweighs the right to collective voice. The street, which once belonged to people, has been ceded entirely to machines, and so has our imagination of what public space can be.
 
-It’s a strange kind of resistance—neatly contained, pre-approved, zoned like a land-use plan. We’ve learned to express rage in a way that never slows commerce, never disturbs the flow, never truly disrupts the world we’re supposed to be challenging. Our physical place in the protest mirrors our political place: tolerated, but never taken seriously.
+It’s a strange kind of resistance—neatly contained, pre-approved, zoned like a land-use plan. We’ve learned to express rage in a way that never slows commerce, never disturbs the flow, never truly disrupts the world we’re supposed to be challenging. Maybe on top of that, we fear the repercussions of doing so. Our physical place in the protest mirrors our political place: tolerated, but never taken seriously.
 
 ## The Real Target Isn't Trump
 
