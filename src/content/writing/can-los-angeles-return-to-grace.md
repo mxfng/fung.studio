@@ -29,3 +29,9 @@ The streets around the lake advertised a new vision for Los Angeles — dense, s
 ## A Shifting Paradigm is Inevitable
 
 ## Why Education and History Matter
+
+## Reference Conversations:
+
+https://chatgpt.com/c/690fb086-0f68-8329-8cf6-513fd69c37d6
+
+https://chatgpt.com/c/690fab63-f668-832f-81d0-fd36a3646935
